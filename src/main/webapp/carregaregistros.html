@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="robots" content="index, follow" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />        
+    <title>Populis</title>
+
+ <link rel="shortcut icon" href="img/icone-arvore.png" />
+
+    <link rel="icon" href="img/icone-arvore.png">
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+  </head>
+  <body class="">
+		<!-- LOGIN FORM -->
+		<!--===================================================-->
+		<div class="cls-content">
+		    <div class="cls-content-sm panel">
+		        <div class="panel-body">
+		            <div class="header col-md-12">
+		            	<div class="">
+		             		<img src="img/logo.png" alt="" />
+		             	</div>
+		            </div>
+		            <div class="col-md-12">
+			            <form id="form-login" >
+						    <div class="[ row ]">
+						        <h6>Importação da tabelas</h6>
+						    </div>
+							<div class="[ form-group ] reader" id="filesInput">
+								<input class="reader" type="file" id="files" name="file" accept=".csv"/>
+							</div>
+			            </form>
+			    	</div>
+		        </div>		
+		    </div>
+		</div>
+		<!--===================================================-->
+
+    <!--jQuery [ REQUIRED ]-->
+    <script src="js/jquery-3.2.1.min.js"></script>
+
+	<!-- BOOTSTRAP JS -->
+	<script src="js/bootstrap/bootstrap.min.js"></script>
+
+	<script src="js/commons.js"></script>
+
+    <!--ler arquivo -->
+    <script src="js/processa-file.js"></script>
+
+    <!--grava na base -->
+    <script src="js/processa-dados.js"></script>
+ 
+  </body>
+</html>

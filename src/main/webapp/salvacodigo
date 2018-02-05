@@ -1,0 +1,168 @@
+	$("select").each(function( index ) {
+		if ($(this).attr("name") != ""){
+			var value = $("#" + $(this).attr("id")).val();
+			collection.documento[$(this).attr("name")] = limpaData(value);
+			var a = $("#" + $(this).attr("name")).attr('data-required');
+			if ($("#" + $(this).attr("name")).attr('data-required') == "S" && value == ""){
+				houveErro = true;
+				if ($("#div_" + $(this).attr("name")).hasClass( "erro" )){
+					
+				}else{
+					$("#div_" + $(this).attr("name")).append('<label id="erro' + $(this).attr("name") + '" class="erro control-label">Campo Obrigatório</label>');
+					$("#div_" + $(this).attr("name")).addClass("erro");
+				};
+			}; 
+		};
+	});
+	$("input").each(function( index ) {
+		if ($(this).attr("name") != ""){
+			var value = $("#" + $(this).attr("id")).val();
+			collection.documento[$(this).attr("name")] = limpaData(value);
+			var a = $("#" + $(this).attr("name")).attr('data-required');
+			if ($("#" + $(this).attr("name")).attr('data-required') == "S" && value == ""){
+				houveErro = true;
+				if ($("#div_" + $(this).attr("name")).hasClass( "erro" )){
+					
+				}else{
+					$("#div_" + $(this).attr("name")).append('<label id="erro' + $(this).attr("name") + '" class="erro control-label">Campo Obrigatório</label>');
+					$("#div_" + $(this).attr("name")).addClass("erro");
+				};
+			}; 
+			if ($("#" + $(this).attr("name")).hasClass('passado')){
+				if (dataMaiorHoje(value)){
+					houveErro = true;
+					if ($("#div_" + $(this).attr("name")).hasClass( "erro" )){
+						
+					}else{
+						$("#div_" + $(this).attr("name")).append('<label id="erro' + $(this).attr("name") + '" class="erro control-label">Data maior que atual</label>');
+						$("#div_" + $(this).attr("name")).addClass("erro");
+					};
+				};
+			}; 
+		};
+	});
+	$("radio").each(function( index ) {
+		if ($(this).attr("name") != ""){
+			var value = $("#" + $(this).attr("id")).val();
+			collection.documento[$(this).attr("name")] = limpaData(value);
+			var a = $("#" + $(this).attr("name")).attr('data-required');
+			if ($("#" + $(this).attr("name")).attr('data-required') == "S" && value == ""){
+				houveErro = true;
+				if ($("#div_" + $(this).attr("name")).hasClass( "erro" )){
+					
+				}else{
+					$("#div_" + $(this).attr("name")).append('<label id="erro' + $(this).attr("name") + '" class="erro control-label">Campo Obrigatório</label>');
+					$("#div_" + $(this).attr("name")).addClass("erro");
+				};
+			}; 
+		};
+	});
+	$("texarea").each(function( index ) {
+		if ($(this).attr("name") != ""){
+			var value = $("#" + $(this).attr("id")).val();
+			collection.documento[$(this).attr("name")] = limpaData(value);
+			var a = $("#" + $(this).attr("name")).attr('data-required');
+			if ($("#" + $(this).attr("name")).attr('data-required') == "S" && value == ""){
+				houveErro = true;
+				if ($("#div_" + $(this).attr("name")).hasClass( "erro" )){
+					
+				}else{
+					$("#div_" + $(this).attr("name")).append('<label id="erro' + $(this).attr("name") + '" class="erro control-label">Campo Obrigatório</label>');
+					$("#div_" + $(this).attr("name")).addClass("erro");
+				};
+			}; 
+		};
+	});
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+			collection.documento.statusFun = "atualizou";
+		var objJsonDB = {
+				collection : "funcionarios",
+				keys : [ {
+					key : "documento.matricula",
+					value : matricula
+				} ],
+				update : [ {
+					field : "documento",
+					value : collection.documento
+				} ]
+			};
+		$.ajax({
+			type: "POST",
+	        url: window.location.origin + "/dadosesocial/rest/crud/atualizar",
+	        contentType: "application/json; charset=utf-8",
+	        dataType: 'json',
+	        data : JSON.stringify(objJsonDB),
+			async : "false"
+		})        	
+		.done(function( data ) {
+			alert("Alteração enviada ao RH para validação");
+		})
+		.fail(function(data) {
+		})
+		.always(function(data) {
+		
+		});	
+		$( ".dependente" ).each(function( index ) {
+			  atualizaDependente($(this).attr('data-index'), matricula);
+		});
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+$("#btn_enviar").on('click',function(){
+	var houveErro = false;
+	if ($("#contatoPrincipal").val() == "" && $("#contatoCelular").val() == "" && $("#contatoEmergencial").val() == ""){
+        houveErro = true;
+		if ($("#div_contatoPrincipal").hasClass( "erro" )){
+			
+		}else{
+			$("#div_contatoPrincipal").append('<label id="errocontatoPrincipal" class="erro control-label">Informe ao menos um contato </label>');
+			$("#div_contatoPrincipal").addClass("erro");
+		};
+	}
+	if (houveErro){
+		
+	}else{
+	};
+	

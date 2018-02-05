@@ -1,0 +1,12 @@
+com\populisrh\dadosesocial\Commons.class
+com\populisrh\dadosesocial\Rest_Crud.class
+com\populisrh\dadosesocial\Rest_Funcionario.class
+com\populisrh\dadosesocial\Commons_DB.class
+com\populisrh\dadosesocial\Rest_Email.class
+com\populisrh\dadosesocial\TemplateEmail.class
+com\populisrh\dadosesocial\Funcionario.class
+com\populisrh\dadosesocial\App.class
+com\populisrh\dadosesocial\SendEmailHtml.class
+com\populisrh\dadosesocial\SendEmail.class
+com\populisrh\dadosesocial\ApplicationConfig.class
+com\populisrh\dadosesocial\Rest_UploadFiles.class

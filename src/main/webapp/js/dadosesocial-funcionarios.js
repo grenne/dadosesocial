@@ -248,9 +248,10 @@ function montaTela (data, dataOri){
 			if ($(this).val() == data.documento[$(this).attr("name")]){
 				$("#" + $(this).attr("id")).prop("checked", true);
 			};
+			$("#" + name).val(data.documento[$(this).attr("name")]);
 			$("#valoresOriginais").append('<input id="ori' + $(this).attr("name") + '" name="ori' + $(this).attr("name") + '" hidden ">');
-			$("#ori" + $(this).attr("name")).val(valorRadio($(this).attr("name"), dataOri.documento[$(this).attr("name")]));		
-			mostraOri(id);
+			$("#ori" + $(this).attr("name")).val(valorRadio($(this).attr("name"), dataOri.documento[$(this).attr("name")]));
+			mostraOri(name, "radio");
 		};
 	});
 	$(".anexoImg").each(function( index ) {

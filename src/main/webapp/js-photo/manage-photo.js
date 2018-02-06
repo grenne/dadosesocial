@@ -11,15 +11,15 @@ function carregaPhoto (label, labelId){
     var appendImg = 
     	'<img id="img-' + labelId + '" src="' + window.location.origin + '/dadosesocial/rest/upload/images?image=' + label + '" class="imgUpload exclui' + labelId + '">' +
     	'<a href="' + window.location.origin + '/dadosesocial/rest/upload/images?image=' + label + '" target="_blank" class="exclui' + labelId + '">Visualizar</a>' +
-    	'<br>' +
+    	'<br class="exclui' + labelId + '">' +
     	'<button id="exclui' + labelId + '" name="' + labelId + '"  class=" excluiImagem exclui' + labelId + ' ">Excluir</button>';
     $("#files-" + labelId).addClass("temBotao");
     $("#files-" + labelId).append(appendImg);
     
-
     $("#exclui" + labelId).off('click');
     $("#exclui" + labelId).on('click',function(){
     	$(".exclui" + labelId).remove();
+        $("#files-" + labelId).removeClass("temBotao");
     	$("#" + labelId).val("");
     	sessionStorage.logout = "true";
     });
@@ -67,26 +67,28 @@ function montaPhoto (app, assunto, fotosDiv, id, id2, label){
         previewMaxHeight: 200,
         previewCrop: false
     }).on('fileuploadadd', function (e, data) {
+    	$("#errAnexo"  + labelId).remove();
     	$('#img-div-' + labelId).remove();
+    	$(".exclui" + labelId).remove();
     	data.context = $('<div id="img-div-' + labelId + '" class="exclui' + labelId + '" />').appendTo('#files-' + labelId);
-    	if ($("#files-" + labelId).hasClass("temBotao")){
-    		
-    	}else{
-    		$("#files-" + labelId).append('<button id="exclui' + labelId + '" name="' + labelId + '"  class=" excluiImagem exclui' + labelId + ' ">Excluir</button>');
-    		$("#files-" + labelId).addClass("temBotao");
-    	    $("#exclui" + labelId).off('click');
-    	    $("#exclui" + labelId).on('click',function(){
-    	    	$(".exclui" + labelId).remove();
-    	    	$("#" + labelId).val("");
-    	    	sessionStorage.logout = "true";
-        		$("#files-" + labelId).removeClass("temBotao");
-    	    });
-    	};
+	    var appendImg = 
+	    	'<a href="' + window.location.origin + '/dadosesocial/rest/upload/images?image=' + id + "_" + id2 + "_" + labelId + "_" + data.files[0].name + '" target="_blank" class="exclui' + labelId + '">Visualizar</a>' +
+	    	'<br class="exclui' + labelId + '">' +
+	    	'<button id="exclui' + labelId + '" name="' + labelId + '"  class=" excluiImagem exclui' + labelId + ' ">Excluir</button>';
+	    $("#files-" + labelId).addClass("temBotao");
+	    $("#files-" + labelId).append(appendImg);
+	    $("#exclui" + labelId).off('click');
+	    $("#exclui" + labelId).on('click',function(){
+	    	$(".exclui" + labelId).remove();
+	    	$("#" + labelId).val("");
+	    	sessionStorage.logout = "true";
+    		$("#files-" + labelId).removeClass("temBotao");
+	    });
         $.each(data.files, function (index, file) {
             var node = $('<p/>')
                     .append("");
             node.appendTo(data.context);
-           	$("#" + labelId).val(id + "_" + id2 + "_" + labelId + "_" + mudaSufixo(file.name));
+           	$("#" + labelId).val(id + "_" + id2 + "_" + labelId + "_" + file.name);
 	        $('#img-' + labelId).remove();
         });
     }).on('fileuploadprocessalways', function (e, data) {

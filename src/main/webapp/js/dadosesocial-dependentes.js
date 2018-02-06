@@ -146,7 +146,7 @@ function montaDependentes(data, index){
 	$("#dependenteNome" + index).html(data.nome);
 	$("#dependenteCpf" + index).val(data.cpf);
 	$("#dependenteNascimento" + index).val(separaData(data.nascimentoData, "/"));
-	$("#dependenteParentesco" + index).val(data.parentesco);
+	$("#dependenteParentesco" + index).selectpicker('val', data.parentesco);
 	$("#dependenteAnexoCPF" + index).val(data.dependenteAnexoCPF);
 	$("#dependenteAnexoVinculo" + index).val(data.dependenteAnexoVinculo);
 
@@ -212,7 +212,7 @@ function mostraOrigemDependentesDB(data, dataOri, index) {
 		mostraOri("dependenteCpf"  + index);
 	};
 	$("#dependenteCpf"  + index).on('change',function(){
-		mostraOri($("dependenteCpf"  + index));
+		mostraOri("dependenteCpf"  + index);
 	});
 
 	$("#oridependenteNascimento" + index).val(dataOri.nascimentoData);
@@ -223,11 +223,7 @@ function mostraOrigemDependentesDB(data, dataOri, index) {
 		mostraOri("dependenteNascimento"  + index);
 	});
 
-	$(".parentesco").each(function( i ) {
-		if ($(this).val() == dataOri.parentesco){
-			$("#oridependenteParentesco" + index).val($(this).html());
-		};
-	});
+	$("#oridependenteParentesco" + index).val(valorSelect("dependenteParentesco"  + index, dataOri.parentesco));
 	if (dataOri.parentesco != data.parentesco){
 		mostraOri("dependenteParentesco"  + index);
 	};

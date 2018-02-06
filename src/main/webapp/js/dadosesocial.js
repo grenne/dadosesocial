@@ -351,10 +351,9 @@ $('#dadosesocial')
         	var erro = false;
         	$(".errAnexo").remove();        	
         	$(".anexo").each(function( index ) {
-        		if ($("#upload-img-" + $(this).attr("name")).val() == ""){
+        		if ($(this).val() == ""){
 	        		if (testaAnexo($(this).attr("data-origem"))){
-	        			$("#div_anexo01").append('<label class="control-label errAnexo">' + $(this).attr("data-errMsg") + '</label>');
-//	        			$("#div_" + $(this).attr("id")).append('<label class="control-label errAnexo">' + $(this).attr("data-errMsg") + '</label>');
+	        			$("#div_" + $(this).attr("name")).append('<label id="errAnexo' + $(this).attr("name") + '" class="control-label has-error errAnexo">' + $(this).attr("data-errMsg") + '</label>');
 				        $(this).focus();
 				        erro = true;
 	        		};
@@ -453,9 +452,9 @@ $("#enderecoCep").on('change',function(){
 		if (regcep){
 			$("#enderecoCidade").val(regcep.documento.cidade);
 			$("#enderecoBairro").val(regcep.documento.bairro);
-			$("#enderecoUf").val(regcep.documento.uf);
+			$("#enderecoUf").selectpicker('val', regcep.documento.uf);
 			$("#enderecoLogradouro").val(regcep.documento.logradouro);
-			$("#tipoLogradouro").val(regcep.documento.tipo);
+			$("#tipoLogradouro").selectpicker('val', regcep.documento.tipo);
 			mostraOri("enderecoCidade");
 			mostraOri("enderecoBairro");
 			mostraOri("enderecoUf");
@@ -614,7 +613,12 @@ function setupFuntions(matricula){
 
 	$(".fieldInput").off('change');
 	$(".fieldInput").on('change',function(){
-		mostraOri($(this).attr('name'));
+		if ($(this).attr("type") == "radio"){
+			$("#" + $(this).attr('name')).val($(this).val());
+			mostraOri($(this).attr('name'), "radio");	
+		}else{
+			mostraOri($(this).attr('name'));
+		};
 	});
 
 	$("select").off('hidden.bs.select');
@@ -623,10 +627,7 @@ function setupFuntions(matricula){
 		$($("#" + id)).selectpicker('render');
 		mostraOri($(this).attr('name'));
 	});
-	$("radio").off('change');
-	$("radio").on('change',function(){
-		mostraOri($(this).attr('name'));
-	});
+	
 	$("textarea").off('change');
 	$("textarea").on('change',function(){
 		mostraOri($(this).attr('name'));
@@ -663,9 +664,9 @@ function setupFuntions(matricula){
 	
 	function valorRadio(item, valor){
 		result = "";
-		$(".radioItem").each(function( index ) {
+		$(".radiobox").each(function( index ) {
 			if ($(this).attr('data-item') == item && valor == $(this).attr('data-value')){
-				result = $(this).html();
+				result = $(this).attr('data-result');
 			};
 		});
 		

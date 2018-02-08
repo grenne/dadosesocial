@@ -346,38 +346,54 @@ $('#dadosesocial')
 	})
     .on('success.form.bv', function(e) {
     	if (sessionStorage.logout != "true") {
+    		var fv = $('#dadosesocial').bootstrapValidator();
         	sessionStorage.logout = "true";
-    		var objJsonDB = {
-    				collection : "funcionarios",
-    				keys : [
-    					{
-    						key : "documento.matricula",
-    						value : sessionStorage.matricula
-    					} 
-    					]
-    			};
-			$.ajax({
-	    		type: "POST",
-	    	    url: window.location.origin + "/dadosesocial/rest/crud/obter",
-	    	    contentType: "application/json; charset=utf-8",
-	    	    dataType: 'json',
-	    	    data : JSON.stringify(objJsonDB),
-	    		async : "false"
-	    	})        	
-	    	.done(function( data ) {
-	    		atualizaCollection(data, sessionStorage.matricula)
-	    	})
-	    	.fail(function(data) {
-//    	    		alert ('2-Problemas nno acesso aos dados do funcionario, tente novamente, se persistir contate o RH');
-	    		if (sessionStorage.user == "rh") {
-	    			$(window.document.location).attr('href','lista-funcionarios.html');
-	    		}else{
-	    			$(window.document.location).attr('href','login.html');			
-	    		};	
-	    	})
-	    	.always(function(data) {
-	
-	    	});		
+        	var erro = false;
+        	$(".errAnexo").remove();        	
+        	$(".anexo").each(function( index ) {
+        		if ($(this).val() == ""){
+	        		if (testaAnexo($(this).attr("data-origem"))){
+	        			$("#div_" + $(this).attr("name")).append('<label id="errAnexo' + $(this).attr("name") + '" class="control-label has-error errAnexo">' + $(this).attr("data-errMsg") + '</label>');
+				        $(this).focus();
+				        erro = true;
+	        		};
+        		};
+        	});
+	    	if (erro){
+	    		
+	    	}else{
+	    		var objJsonDB = {
+	    				collection : "funcionarios",
+	    				keys : [
+	    					{
+	    						key : "documento.matricula",
+	    						value : sessionStorage.matricula
+	    					} 
+	    					]
+	    			};
+				$.ajax({
+		    		type: "POST",
+		    	    url: window.location.origin + "/dadosesocial/rest/crud/obter",
+		    	    contentType: "application/json; charset=utf-8",
+		    	    dataType: 'json',
+		    	    data : JSON.stringify(objJsonDB),
+		    		async : "false"
+		    	})        	
+		    	.done(function( data ) {
+		    		atualizaCollection(data, sessionStorage.matricula)
+		    	})
+		    	.fail(function(data) {
+	//    	    		alert ('2-Problemas nno acesso aos dados do funcionario, tente novamente, se persistir contate o RH');
+		    		if (sessionStorage.user == "rh") {
+		    			$(window.document.location).attr('href','lista-funcionarios.html');
+		    		}else{
+		    			$(window.document.location).attr('href','login.html');			
+		    		};	
+		    	})
+		    	.always(function(data) {
+		
+		    	});		
+	    	};
     	};
     });
 
@@ -413,14 +429,7 @@ $("#btn_rejeitar").on('click',function(){
 $("#enderecoCep").off('change');
 $("#enderecoCep").on('change',function(){
 	var id = $(this).attr('name');
-	if ($("#div_" + id).hasClass( "original" )){
-		
-	}else{
-		$("#div_" + id).addClass("original");
-		if ($("#ori" + id).val()){
-			$("#div_" + id).append('<label class="control-label">Valor Original:' + $("#ori" + id).val() + '</label>');
-		};
-	};
+	mostraOri(id);
 	var objJson = {
 			collection : "cep",
 			keys : [
@@ -443,54 +452,14 @@ $("#enderecoCep").on('change',function(){
 		if (regcep){
 			$("#enderecoCidade").val(regcep.documento.cidade);
 			$("#enderecoBairro").val(regcep.documento.bairro);
-			$("#enderecoUf").val(regcep.documento.uf);
+			$("#enderecoUf").selectpicker('val', regcep.documento.uf);
 			$("#enderecoLogradouro").val(regcep.documento.logradouro);
-			$("#tipoLogradouro").val(regcep.documento.tipo);
-			var id = "enderecoCidade";
-			if ($("#div_" + id).hasClass( "original" )){
-				
-			}else{
-				$("#div_" + id).addClass("original");
-				if ($("#ori" + id).val()){
-					$("#div_" + id).append('<label class="control-label">Valor Original:' + $("#ori" + id).val() + '</label>');
-				};
-			};
-			var id = "enderecoBairro";
-			if ($("#div_" + id).hasClass( "original" )){
-				
-			}else{
-				$("#div_" + id).addClass("original");
-				if ($("#ori" + id).val()){
-					$("#div_" + id).append('<label class="control-label">Valor Original:' + $("#ori" + id).val() + '</label>');
-				};
-			};
-			var id = "enderecoUf";
-			if ($("#div_" + id).hasClass( "original" )){
-				
-			}else{
-				$("#div_" + id).addClass("original");
-				if ($("#ori" + id).val()){
-					$("#div_" + id).append('<label class="control-label">Valor Original:' + $("#ori" + id).val() + '</label>');
-				};
-			};
-			var id = "enderecoLogradouro";
-			if ($("#div_" + id).hasClass( "original" )){
-				
-			}else{
-				$("#div_" + id).addClass("original");
-				if ($("#ori" + id).val()){
-					$("#div_" + id).append('<label class="control-label">Valor Original:' + $("#ori" + id).val() + '</label>');
-				};
-			};
-			var id = "tipoLogradouro";
-			if ($("#div_" + id).hasClass( "original" )){
-				
-			}else{
-				$("#div_" + id).addClass("original");
-				if ($("#ori" + id).val()){
-					$("#div_" + id).append('<label class="control-label">Valor Original:' + $("#ori" + id).val() + '</label>');
-				};
-			};
+			$("#tipoLogradouro").selectpicker('val', regcep.documento.tipo);
+			mostraOri("enderecoCidade");
+			mostraOri("enderecoBairro");
+			mostraOri("enderecoUf");
+			mostraOri("enderecoLogradouro");
+			mostraOri("tipoLogradouro");
 		}
 	})
 	.fail(function(data) {
@@ -501,18 +470,26 @@ $("#enderecoCep").on('change',function(){
 
 $(function() {
 	   $('form').submit(function(event){
-	       return checkFocus();
+	       console.log ("submit");
 	    });
 });
-/*
-$('input').keypress(function(e) {
-    if(e.which == 13) { // se pressionar enter
-        console.log('pode submeter'); // aqui pode submeter o form
-    }else{
-    	
-    }
-});
-*/
+
+function testaAnexo(origem){
+	
+	var result = false;
+	if (origem){
+		var origens = origem.split(",");
+		for (var i = 0; i < origens.length; i++) {
+			console.log ("data-change-" + $("#" + origens[i]).attr("data-change"));
+			if ($("#" + origens[i]).attr("data-change") == "true"){
+				
+				result = true;
+			};
+		};
+	};
+	return result;
+};
+
 function mandaEmail(matricula, motivo){
 	$.ajax({
 		type: "GET",
@@ -578,15 +555,7 @@ function setupFuntions(matricula){
 			if (name.slice(0, 10) != "dependente" ){
 				$(this).closest('form').bootstrapValidator('revalidateField', $(this).prop('name'));
 			};
-			var id = $(this).attr('name');
-			if ($("#div_" + id).hasClass( "original" )){
-				
-			}else{
-				$("#div_" + id).addClass("original");
-				if ($("#ori" + id).val()){
-					$("#div_" + id).append('<label class="control-label">Valor Original: ' + $("#ori" + id).val() + '</label>');
-				};
-			};
+			mostraOri($(this).attr('name'));
 		}
 	});
 	
@@ -602,15 +571,7 @@ function setupFuntions(matricula){
 			if (name.slice(0, 10) != "dependente" ){
 				$(this).closest('form').bootstrapValidator('revalidateField', $(this).prop('name'));
 			};
-			var id = $(this).attr('name');
-			if ($("#div_" + id).hasClass( "original" )){
-				
-			}else{
-				$("#div_" + id).addClass("original");
-				if ($("#ori" + id).val()){
-					$("#div_" + id).append('<label class="control-label">Valor Original: ' + $("#ori" + id).val() + '</label>');
-				};
-			};
+			mostraOri($(this).attr('name'));
 		}
 	});	
 	
@@ -652,14 +613,11 @@ function setupFuntions(matricula){
 
 	$(".fieldInput").off('change');
 	$(".fieldInput").on('change',function(){
-		var id = $(this).attr('name');
-		if ($("#div_" + id).hasClass( "original" )){
-			
+		if ($(this).attr("type") == "radio"){
+			$("#" + $(this).attr('name')).val($(this).val());
+			mostraOri($(this).attr('name'), "radio");	
 		}else{
-			$("#div_" + id).addClass("original");
-			if ($("#ori" + id).val()){
-				$("#div_" + id).append('<label class="control-label">Valor Original:' + $("#ori" + id).val() + '</label>');
-			};
+			mostraOri($(this).attr('name'));
 		};
 	});
 
@@ -667,38 +625,12 @@ function setupFuntions(matricula){
 	$("select").on('hidden.bs.select',function(){
 		var id = $(this).attr('name');
 		$($("#" + id)).selectpicker('render');
-		if ($("#div_" + id).hasClass( "original" )){
-			
-		}else{
-			$("#div_" + id).addClass("original");
-			if ($("#ori" + id).val()){
-				$("#div_" + id).append('<label class="control-label">Valor Original: ' + $("#ori" + id).val() + '</label>');
-			};
-		};
+		mostraOri($(this).attr('name'));
 	});
-	$("radio").off('change');
-	$("radio").on('change',function(){
-		var id = $(this).attr('name');
-		if ($("#div_" + id).hasClass( "original" )){
-			
-		}else{
-			$("#div_" + id).addClass("original");
-			if ($("#ori" + id).val()){
-				$("#div_" + id).append('<label class="control-label">Valor Original: ' + $("#ori" + id).val() + '</label>');
-			};
-		};
-	});
+	
 	$("textarea").off('change');
 	$("textarea").on('change',function(){
-		var id = $(this).attr('name');
-		if ($("#div_" + id).hasClass( "original" )){
-			
-		}else{
-			$("#div_" + id).addClass("original");
-			if ($("#ori" + id).val()){
-				$("#div_" + id).append('<label class="control-label">Valor Original: ' + $("#ori" + id).val() + '</label>');
-			};
-		};
+		mostraOri($(this).attr('name'));
 	});
 	if (sessionStorage.user == "rh"){
 		if (alteraDados){
@@ -714,10 +646,7 @@ function setupFuntions(matricula){
 		}
 	}else{
 		$("#icone-lista").hide();
-	}
-
-
-	
+	}	
 }
 	function valorSelect(item, valor){
 		result = "";
@@ -735,9 +664,9 @@ function setupFuntions(matricula){
 	
 	function valorRadio(item, valor){
 		result = "";
-		$(".radioItem").each(function( index ) {
+		$(".radiobox").each(function( index ) {
 			if ($(this).attr('data-item') == item && valor == $(this).attr('data-value')){
-				result = $(this).html();
+				result = $(this).attr('data-result');
 			};
 		});
 		

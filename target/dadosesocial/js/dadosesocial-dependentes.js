@@ -146,7 +146,7 @@ function montaDependentes(data, index){
 	$("#dependenteNome" + index).html(data.nome);
 	$("#dependenteCpf" + index).val(data.cpf);
 	$("#dependenteNascimento" + index).val(separaData(data.nascimentoData, "/"));
-	$("#dependenteParentesco" + index).val(data.parentesco);
+	$("#dependenteParentesco" + index).selectpicker('val', data.parentesco);
 	$("#dependenteAnexoCPF" + index).val(data.dependenteAnexoCPF);
 	$("#dependenteAnexoVinculo" + index).val(data.dependenteAnexoVinculo);
 
@@ -209,70 +209,66 @@ function mostraOrigemDependentesDB(data, dataOri, index) {
 
 	$("#oridependenteCpf" + index).val(dataOri.cpf);
 	if (dataOri.cpf != data.cpf){
-		mostraOri(dataOri.cpf, "dependenteCpf"  + index);
+		mostraOri("dependenteCpf"  + index);
 	};
 	$("#dependenteCpf"  + index).on('change',function(){
-		mostraOri($("#oridependenteCpf"  + index).val(), "dependenteCpf"  + index);
+		mostraOri("dependenteCpf"  + index);
 	});
 
 	$("#oridependenteNascimento" + index).val(dataOri.nascimentoData);
 	if (dataOri.nascimentoData != data.nascimentoData){
-		mostraOri(dataOri.nascimentoData, "dependenteNascimento"  + index);
+		mostraOri("dependenteNascimento"  + index);
 	};
 	$("#dependenteNascimento"  + index).on('change',function(){
-		mostraOri($("#oridependenteNascimento"  + index).val(), "dependenteNascimento"  + index);
+		mostraOri("dependenteNascimento"  + index);
 	});
-	$(".parentesco").each(function( i ) {
-		if ($(this).val() == dataOri.parentesco){
-			console.log ("grau-" + dataOri.parentesco + " value- " + $(this).val() + " html-" + $(this).html());
-			$("#oridependenteParentesco" + index).val($(this).html());
-		};
-	});
+
+	$("#oridependenteParentesco" + index).val(valorSelect("dependenteParentesco"  + index, dataOri.parentesco));
 	if (dataOri.parentesco != data.parentesco){
-		mostraOri($("#oridependenteParentesco" + index).val(), "dependenteParentesco"  + index);
+		mostraOri("dependenteParentesco"  + index);
 	};
 	$("#dependenteParentesco"  + index).on('change',function(){
-		mostraOri($("#oridependenteParentesco"  + index).val(), "dependenteParentesco"  + index);
+		mostraOri("dependenteParentesco"  + index);
 	});
 
 	if (data.ir == "X"){
 		$("#dependenteIr" + index).val("checked")
 	}
 	if (dataOri.ir != data.ir){
-		mostraOri(data.ir, "dependenteIr"  + index);
+		mostraOri("dependenteIr"  + index);
 	};
 	$("#dependenteIr"  + index).on('change',function(){
-		mostraOri($("#oridependenteIr"  + index).val(), "dependenteIr"  + index);
+		mostraOri("dependenteIr"  + index);
 	});
 
 	if (data.sf == "X"){
 		$("#oridependenteSf" + index).val("checked")
 	}
 	if (dataOri.parentesco != data.parentesco){
-		mostraOri(dataOri.parentesco, "dependenteSf"  + index);
+		mostraOri("dependenteSf"  + index);
 	};
 	$("#dependenteSf"  + index).on('change',function(){
-		mostraOri($("#oridependenteSf"  + index).val(), "dependenteSf"  + index);
+		mostraOri("dependenteSf"  + index);
 	});
 
 	if (data.def == "X"){
 		$("#oridependenteDef" + index).val("checked")
 	}
 	if (dataOri.def != data.def){
-		mostraOri(dataOri.def, "dependenteDef"  + index);
+		mostraOri("dependenteDef"  + index);
 	};
 	$("#dependenteDef"  + index).on('change',function(){
-		mostraOri($("#oridependenteDef"  + index).val(), "dependenteDef"  + index);
+		mostraOri("dependenteDef"  + index);
 	});
 
 	if (data.est == "X"){
 		$("#oridependenteEst" + index).prop("checked")
 	}
 	if (dataOri.est != data.est){
-		mostraOri(dataOri.est, "dependenteEst"  + index);
+		mostraOri("dependenteEst"  + index);
 	};
 	$("#dependenteEst"  + index).on('change',function(){
-		mostraOri($("#oridependenteEst"  + index).val(), "dependenteEst"  + index);
+		mostraOri("dependenteEst"  + index);
 	});
 
 }

@@ -1,5 +1,4 @@
-/**
- * 
+/** * 
  */
 
 
@@ -193,18 +192,47 @@ function gravaStatus(collection, matricula, status, naoApaga, motivo, mandaEmail
 	
 };
 
-function mostraOri(valorOriginal, id){
-	if ($("#div_" + id).hasClass( "original" )){
-		
-	}else{
-		$("#div_"  + id).addClass("original");
-		if (valorOriginal){
-			$("#div_" + id).append('<label class="control-label">Valor Original: ' + valorOriginal + '</label>');
-		}else{
-			$("#div_" + id).append('<label class="control-label">Valor Original: Vazio</label>');
-		}
-	};
+function mostraOri(id, type){
+	var a = $("#" + id).attr("type");
+	var b = stringMatch("anexo", $("#" + id).attr("class"));
+	if ($("#" + id).attr("type") != "file" && stringMatch("anexo", $("#" + id).attr("class")) == false){
+		var ori = $("#ori" + id).val();
+		var atual = $("#" + id).val();
+		if (stringMatch("selectpicker", $("#" + id).attr("class"))){
+			atual = valorSelect(id, $("#" + id).val());	
+		};
+		if (stringMatch("celular", $("#" + id).attr("class"))){
+			atual = limpaData($("#" + id).val()).replace(" ","");	
+		};
+		if (stringMatch("cep", $("#" + id).attr("class"))){
+			atual = limpaData($("#" + id).val());	
+		};
+		if (stringMatch("datepicker", $("#" + id).attr("class"))){
+			atual = $("#" + id).val().replace("/", "").replace("/", "");	
+		};
+		if (type){
+			if (type == "radio"){
+				atual = valorRadio(id, $("#" + id).val());	
+			};
+		};
+		if (ori != atual){
+			$("#" + id).attr("data-change", "true");
+			if ($("#div_" + id).hasClass( "original" )){
 
+			}else{
+				$("#div_"  + id).addClass("original");
+				if ($("#ori" + id).val()){
+					$("#div_" + id).append('<label id="oriLabel_' + id + '" class="control-label">Valor Original: ' + $("#ori" + id).val() + '</label>');
+				}else{
+					$("#div_" + id).append('<label id="oriLabel_' + id + '" class="control-label">Valor Original: Vazio</label>');
+				}
+			}
+		}else{
+			$("#" + id).attr("data-change", "false");
+			$("#oriLabel_" + id).remove();
+			$("#div_" + id).removeClass( "original" )
+		};
+	};
 }
 
 function criaToken (matricula){

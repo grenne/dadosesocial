@@ -202,15 +202,7 @@ function montaTela (data, dataOri){
 						$('#div_' + id + 'Tex').removeClass("hide");
 						$("#valoresOriginais").append('<input id="ori' + $(this).attr("id") + '" name="ori' + $(this).attr("id") + '" hidden ">');
 						$("#ori" + $(this).attr("id")).val(dataOri.documento[$(this).attr("id")]);
-						if ($("#ori" + id).val() && $("#ori" + id).val() != data.documento[$(this).attr("id")]){
-							$("#div_" + id).addClass("original");
-							$("#div_" + id).append('<label class="control-label">Valor Original: ' + $("#ori" + id).val() + '</label>');
-						}else{
-							if ($("#ori" + id).val() != data.documento[$(this).attr("id")]){
-								$("#div_" + id).addClass("original");
-								$("#div_" + id).append('<label class="control-label">Valor Original: Vazio');						
-							};
-						};
+						mostraOri(id);
 					};			
 				}else{
 					if (stringMatch("datepicker", $(this).attr("class"))){
@@ -219,28 +211,12 @@ function montaTela (data, dataOri){
 						};
 						$("#valoresOriginais").append('<input id="ori' + $(this).attr("id") + '" name="ori' + $(this).attr("id") + '" hidden ">');
 						$("#ori" + $(this).attr("id")).val(dataOri.documento[$(this).attr("id")]);		
-						if ($("#ori" + id).val() && $("#ori" + id).val() != data.documento[$(this).attr("id")]){
-							$("#div_" + id).addClass("original");
-							$("#div_" + id).append('<label class="control-label">Valor Original: ' + $("#ori" + id).val() + '</label>');
-						}else{
-							if ($("#ori" + id).val() != data.documento[$(this).attr("id")]){
-								$("#div_" + id).addClass("original");
-								$("#div_" + id).append('<label class="control-label">Valor Original: Vazio');						
-							};
-						};
+						mostraOri(id);
 					}else{
 						$(this).val(data.documento[$(this).attr("id")]);
 						$("#valoresOriginais").append('<input id="ori' + $(this).attr("id") + '" name="ori' + $(this).attr("id") + '" hidden ">');
 						$("#ori" + $(this).attr("id")).val(dataOri.documento[$(this).attr("id")]);		
-						if ($("#ori" + id).val() && $("#ori" + id).val() != data.documento[$(this).attr("id")]){
-							$("#div_" + id).addClass("original");
-							$("#div_" + id).append('<label class="control-label">Valor Original: ' + $("#ori" + id).val() + '</label>');
-						}else{
-							if ($("#ori" + id).val() != data.documento[$(this).attr("id")]){
-								$("#div_" + id).addClass("original");
-								$("#div_" + id).append('<label class="control-label">Valor Original: Vazio');
-							};
-						};
+						mostraOri(id);
 					};
 				};
 			};
@@ -253,15 +229,7 @@ function montaTela (data, dataOri){
 			$(this).val(data.documento[$(this).attr("id")]);
 			$("#valoresOriginais").append('<input id="ori' + $(this).attr("id") + '" name="ori' + $(this).attr("id") + '" hidden ">');
 			$("#ori" + $(this).attr("id")).val(dataOri.documento[$(this).attr("id")]);		
-			if ($("#ori" + id).val() && $("#ori" + id).val() != data.documento[$(this).attr("id")]){
-				$("#div_" + id).addClass("original");
-				$("#div_" + id).append('<label class="control-label">Valor Original: ' + $("#ori" + id).val() + '</label>');
-			}else{
-				if ($("#ori" + id).val() != data.documento[$(this).attr("id")]){
-					$("#div_" + id).addClass("original");
-					$("#div_" + id).append('<label class="control-label">Valor Original: Vazio');						
-				};
-			};
+			mostraOri(id);
 		};
 	});
 	$("select").each(function( index ) {
@@ -270,15 +238,7 @@ function montaTela (data, dataOri){
 			$(this).selectpicker('val', data.documento[$(this).attr("id")]);
 			$("#valoresOriginais").append('<input id="ori' + $(this).attr("id") + '" name="ori' + $(this).attr("id") + '" hidden ">');
 			$("#ori" + $(this).attr("id")).val(valorSelect($(this).attr("id"), dataOri.documento[$(this).attr("id")]));		
-			if ($("#ori" + id).val() && dataOri.documento[$(this).attr("id")] != data.documento[$(this).attr("id")]){
-				$("#div_" + id).addClass("original");
-				$("#div_" + id).append('<label class="control-label">Valor Original: ' + $("#ori" + id).val() + '</label>');
-			}else{
-				if (dataOri.documento[$(this).attr("id")] != data.documento[$(this).attr("id")]){
-					$("#div_" + id).addClass("original");
-					$("#div_" + id).append('<label class="control-label">Valor Original: Vazio');						
-				};
-			};
+			mostraOri(id);
 		};
 	});
 	$(".radiobox").each(function( index ) {
@@ -288,21 +248,10 @@ function montaTela (data, dataOri){
 			if ($(this).val() == data.documento[$(this).attr("name")]){
 				$("#" + $(this).attr("id")).prop("checked", true);
 			};
+			$("#" + name).val(data.documento[$(this).attr("name")]);
 			$("#valoresOriginais").append('<input id="ori' + $(this).attr("name") + '" name="ori' + $(this).attr("name") + '" hidden ">');
-			$("#ori" + $(this).attr("name")).val(valorRadio($(this).attr("name"), dataOri.documento[$(this).attr("name")]));		
-			if (data.documento[$(this).attr("name")]  && dataOri.documento[$(this).attr("name")] != data.documento[$(this).attr("name")]){
-				if ($("#div_" + name).hasClass( "original" )){
-					
-				}else{
-					$("#div_" + name).addClass("original");
-					$("#div_" + name).append('<label class="control-label">Valor Original: ' + $("#ori" + name).val() + '</label>');
-				};
-			}else{
-				if ($("#ori" + id).val() != data.documento[$(this).attr("id")]){
-					$("#div_" + id).addClass("original");
-					$("#div_" + id).append('<label class="control-label">Valor Original: Vazio');						
-				};
-			};
+			$("#ori" + $(this).attr("name")).val(valorRadio($(this).attr("name"), dataOri.documento[$(this).attr("name")]));
+			mostraOri(name, "radio");
 		};
 	});
 	$(".anexoImg").each(function( index ) {

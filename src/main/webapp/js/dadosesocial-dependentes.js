@@ -143,7 +143,8 @@ function montaDependentes(data, index){
 
 	setupFuntions(data.matricula);
 	
-	$("#dependenteNome" + index).html(data.nome);
+	$("#dependenteNomeHtml" + index).html(data.nome);
+	$("#dependenteNome" + index).val(data.nome);
 	$("#dependenteCpf" + index).val(data.cpf);
 	$("#dependenteNascimento" + index).val(separaData(data.nascimentoData, "/"));
 	$("#dependenteParentesco" + index).selectpicker('val', data.parentesco);
@@ -372,6 +373,7 @@ function incluirDependente(index, matricula){
 		'<ieldset>';
 */
 	$("#dependente" + index).removeClass("hide");
+	$("#div_dependenteNome" + index).removeClass("hide");
 	
 	setupFuntions(matricula);
 }
@@ -386,7 +388,7 @@ function atualizaDependente(index, matricula){
 				}, 
 				{
 					key : "documento.nome",
-					value : $("#dependenteNome" + index).html()
+					value : $("#dependenteNomeHtml" + index).html()
 				} 
 				]
 		};
@@ -419,7 +421,7 @@ function atualizaDependenteDB(data, matricula, index) {
 	if ($("#dependenteNome" + index).val()) {
 		data.documento.nome =  $("#dependenteNome" + index).val();
 	}else{
-		data.documento.nome =  $("#dependenteNome" + index).html();
+		data.documento.nome =  $("#dependenteNomeHtml" + index).html();
 	};
 	data.documento.cpf  = $("#dependenteCpf" + index).val().replace(".", "").replace(".", "").replace(".", "").replace("-", "");
 	data.documento.nascimentoData  = $("#dependenteNascimento" + index).val().replace("/", "").replace("/", "");
@@ -447,7 +449,7 @@ function atualizaDependenteDB(data, matricula, index) {
 	}else{
 		data.documento.est = "";
 	}
-	var nome = $("#dependenteNome" + index).html();
+	var nome = $("#dependenteNomeHtml" + index).html();
 	if ($("#dependente" + index).attr('data-index') != 'incluir' ){
 		var objJsonAtu = {
 				collection : "dependentes",
@@ -495,6 +497,8 @@ function incluiDependenteDB(matricula, index){
 					cpf  : $("#dependenteCpf" + index).val(),
 					nascimentoData  : $("#dependenteNascimento" + index).val(),
 					parentesco  : $("#dependenteParentesco" + index).val(),
+					dependenteAnexoCPF : $("#dependenteAnexoCPF" + index).val(),
+					dependenteAnexoVinculo : $("#dependenteAnexoVinculo" + index).val(),
 					ir:"",
 					sf:"",
 					def:"",

@@ -296,7 +296,7 @@
 															</div>
 															<div id="div_dataEstadoCivil" class="col-md-2">
 																<label class="control-label">Desde</label>
-																<input id="dataEstadoCivil" type="text" name="dataEstadoCivil" placeholder="" class="datepicker date passado form-control">
+																<input id="dataEstadoCivil" type="text" name="dataEstadoCivil" placeholder="" class="datepicker date passado form-control fieldInput">
 															</div>
 															<div id="div_raca" class="col-md-2 selectContainer">
 																<label class="control-label">Raça</label>
@@ -314,13 +314,14 @@
 																<label class="control-label col-md-12">Sexo</label>
 																<div class="col-sm-12 col-md-12">
 																	<label class="radio radio-inline no-margin ">
-																		<input type="radio" id="sexoMas" name="sexo" value="2" class="radiobox style-2 fieldInput"  />
-																		<span class= "radioItem" data-item="sexo" data-value="2">Feminino</span> </label>
+																		<input type="radio" id="sexoMas" name="sexo" value="2" data-item="sexo" data-value="2" data-result="Feminino" class="radiobox style-2 fieldInput"  />
+																		<span >Feminino</span> </label>
 	
 																	<label class="radio radio-inline">
-																		<input type="radio" id="sexoFem" name="sexo" value="1" class="radiobox style-2 fieldInput"  />
-																		<span  class= "radioItem" data-item="sexo" data-value="1" >Masculino</span> </label>
+																		<input type="radio" id="sexoFem" name="sexo" value="1" data-item="sexo" data-value="1" data-result="Masculino" class="radiobox style-2 fieldInput"  />
+																		<span>Masculino</span> </label>
 																</div>
+																<input type="text" id="sexo" name="sexo" class= "nouse" hidden  />
 															</div>
 														</div>
 														<div class="row">
@@ -363,7 +364,7 @@
 															</div>
 															<div id="div_instrucao" class="col-md-4 selectContainer">
 																<label class="control-label">Escolaridade</label>
-																<select class="selectpicker form-control show-tick" id="instrucao" name="instrucao"  >
+																<select class="selectpicker form-control show-tick" id="instrucao" data-change="false" name="instrucao"  >
 																	<option value="">Selecione</option>
 																	<option value="Analfabeto">Analfabeto</option>
 																	<option value="Primário incompleto">Primário incompleto</option>
@@ -386,7 +387,7 @@
 																<input type="text" class="form-control fieldInput" id="apelido" name="apelido"/>
 															</div>
 													</div>
-													<div class="form-group">
+													<div id="div_anexo01" class="form-group">
 														<br>
 														<div class="row">
 															<section class="col-xs-6">
@@ -395,13 +396,13 @@
 														</div> 
 														<div class="row">
 															<section class="col-xs-4">
-															    <span class="btn btn-success fileinput-button"> 
+															    <div  class="btn btn-success fileinput-button"> 
 															        <i class="glyphicon glyphicon-minus"></i> 
 															        <span> Anexo</span> 
 															        <!-- The file input field used as target for the file upload widget --> 
-															        <input id="upload-img-anexo01" type="file" name="uploadedFile" accept=".jpg" class="imgUpload"> 
-																	<input class="hide" type="text" id="anexo01" name="anexo01" placeholder="" disabled="disabled">
-															    </span> 
+															        <input id="upload-img-anexo01" type="file" name="uploadedFile" accept="image/*|.pdf" class="imgUpload form-control"> 
+																	<input class="hide anexo form-control" type="text" id="anexo01" data-origem="instrucao" data-errMsg="Anexe um comprovante com a novo grau de instrução" name="anexo01" placeholder=" disabled="disabled">
+															    </div> 
 															    <br> 
 															    <!-- The global progress bar --> 
 															   <div id="progress-anexo01" class="progress col-xs-04"> 
@@ -414,7 +415,7 @@
 															</section>
 														</div>
 													</div>
-													<div class="form-group">
+													<div id="div_anexo02" class="form-group">
 														<div class="row">
 															<section class="col-xs-8">
 																<span>Se não for solteiro anexe um imagem de sua comprovação de seu estado civil</span>
@@ -422,14 +423,13 @@
 														</div> 
 														<div class="row">
 															<section class="col-xs-4">
-															    <br> 
 																<!-- The fileinput-button span is used to style the file input field as button -->
 															    <span class="btn btn-success fileinput-button"> 
 															        <i class="glyphicon glyphicon-minus"></i> 
 															        <span> Anexo</span> 
 															        <!-- The file input field used as target for the file upload widget --> 
 															        <input id="upload-img-anexo02" type="file" name="uploadedFile" accept="image/*|.pdf" class="imgUpload"> 
-																	<input class="hide anexo" type="text" id="anexo02" name="anexo02" placeholder="" disabled="disabled">
+																	<input class="hide anexo" type="text" id="anexo02" name="anexo02"data-origem="estadoCivil" data-errMsg="Anexe um comprovante com seu novo estado civil"  placeholder="" disabled="disabled">
 															    </span> 
 																    <br> 
 																    <!-- The global progress bar --> 
@@ -505,50 +505,50 @@
 																<label class="control-label">Tipo Logradouro</label>
 																<select class="selectpicker form-control show-tick" id="tipoLogradouro" name="tipoLogradouro"  >
 																	<option value="">Selecione</option>
-																	<option value="A">AREA</option>
-																	<option value="AER">AEROPORTO</option>
-																	<option value="AL">ALAMEDA</option>
-																	<option value="AV">AVENIDA</option>
-																	<option value="BL">BLOCO</option>
-																	<option value="CH">CHACARA</option>
-																	<option value="CJ">CONJUNTO</option>
-																	<option value="COL">COLONIA</option>
-																	<option value="COND">CONDOMINIO</option>
-																	<option value="CPO">CAMPO</option>
-																	<option value="DT">DISTRITO</option>
-																	<option value="ESP">ESPLANADA</option>
-																	<option value="EST">ESTRADA</option>
-																	<option value="ETC">ESTACAO</option>
-																	<option value="FAV">FAVELA</option>
-																	<option value="FAZ">FAZENDA</option>
-																	<option value="FRA">FEIRA</option>
-																	<option value="GAL">GALERIA</option>
-																	<option value="GJA">GRANJA</option>
-																	<option value="JD">JARDIM</option>
-																	<option value="LD">LADEIRA</option>
-																	<option value="LOT">LOTEAMENTO</option>
-																	<option value="LRG">LARGO</option>
-																	<option value="MRO">MORRO</option>
-																	<option value="PAT">PATIO</option>
-																	<option value="PC">PRACA</option>
-																	<option value="PR">PRAIA</option>
-																	<option value="PRQ">PARQUE</option>
-																	<option value="PSA">PASSARELA</option>
-																	<option value="Q">QUADRA</option>
-																	<option value="R">RUA</option>
-																	<option value="REC">RECANTO</option>
-																	<option value="RES">RESIDENCIAL</option>
-																	<option value="ROD">RODOVIA</option>
-																	<option value="SIT">SITIO</option>
-																	<option value="ST">SETOR</option>
-																	<option value="TRV">TRECHO</option>
-																	<option value="TV">TRAVESSA</option>
-																	<option value="V">VIA</option>
-																	<option value="VD">VIADUTO</option>
-																	<option value="VER">VEREDA</option>
-																	<option value="VL">VILA</option>
-																	<option value="VLA">VIELA</option>
-																	<option value="VLE">VALE</option>
+																	<option value="A" data-item="tipoLogradouro">AREA</option>
+																	<option value="AER" data-item="tipoLogradouro">AEROPORTO</option>
+																	<option value="AL" data-item="tipoLogradouro">ALAMEDA</option>
+																	<option value="AV" data-item="tipoLogradouro">AVENIDA</option>
+																	<option value="BL" data-item="tipoLogradouro">BLOCO</option>
+																	<option value="CH" data-item="tipoLogradouro">CHACARA</option>
+																	<option value="CJ" data-item="tipoLogradouro">CONJUNTO</option>
+																	<option value="COL" data-item="tipoLogradouro">COLONIA</option>
+																	<option value="COND" data-item="tipoLogradouro">CONDOMINIO</option>
+																	<option value="CPO" data-item="tipoLogradouro">CAMPO</option>
+																	<option value="DT" data-item="tipoLogradouro">DISTRITO</option>
+																	<option value="ESP" data-item="tipoLogradouro">ESPLANADA</option>
+																	<option value="EST" data-item="tipoLogradouro">ESTRADA</option>
+																	<option value="ETC" data-item="tipoLogradouro">ESTACAO</option>
+																	<option value="FAV" data-item="tipoLogradouro">FAVELA</option>
+																	<option value="FAZ" data-item="tipoLogradouro">FAZENDA</option>
+																	<option value="FRA" data-item="tipoLogradouro">FEIRA</option>
+																	<option value="GAL" data-item="tipoLogradouro">GALERIA</option>
+																	<option value="GJA" data-item="tipoLogradouro">GRANJA</option>
+																	<option value="JD" data-item="tipoLogradouro">JARDIM</option>
+																	<option value="LD" data-item="tipoLogradouro">LADEIRA</option>
+																	<option value="LOT" data-item="tipoLogradouro">LOTEAMENTO</option>
+																	<option value="LRG" data-item="tipoLogradouro">LARGO</option>
+																	<option value="MRO" data-item="tipoLogradouro">MORRO</option>
+																	<option value="PAT" data-item="tipoLogradouro">PATIO</option>
+																	<option value="PC" data-item="tipoLogradouro">PRACA</option>
+																	<option value="PR" data-item="tipoLogradouro">PRAIA</option>
+																	<option value="PRQ" data-item="tipoLogradouro">PARQUE</option>
+																	<option value="PSA" data-item="tipoLogradouro">PASSARELA</option>
+																	<option value="Q" data-item="tipoLogradouro">QUADRA</option>
+																	<option value="R" data-item="tipoLogradouro">RUA</option>
+																	<option value="REC" data-item="tipoLogradouro">RECANTO</option>
+																	<option value="RES" data-item="tipoLogradouro">RESIDENCIAL</option>
+																	<option value="ROD" data-item="tipoLogradouro">RODOVIA</option>
+																	<option value="SIT" data-item="tipoLogradouro">SITIO</option>
+																	<option value="ST" data-item="tipoLogradouro">SETOR</option>
+																	<option value="TRV" data-item="tipoLogradouro">TRECHO</option>
+																	<option value="TV" data-item="tipoLogradouro">TRAVESSA</option>
+																	<option value="V" data-item="tipoLogradouro">VIA</option>
+																	<option value="VD" data-item="tipoLogradouro">VIADUTO</option>
+																	<option value="VER" data-item="tipoLogradouro">VEREDA</option>
+																	<option value="VL" data-item="tipoLogradouro">VILA</option>
+																	<option value="VLA" data-item="tipoLogradouro">VIELA</option>
+																	<option value="VLE" data-item="tipoLogradouro">VALE</option>
 																</select>
 															</div>
 															<div id="div_enderecoLogradouro" class="col-sm-12 col-md-7">
@@ -567,7 +567,7 @@
 															</div>
 														</div>
 													</div>
-													<div class="form-group">
+													<div id="div_anexo03" class="form-group">
 														<div class="row">
 															<section class="col-xs-8">
 																<span>Anexe um comprovante de residência recente</span>
@@ -575,13 +575,12 @@
 														</div> 
 														<div class="row">
 															<section class="col-xs-4">
-															    <br> 
 																<!-- The fileinput-button span is used to style the file input field as button -->
 															    <span class="btn btn-success fileinput-button"> 
 															        <i class="glyphicon glyphicon-minus"></i> 
 															        <span> Anexo</span> 
-																        <input id="upload-img-anexo03" type="file" name="uploadedFile" accept=".jpg" class="imgUpload"> 
-																		<input class="hide" type="text" id="anexo03" name="anexo03" placeholder="" disabled="disabled">
+																        <input id="upload-img-anexo03" type="file" name="uploadedFile" accept="image/*|.pdf" class="imgUpload"> 
+																		<input class="hide anexo" type="text" id="anexo03" name="anexo03" data-origem="enderecoLogradouro,enderecoNumero,enderecoComplemento,enderecoBairro,enderecoCep,enderecoCidade,enderecoUf,tipoLogradouro" data-errMsg="Anexe um comprovante com a novo endereço" name="anexo03" placeholder=" placeholder="" disabled="disabled">
 																    </span> 
 																    <br> 
 																    <!-- The global progress bar --> 
@@ -693,7 +692,7 @@
 															</div>
 														</div>
 													</div>
-													<div class="form-group">
+													<div id="div_anexo04" class="form-group">
 														<div class="row">
 															<section class="col-xs-8">
 																<span>Anexe um imagem da primera folha de sua CTPS</span>
@@ -701,13 +700,12 @@
 														</div> 
 														<div class="row">
 															<section class="col-xs-4">
-															    <br> 
 																<!-- The fileinput-button span is used to style the file input field as button -->
 															    <span class="btn btn-success fileinput-button"> 
 															        <i class="glyphicon glyphicon-minus"></i> 
 															        <span> Anexo</span> 
-																        <input id="upload-img-anexo04" type="file" name="uploadedFile" accept=".jpg" class="imgUpload"> 
-																		<input class="hide" type="text" id="anexo04" name="anexo04" placeholder="" disabled="disabled">
+																        <input id="upload-img-anexo04" type="file" name="uploadedFile" accept="image/*|.pdf" class="imgUpload"> 
+																		<input class="hide anexo" type="text" id="anexo04" name="anexo04" data-origem="ctpsNumero,ctpsSerie,ctpsUf,ctpsExpedicao" data-errMsg="Anexe um comprovante com da carteira profissional" placeholder="" disabled="disabled">
 																    </span> 
 																    <br> 
 																    <!-- The global progress bar --> 
@@ -796,7 +794,7 @@
 															</div>
 														</div>
 													</div>
-													<div class="form-group">
+													<div id="div_anexo05" class="form-group">
 														<div class="row">
 															<section class="col-xs-8">
 																<span> Anexe uma imagem da sua CNH aberta</span>
@@ -804,13 +802,12 @@
 														</div> 
 														<div class="row">
 															<section class="col-xs-4">
-															    <br> 
 																<!-- The fileinput-button span is used to style the file input field as button -->
 															    <span class="btn btn-success fileinput-button"> 
 															        <i class="glyphicon glyphicon-minus"></i> 
 															        <span> Anexo</span> 
-																        <input id="upload-img-anexo05" type="file" name="uploadedFile" accept=".jpg" class="imgUpload"> 
-																		<input class="hide" type="text" id="anexo05" name="anexo05" placeholder="" disabled="disabled">
+																        <input id="upload-img-anexo05" type="file" name="uploadedFile" accept="image/*|.pdf" class="imgUpload"> 
+																		<input class="hide anexo" type="text" id="anexo05" name="anexo05" data-origem="cnhNumero,cnhExpedicao,cnhUf,cnhValidade,cnhPrimeira,cnhCategoria" data-errMsg="Anexe um comprovante da sua habilitação" placeholder="" disabled="disabled">
 																    </span> 
 																    <br> 
 																    <!-- The global progress bar --> 
@@ -880,7 +877,7 @@
 															</div>
 														</div>
 													</div>
-													<div class="form-group">
+													<div id="div_anexo06" class="form-group">
 														<div class="row">
 															<section class="col-xs-8">
 																<span>Anexe um imagem do seu RG</span>
@@ -888,13 +885,12 @@
 														</div> 
 														<div class="row">
 															<section class="col-xs-4">
-															    <br> 
 																<!-- The fileinput-button span is used to style the file input field as button -->
 															    <span class="btn btn-success fileinput-button"> 
 															        <i class="glyphicon glyphicon-minus"></i> 
 															        <span> Anexo</span> 
-																        <input id="upload-img-anexo06" type="file" name="uploadedFile" accept=".jpg" class="imgUpload"> 
-																		<input class="hide" type="text" id="anexo06" name="anexo06" placeholder="" disabled="disabled">
+																        <input id="upload-img-anexo06" type="file" name="uploadedFile" accept="image/*|.pdf" class="imgUpload"> 
+																		<input class="hide anexo" type="text" id="anexo06" name="anexo06" data-origem="rgUf,rgNumero,rgOrgao,rgExpedicao" data-errMsg="Anexe um comprovante de seu RG" placeholder="" disabled="disabled">
 																    </span> 
 																    <br> 
 																    <!-- The global progress bar --> 
@@ -968,7 +964,7 @@
 															</div>
 														</div>
 													</div>
-													<div class="form-group">
+													<div id="div_anexo07" class="form-group">
 														<div class="row">
 															<section class="col-xs-8">
 																<span>Anexe um imagem de seu título de eleitor</span>
@@ -976,13 +972,12 @@
 														</div> 
 														<div class="row">
 															<section class="col-xs-4">
-															    <br> 
 																<!-- The fileinput-button span is used to style the file input field as button -->
 															    <span class="btn btn-success fileinput-button"> 
 															        <i class="glyphicon glyphicon-minus"></i> 
 															        <span> Anexo</span> 
-																        <input id="upload-img-anexo07" type="file" name="uploadedFile" accept=".jpg" class="imgUpload"> 
-																		<input class="hide" type="text" id="anexo07" name="anexo07" placeholder="" disabled="disabled">
+																        <input id="upload-img-anexo07" type="file" name="uploadedFile" accept="image/*|.pdf" class="imgUpload"> 
+																		<input class="hide anexo" type="text" id="anexo07" name="anexo07" data-origem="tituloNumero,tituloZona,tituloSecao,tituloExpedicao" data-errMsg="Anexe um comprovante de seu título de eleitor" placeholder="" disabled="disabled">
 																    </span> 
 																    <br> 
 																    <!-- The global progress bar --> 
@@ -1011,36 +1006,36 @@
 																</label>
 																<select class=" selectpicker form-control show-tick " id="ocConselho" name="ocConselho">
 																	<option value="">Selecione</option>
-																	<option value="CRA">Conselhos Regionais dos Administradores</option>
-																	<option value="OAB">Conselhos Regionais dos Advogados (seccionais da OAB)</option>
-																	<option value="CAU">Conselho de Arquitetura e Urbanismo do Brasil</option>
-																	<option value="CRESS">Conselhos Regionais de Serviço Social</option>
-																	<option value="CRB">Conselhos Regionais de Biblioteconomia</option>
-																	<option value="CRBIO">Conselhos Regionais de Biologia</option>
-																	<option value="CRFM">Conselhos Regionais de Biomedicina</option>
-																	<option value="CRC">Conselhos Regionais de Contabilidade</option>
-																	<option value="CRECI">Conselhos Regionais de Corretores de Imóveis</option>
-																	<option value="CRE">Conselhos Regionais de Economia</option>
-																	<option value="COREN">Conselhos Regionais de Enfermagem</option>
-																	<option value="CREA">Conselhos Regionais de Engenharia e Agronomia</option>
-																	<option value="CONRE">Conselhos Regionais de Estatística</option>
-																	<option value="CRFM">Conselhos Regionais de Farmácia</option>
-																	<option value="SBF">Sociedade Brasileira de Física</option>
-																	<option value="CREFITO">Conselhos Regionais de Fisioterapia e Terapia Ocupacional</option>
-																	<option value="CREFONO">Conselhos Regionais de Fonoaudiologia</option>
-																	<option value="AMB">Associação dos Magistrados Brasileiros</option>
-																	<option value="CRM">Conselhos Regionais de Medicina</option>
-																	<option value="CRMV">Conselhos Regionais de Medicina Veterinária</option>
-																	<option value="COREM">Conselhos Regionais de Museologia</option>
-																	<option value="OMB">Ordem dos Músicos do Brasil</option>
-																	<option value="CRN">Conselhos Regionais de Nutrição</option>
-																	<option value="CRO">Conselhos Regionais de Odontologia</option>
-																	<option value="CREF">Conselhos Regionais de Educação Física</option>
-																	<option value="CRP">Conselhos Regionais de Psicologia</option>
-																	<option value="CRQ">Conselhos Regionais de Química</option>
-																	<option value="CONFERP">Conselhos Regionais de Profissionais de Relações Públicas</option>
-																	<option value="CORE">Conselhos Regionais de Representantes Comerciais</option>
-																	<option value="CRTR">Conselhos Regionais de Técnicos em Radiologia</option>
+																	<option value="CRA" data-item="ocConselho">Conselhos Regionais dos Administradores</option>
+																	<option value="OAB" data-item="ocConselho">Conselhos Regionais dos Advogados (seccionais da OAB)</option>
+																	<option value="CAU" data-item="ocConselho">Conselho de Arquitetura e Urbanismo do Brasil</option>
+																	<option value="CRESS" data-item="ocConselho">Conselhos Regionais de Serviço Social</option>
+																	<option value="CRB" data-item="ocConselho">Conselhos Regionais de Biblioteconomia</option>
+																	<option value="CRBIO" data-item="ocConselho">Conselhos Regionais de Biologia</option>
+																	<option value="CRFM" data-item="ocConselho">Conselhos Regionais de Biomedicina</option>
+																	<option value="CRC" data-item="ocConselho">Conselhos Regionais de Contabilidade</option>
+																	<option value="CRECI" data-item="ocConselho">Conselhos Regionais de Corretores de Imóveis</option>
+																	<option value="CRE" data-item="ocConselho">Conselhos Regionais de Economia</option>
+																	<option value="COREN" data-item="ocConselho">Conselhos Regionais de Enfermagem</option>
+																	<option value="CREA" data-item="ocConselho">Conselhos Regionais de Engenharia e Agronomia</option>
+																	<option value="CONRE" data-item="ocConselho">Conselhos Regionais de Estatística</option>
+																	<option value="CRFM" data-item="ocConselho">Conselhos Regionais de Farmácia</option>
+																	<option value="SBF" data-item="ocConselho">Sociedade Brasileira de Física</option>
+																	<option value="CREFITO" data-item="ocConselho">Conselhos Regionais de Fisioterapia e Terapia Ocupacional</option>
+																	<option value="CREFONO" data-item="ocConselho">Conselhos Regionais de Fonoaudiologia</option>
+																	<option value="AMB" data-item="ocConselho">Associação dos Magistrados Brasileiros</option>
+																	<option value="CRM" data-item="ocConselho">Conselhos Regionais de Medicina</option>
+																	<option value="CRMV" data-item="ocConselho">Conselhos Regionais de Medicina Veterinária</option>
+																	<option value="COREM" data-item="ocConselho">Conselhos Regionais de Museologia</option>
+																	<option value="OMB" data-item="ocConselho">Ordem dos Músicos do Brasil</option>
+																	<option value="CRN" data-item="ocConselho">Conselhos Regionais de Nutrição</option>
+																	<option value="CRO" data-item="ocConselho">Conselhos Regionais de Odontologia</option>
+																	<option value="CREF" data-item="ocConselho">Conselhos Regionais de Educação Física</option>
+																	<option value="CRP" data-item="ocConselho">Conselhos Regionais de Psicologia</option>
+																	<option value="CRQ" data-item="ocConselho">Conselhos Regionais de Química</option>
+																	<option value="CONFERP" data-item="ocConselho">Conselhos Regionais de Profissionais de Relações Públicas</option>
+																	<option value="CORE" data-item="ocConselho">Conselhos Regionais de Representantes Comerciais</option>
+																	<option value="CRTR" data-item="ocConselho">Conselhos Regionais de Técnicos em Radiologia</option>
 																</select>
 															</div>
 															<div id="div_ocNumero" class="col-sm-12 col-md-2">
@@ -1092,7 +1087,7 @@
 															</div>
 														</div>
 													</div>
-													<div class="form-group">
+													<div id="div_anexo08" class="form-group">
 														<div class="row">
 															<section class="col-xs-8">
 																<span>Anexe um imagem do certificado do conselho</span>
@@ -1100,13 +1095,12 @@
 														</div> 
 														<div class="row">
 															<section class="col-xs-4">
-															    <br> 
 																<!-- The fileinput-button span is used to style the file input field as button -->
 															    <span class="btn btn-success fileinput-button"> 
 															        <i class="glyphicon glyphicon-minus"></i> 
 															        <span> Anexo</span> 
-																        <input id="upload-img-anexo08" type="file" name="uploadedFile" accept=".jpg" class="imgUpload"> 
-																		<input class="hide" type="text" id="anexo08" name="anexo08" placeholder="" disabled="disabled">
+																        <input id="upload-img-anexo08" type="file" name="uploadedFile" accept="image/*|.pdf" class="imgUpload"> 
+																		<input class="hide anexo" type="text" id="anexo08" name="anexo08" data-origem="ocConselho,ocUf,ocNumero,ocOrgao,ocExpedicao,ocValidade" data-errMsg="Anexe uma compravação da associação ao orgão de classe"  placeholder="" disabled="disabled">
 																    </span> 
 																    <br> 
 																    <!-- The global progress bar --> 
@@ -1256,39 +1250,39 @@
 						</div>
 						<div id="div_dependenteParentesco0" class="col-md-2 selectContainer">
 							<label class="control-label">Parentesco</label>
-							<select class="form-control" id="dependenteParentesco0" name="dependenteParentesco0">
-								<option class="parentesco" value=""></option>
-								<option class="parentesco" value="1">Cônjuge</option>
-								<option class="parentesco" value="10">Cônjuge divorciado</option>
-								<option class="parentesco" value="11">Pai</option>
-								<option class="parentesco" value="12">Mãe</option>
-								<option class="parentesco" value="13">Irmão (ã)</option>
-								<option class="parentesco" value="14">Menor Tutelado</option>
-								<option class="parentesco" value="15">Parceiro inserido</option>
-								<option class="parentesco" value="16">Menor Sob Guarda</option>
-								<option class="parentesco" value="17">Irmão/irmã</option>
-								<option class="parentesco" value="18">Sogro (a)</option>
-								<option class="parentesco" value="19">Neto (a)</option>
-								<option class="parentesco" value="2">Filho (a)</option>
-								<option class="parentesco" value="3">Responsável de educação</option>
-								<option class="parentesco" value="40">Padrasto</option>
-								<option class="parentesco" value="41">Madrasta</option>
-								<option class="parentesco" value="42">Bisneto(a)</option>
-								<option class="parentesco" value="43">Ex - tutelado (a)</option>
-								<option class="parentesco" value="44">Ex - marido</option>
-								<option class="parentesco" value="45">Ex - sogro (a)</option>
-								<option class="parentesco" value="46">Sobrinho (a)</option>
-								<option class="parentesco" value="47">Tio (a)</option>
-								<option class="parentesco" value="48">Primo (a)</option>
-								<option class="parentesco" value="49">Genro ou Nora</option>
-								<option class="parentesco" value="5">Tutor</option>
-								<option class="parentesco" value="50">Cunhado (a)</option>
-								<option class="parentesco" value="51">Curatelado</option>
-								<option class="parentesco" value="52">Determinação Judicial</option>
-								<option class="parentesco" value="6">Enteado</option>
-								<option class="parentesco" value="BR01">Pensionista</option>
-								<option class="parentesco" value="BR02">Pensionista No. 2</option>
-								<option class="parentesco" value="BR03">Pensionista No. 3</option>														
+							<select class="form-control selectpicker" id="dependenteParentesco0" name="dependenteParentesco0">
+								<option data-item="dependenteParentesco0" value=""></option>
+								<option data-item="dependenteParentesco0" value="1">Cônjuge</option>
+								<option data-item="dependenteParentesco0" value="10">Cônjuge divorciado</option>
+								<option data-item="dependenteParentesco0" value="11">Pai</option>
+								<option data-item="dependenteParentesco0" value="12">Mãe</option>
+								<option data-item="dependenteParentesco0" value="13">Irmão (ã)</option>
+								<option data-item="dependenteParentesco0" value="14">Menor Tutelado</option>
+								<option data-item="dependenteParentesco0" value="15">Parceiro inserido</option>
+								<option data-item="dependenteParentesco0" value="16">Menor Sob Guarda</option>
+								<option data-item="dependenteParentesco0" value="17">Irmão/irmã</option>
+								<option data-item="dependenteParentesco0" value="18">Sogro (a)</option>
+								<option data-item="dependenteParentesco0" value="19">Neto (a)</option>
+								<option data-item="dependenteParentesco0" value="2">Filho (a)</option>
+								<option data-item="dependenteParentesco0" value="3">Responsável de educação</option>
+								<option data-item="dependenteParentesco0" value="40">Padrasto</option>
+								<option data-item="dependenteParentesco0" value="41">Madrasta</option>
+								<option data-item="dependenteParentesco0" value="42">Bisneto(a)</option>
+								<option data-item="dependenteParentesco0" value="43">Ex - tutelado (a)</option>
+								<option data-item="dependenteParentesco0" value="44">Ex - marido</option>
+								<option data-item="dependenteParentesco0" value="45">Ex - sogro (a)</option>
+								<option data-item="dependenteParentesco0" value="46">Sobrinho (a)</option>
+								<option data-item="dependenteParentesco0" value="47">Tio (a)</option>
+								<option data-item="dependenteParentesco0" value="48">Primo (a)</option>
+								<option data-item="dependenteParentesco0" value="49">Genro ou Nora</option>
+								<option data-item="dependenteParentesco0" value="5">Tutor</option>
+								<option data-item="dependenteParentesco0" value="50">Cunhado (a)</option>
+								<option data-item="dependenteParentesco0" value="51">Curatelado</option>
+								<option data-item="dependenteParentesco0" value="52">Determinação Judicial</option>
+								<option data-item="dependenteParentesco0" value="6">Enteado</option>
+								<option data-item="dependenteParentesco0" value="BR01">Pensionista</option>
+								<option data-item="dependenteParentesco0" value="BR02">Pensionista No. 2</option>
+								<option data-item="dependenteParentesco0" value="BR03">Pensionista No. 3</option>														
 							</select>
 							<input id="oridependenteParentesco0" type="text" name="oridependenteParentesco0" placeholder="" class="hide" >
 						</div>
@@ -1317,21 +1311,20 @@
 							</div>
 						</div>
 					</div>
-					<div class="form-group">
+					<div id="div_dependenteAnexoCPF0" class="form-group">
 								<div class="row">
 									<section class="col-xs-8">
 										<span>Anexe uma imagem do CPF</span>
 									</section>
 								</div> 
-								<div class="row">
+								<div id="div_dependenteAnexoCPF0" class="row">
 									<section class="col-xs-4">
-									    <br> 
 										<!-- The fileinput-button span is used to style the file input field as button -->
 									    <span class="btn btn-success fileinput-button"> 
 									        <i class="glyphicon glyphicon-minus"></i> 
 									        <span> Anexo</span> 
-								        <input id="upload-img-dependenteAnexoCPF0" type="file" name="uploadedFile" accept=".jpg" class="imgUpload"> 
-										<input class="hide" type="text" id="dependenteAnexoCPF0" name="dependenteAnexoCPF0" placeholder="" disabled="disabled">
+								        <input id="upload-img-dependenteAnexoCPF0" type="file" name="uploadedFile" accept="image/*|.pdf" class="imgUpload"> 
+										<input class="hide anexo" type="text" id="dependenteAnexoCPF0" name="dependenteAnexoCPF0" data-origem="dependenteCpf0" data-errMsg="Anexe uma comprovação do CPF do dependente" placeholder="" disabled="disabled">
 								    </span> 
 								    <br> 
 								    <!-- The global progress bar --> 
@@ -1345,7 +1338,7 @@
 							</section>
 						</div>
 					</div>
-					<div class="form-group">
+					<div id="div_dependenteAnexoVinculo0" class="form-group">
 								<div class="row">
 									<section class="col-xs-8">
 										<span>Anexe um comprovante de vínculo</span>
@@ -1353,13 +1346,12 @@
 								</div> 
 								<div class="row">
 									<section class="col-xs-4">
-									    <br> 
 										<!-- The fileinput-button span is used to style the file input field as button -->
 									    <span class="btn btn-success fileinput-button"> 
 									        <i class="glyphicon glyphicon-minus"></i> 
 									        <span> Anexo</span> 
-								        <input id="upload-img-dependenteAnexoVinculo0" type="file" name="uploadedFile" accept=".jpg" class="imgUpload"> 
-										<input class="hide" type="text" id="dependenteAnexoVinculo0" name="dependenteAnexoVinculo0" placeholder="" disabled="disabled">
+								        <input id="upload-img-dependenteAnexoVinculo0" type="file" name="uploadedFile" accept="image/*|.pdf" class="imgUpload"> 
+										<input class="hide anexo" type="text" id="dependenteAnexoVinculo0" name="dependenteAnexoVinculo0" data-origem="dependenteParentesco0" data-errMsg="Anexe uma comprovação do vínculo de parentesco" placeholder="" disabled="disabled">
 								    </span> 
 								    <br> 
 								    <!-- The global progress bar --> 
@@ -1397,39 +1389,39 @@
 						</div>
 						<div id="div_dependenteParentesco1" class="col-md-2 selectContainer">
 							<label class="control-label">Parentesco</label>
-							<select class="form-control" id="dependenteParentesco1" name="dependenteParentesco1">
-								<option class="parentesco" value=""></option>
-								<option class="parentesco" value="1">Cônjuge</option>
-								<option class="parentesco" value="10">Cônjuge divorciado</option>
-								<option class="parentesco" value="11">Pai</option>
-								<option class="parentesco" value="12">Mãe</option>
-								<option class="parentesco" value="13">Irmão (ã)</option>
-								<option class="parentesco" value="14">Menor Tutelado</option>
-								<option class="parentesco" value="15">Parceiro inserido</option>
-								<option class="parentesco" value="16">Menor Sob Guarda</option>
-								<option class="parentesco" value="17">Irmão/irmã</option>
-								<option class="parentesco" value="18">Sogro (a)</option>
-								<option class="parentesco" value="19">Neto (a)</option>
-								<option class="parentesco" value="2">Filho (a)</option>
-								<option class="parentesco" value="3">Responsável de educação</option>
-								<option class="parentesco" value="40">Padrasto</option>
-								<option class="parentesco" value="41">Madrasta</option>
-								<option class="parentesco" value="42">Bisneto(a)</option>
-								<option class="parentesco" value="43">Ex - tutelado (a)</option>
-								<option class="parentesco" value="44">Ex - marido</option>
-								<option class="parentesco" value="45">Ex - sogro (a)</option>
-								<option class="parentesco" value="46">Sobrinho (a)</option>
-								<option class="parentesco" value="47">Tio (a)</option>
-								<option class="parentesco" value="48">Primo (a)</option>
-								<option class="parentesco" value="49">Genro ou Nora</option>
-								<option class="parentesco" value="5">Tutor</option>
-								<option class="parentesco" value="50">Cunhado (a)</option>
-								<option class="parentesco" value="51">Curatelado</option>
-								<option class="parentesco" value="52">Determinação Judicial</option>
-								<option class="parentesco" value="6">Enteado</option>
-								<option class="parentesco" value="BR01">Pensionista</option>
-								<option class="parentesco" value="BR02">Pensionista No. 2</option>
-								<option class="parentesco" value="BR03">Pensionista No. 3</option>														
+							<select class="form-control selectpicker" id="dependenteParentesco1" name="dependenteParentesco1">
+								<option data-item="dependenteParentesco1" value=""></option>
+								<option data-item="dependenteParentesco1" value="1">Cônjuge</option>
+								<option data-item="dependenteParentesco1" value="10">Cônjuge divorciado</option>
+								<option data-item="dependenteParentesco1" value="11">Pai</option>
+								<option data-item="dependenteParentesco1" value="12">Mãe</option>
+								<option data-item="dependenteParentesco1" value="13">Irmão (ã)</option>
+								<option data-item="dependenteParentesco1" value="14">Menor Tutelado</option>
+								<option data-item="dependenteParentesco1" value="15">Parceiro inserido</option>
+								<option data-item="dependenteParentesco1" value="16">Menor Sob Guarda</option>
+								<option data-item="dependenteParentesco1" value="17">Irmão/irmã</option>
+								<option data-item="dependenteParentesco1" value="18">Sogro (a)</option>
+								<option data-item="dependenteParentesco1" value="19">Neto (a)</option>
+								<option data-item="dependenteParentesco1" value="2">Filho (a)</option>
+								<option data-item="dependenteParentesco1" value="3">Responsável de educação</option>
+								<option data-item="dependenteParentesco1" value="40">Padrasto</option>
+								<option data-item="dependenteParentesco1" value="41">Madrasta</option>
+								<option data-item="dependenteParentesco1" value="42">Bisneto(a)</option>
+								<option data-item="dependenteParentesco1" value="43">Ex - tutelado (a)</option>
+								<option data-item="dependenteParentesco1" value="44">Ex - marido</option>
+								<option data-item="dependenteParentesco1" value="45">Ex - sogro (a)</option>
+								<option data-item="dependenteParentesco1" value="46">Sobrinho (a)</option>
+								<option data-item="dependenteParentesco1" value="47">Tio (a)</option>
+								<option data-item="dependenteParentesco1" value="48">Primo (a)</option>
+								<option data-item="dependenteParentesco1" value="49">Genro ou Nora</option>
+								<option data-item="dependenteParentesco1" value="5">Tutor</option>
+								<option data-item="dependenteParentesco1" value="50">Cunhado (a)</option>
+								<option data-item="dependenteParentesco1" value="51">Curatelado</option>
+								<option data-item="dependenteParentesco1" value="52">Determinação Judicial</option>
+								<option data-item="dependenteParentesco1" value="6">Enteado</option>
+								<option data-item="dependenteParentesco1" value="BR01">Pensionista</option>
+								<option data-item="dependenteParentesco1" value="BR02">Pensionista No. 2</option>
+								<option data-item="dependenteParentesco1" value="BR03">Pensionista No. 3</option>														
 							</select>
 							<input id="oridependenteParentesco1" type="text" name="oridependenteParentesco1" placeholder="" class="hide" >
 						</div>
@@ -1458,7 +1450,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="form-group">
+					<div id="div_dependenteAnexoCPF1" class="form-group">
 								<div class="row">
 									<section class="col-xs-8">
 										<span>Anexe uma imagem do CPF</span>
@@ -1466,13 +1458,12 @@
 								</div> 
 								<div class="row">
 									<section class="col-xs-4">
-									    <br> 
 										<!-- The fileinput-button span is used to style the file input field as button -->
 									    <span class="btn btn-success fileinput-button"> 
 									        <i class="glyphicon glyphicon-minus"></i> 
 									        <span> Anexo</span> 
-								        <input id="upload-img-dependenteAnexoCPF1" type="file" name="uploadedFile" accept=".jpg" class="imgUpload"> 
-										<input class="hide" type="text" id="dependenteAnexoCPF1" name="dependenteAnexoCPF1" placeholder="" disabled="disabled">
+								        <input id="upload-img-dependenteAnexoCPF1" type="file" name="uploadedFile" accept="image/*|.pdf" class="imgUpload"> 
+										<input class="hide anexo" type="text" id="dependenteAnexoCPF1" name="dependenteAnexoCPF1" data-origem="dependenteCpf1" data-errMsg="Anexe uma comprovação do CPF do dependente" placeholder="" disabled="disabled">
 								    </span> 
 								    <br> 
 								    <!-- The global progress bar --> 
@@ -1486,7 +1477,7 @@
 							</section>
 						</div>
 					</div>
-					<div class="form-group">
+					<div id="div_dependenteAnexoVinculo1" class="form-group">
 								<div class="row">
 									<section class="col-xs-8">
 										<span>Anexe um comprovante de vínculo</span>
@@ -1494,13 +1485,12 @@
 								</div> 
 								<div class="row">
 									<section class="col-xs-4">
-									    <br> 
 										<!-- The fileinput-button span is used to style the file input field as button -->
 									    <span class="btn btn-success fileinput-button"> 
 									        <i class="glyphicon glyphicon-minus"></i> 
 									        <span> Anexo</span> 
-								        <input id="upload-img-dependenteAnexoVinculo1" type="file" name="uploadedFile" accept=".jpg" class="imgUpload"> 
-										<input class="hide" type="text" id="dependenteAnexoVinculo1" name="dependenteAnexoVinculo1" placeholder="" disabled="disabled">
+								        <input id="upload-img-dependenteAnexoVinculo1" type="file" name="uploadedFile" accept="image/*|.pdf" class="imgUpload"> 
+										<input class="hide anexo" type="text" id="dependenteAnexoVinculo1" name="dependenteAnexoVinculo1" data-origem="dependenteParentesco1" data-errMsg="Anexe uma comprovação do vínculo de parentesco" placeholder="" disabled="disabled">
 								    </span> 
 								    <br> 
 								    <!-- The global progress bar --> 
@@ -1538,39 +1528,39 @@
 						</div>
 						<div id="div_dependenteParentesco2" class="col-md-2 selectContainer">
 							<label class="control-label">Parentesco</label>
-							<select class="form-control" id="dependenteParentesco2" name="dependenteParentesco2">
-								<option class="parentesco" value=""></option>
-								<option class="parentesco" value="1">Cônjuge</option>
-								<option class="parentesco" value="10">Cônjuge divorciado</option>
-								<option class="parentesco" value="11">Pai</option>
-								<option class="parentesco" value="12">Mãe</option>
-								<option class="parentesco" value="13">Irmão (ã)</option>
-								<option class="parentesco" value="14">Menor Tutelado</option>
-								<option class="parentesco" value="15">Parceiro inserido</option>
-								<option class="parentesco" value="16">Menor Sob Guarda</option>
-								<option class="parentesco" value="17">Irmão/irmã</option>
-								<option class="parentesco" value="18">Sogro (a)</option>
-								<option class="parentesco" value="19">Neto (a)</option>
-								<option class="parentesco" value="2">Filho (a)</option>
-								<option class="parentesco" value="3">Responsável de educação</option>
-								<option class="parentesco" value="40">Padrasto</option>
-								<option class="parentesco" value="41">Madrasta</option>
-								<option class="parentesco" value="42">Bisneto(a)</option>
-								<option class="parentesco" value="43">Ex - tutelado (a)</option>
-								<option class="parentesco" value="44">Ex - marido</option>
-								<option class="parentesco" value="45">Ex - sogro (a)</option>
-								<option class="parentesco" value="46">Sobrinho (a)</option>
-								<option class="parentesco" value="47">Tio (a)</option>
-								<option class="parentesco" value="48">Primo (a)</option>
-								<option class="parentesco" value="49">Genro ou Nora</option>
-								<option class="parentesco" value="5">Tutor</option>
-								<option class="parentesco" value="50">Cunhado (a)</option>
-								<option class="parentesco" value="51">Curatelado</option>
-								<option class="parentesco" value="52">Determinação Judicial</option>
-								<option class="parentesco" value="6">Enteado</option>
-								<option class="parentesco" value="BR01">Pensionista</option>
-								<option class="parentesco" value="BR02">Pensionista No. 2</option>
-								<option class="parentesco" value="BR03">Pensionista No. 3</option>														
+							<select class="form-control selectpicker" id="dependenteParentesco2" name="dependenteParentesco2">
+								<option data-item="dependenteParentesco2" value=""></option>
+								<option data-item="dependenteParentesco2" value="1">Cônjuge</option>
+								<option data-item="dependenteParentesco2" value="10">Cônjuge divorciado</option>
+								<option data-item="dependenteParentesco2" value="11">Pai</option>
+								<option data-item="dependenteParentesco2" value="12">Mãe</option>
+								<option data-item="dependenteParentesco2" value="13">Irmão (ã)</option>
+								<option data-item="dependenteParentesco2" value="14">Menor Tutelado</option>
+								<option data-item="dependenteParentesco2" value="15">Parceiro inserido</option>
+								<option data-item="dependenteParentesco2" value="16">Menor Sob Guarda</option>
+								<option data-item="dependenteParentesco2" value="17">Irmão/irmã</option>
+								<option data-item="dependenteParentesco2" value="18">Sogro (a)</option>
+								<option data-item="dependenteParentesco2" value="19">Neto (a)</option>
+								<option data-item="dependenteParentesco2" value="2">Filho (a)</option>
+								<option data-item="dependenteParentesco2" value="3">Responsável de educação</option>
+								<option data-item="dependenteParentesco2" value="40">Padrasto</option>
+								<option data-item="dependenteParentesco2" value="41">Madrasta</option>
+								<option data-item="dependenteParentesco2" value="42">Bisneto(a)</option>
+								<option data-item="dependenteParentesco2" value="43">Ex - tutelado (a)</option>
+								<option data-item="dependenteParentesco2" value="44">Ex - marido</option>
+								<option data-item="dependenteParentesco2" value="45">Ex - sogro (a)</option>
+								<option data-item="dependenteParentesco2" value="46">Sobrinho (a)</option>
+								<option data-item="dependenteParentesco2" value="47">Tio (a)</option>
+								<option data-item="dependenteParentesco2" value="48">Primo (a)</option>
+								<option data-item="dependenteParentesco2" value="49">Genro ou Nora</option>
+								<option data-item="dependenteParentesco2" value="5">Tutor</option>
+								<option data-item="dependenteParentesco2" value="50">Cunhado (a)</option>
+								<option data-item="dependenteParentesco2" value="51">Curatelado</option>
+								<option data-item="dependenteParentesco2" value="52">Determinação Judicial</option>
+								<option data-item="dependenteParentesco2" value="6">Enteado</option>
+								<option data-item="dependenteParentesco2" value="BR01">Pensionista</option>
+								<option data-item="dependenteParentesco2" value="BR02">Pensionista No. 2</option>
+								<option data-item="dependenteParentesco2" value="BR03">Pensionista No. 3</option>														
 							</select>
 							<input id="oridependenteParentesco2" type="text" name="oridependenteParentesco2" placeholder="" class="hide" >
 						</div>
@@ -1599,7 +1589,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="form-group">
+					<div id="div_dependenteAnexoCPF2" class="form-group">
 								<div class="row">
 									<section class="col-xs-8">
 										<span>Anexe uma imagem do CPF</span>
@@ -1607,13 +1597,12 @@
 								</div> 
 								<div class="row">
 									<section class="col-xs-4">
-									    <br> 
 										<!-- The fileinput-button span is used to style the file input field as button -->
 									    <span class="btn btn-success fileinput-button"> 
 									        <i class="glyphicon glyphicon-minus"></i> 
 									        <span> Anexo</span> 
 								        <input id="upload-img-dependenteAnexoCPF2" type="file" name="uploadedFile" accept=".jpg, .pdf" class="imgUpload"> 
-										<input class="hide" type="text" id="dependenteAnexoCPF2" name="dependenteAnexoCPF2" placeholder="" disabled="disabled">
+										<input class="hide anexo" type="text" id="dependenteAnexoCPF2" name="dependenteAnexoCPF2" data-origem="dependenteCpf2" data-errMsg="Anexe uma comprovação do CPF do dependente" placeholder="" disabled="disabled">
 								    </span> 
 								    <br> 
 								    <!-- The global progress bar --> 
@@ -1627,7 +1616,7 @@
 							</section>
 						</div>
 					</div>
-					<div class="form-group">
+					<div id="div_dependenteAnexoVinculo2" class="form-group">
 								<div class="row">
 									<section class="col-xs-8">
 										<span>Anexe um comprovante de vínculo</span>
@@ -1635,13 +1624,12 @@
 								</div> 
 								<div class="row">
 									<section class="col-xs-4">
-									    <br> 
 										<!-- The fileinput-button span is used to style the file input field as button -->
 									    <span class="btn btn-success fileinput-button"> 
 									        <i class="glyphicon glyphicon-minus"></i> 
 									        <span> Anexo</span> 
-								        <input id="upload-img-dependenteAnexoVinculo2" type="file" name="uploadedFile" accept=".jpg" class="imgUpload"> 
-										<input class="hide" type="text" id="dependenteAnexoVinculo2" name="dependenteAnexoVinculo2" placeholder="" disabled="disabled">
+								        <input id="upload-img-dependenteAnexoVinculo2" type="file" name="uploadedFile" accept="image/*|.pdf" class="imgUpload"> 
+										<input class="hide anexo" type="text" id="dependenteAnexoVinculo2" name="dependenteAnexoVinculo2" data-origem="dependenteParentesco2" data-errMsg="Anexe uma comprovação do vínculo de parentesco" placeholder="" disabled="disabled">
 								    </span> 
 								    <br> 
 								    <!-- The global progress bar --> 
@@ -1679,39 +1667,39 @@
 						</div>
 						<div id="div_dependenteParentesco3" class="col-md-2 selectContainer">
 							<label class="control-label">Parentesco</label>
-							<select class="form-control" id="dependenteParentesco3" name="dependenteParentesco3">
-								<option class="parentesco" value=""></option>
-								<option class="parentesco" value="1">Cônjuge</option>
-								<option class="parentesco" value="10">Cônjuge divorciado</option>
-								<option class="parentesco" value="11">Pai</option>
-								<option class="parentesco" value="12">Mãe</option>
-								<option class="parentesco" value="13">Irmão (ã)</option>
-								<option class="parentesco" value="14">Menor Tutelado</option>
-								<option class="parentesco" value="15">Parceiro inserido</option>
-								<option class="parentesco" value="16">Menor Sob Guarda</option>
-								<option class="parentesco" value="17">Irmão/irmã</option>
-								<option class="parentesco" value="18">Sogro (a)</option>
-								<option class="parentesco" value="19">Neto (a)</option>
-								<option class="parentesco" value="2">Filho (a)</option>
-								<option class="parentesco" value="3">Responsável de educação</option>
-								<option class="parentesco" value="40">Padrasto</option>
-								<option class="parentesco" value="41">Madrasta</option>
-								<option class="parentesco" value="42">Bisneto(a)</option>
-								<option class="parentesco" value="43">Ex - tutelado (a)</option>
-								<option class="parentesco" value="44">Ex - marido</option>
-								<option class="parentesco" value="45">Ex - sogro (a)</option>
-								<option class="parentesco" value="46">Sobrinho (a)</option>
-								<option class="parentesco" value="47">Tio (a)</option>
-								<option class="parentesco" value="48">Primo (a)</option>
-								<option class="parentesco" value="49">Genro ou Nora</option>
-								<option class="parentesco" value="5">Tutor</option>
-								<option class="parentesco" value="50">Cunhado (a)</option>
-								<option class="parentesco" value="51">Curatelado</option>
-								<option class="parentesco" value="52">Determinação Judicial</option>
-								<option class="parentesco" value="6">Enteado</option>
-								<option class="parentesco" value="BR01">Pensionista</option>
-								<option class="parentesco" value="BR02">Pensionista No. 2</option>
-								<option class="parentesco" value="BR03">Pensionista No. 3</option>														
+							<select class="form-control selectpicker" id="dependenteParentesco3" name="dependenteParentesco3">
+								<option data-item="dependenteParentesco3" value=""></option>
+								<option data-item="dependenteParentesco3" value="1">Cônjuge</option>
+								<option data-item="dependenteParentesco3" value="10">Cônjuge divorciado</option>
+								<option data-item="dependenteParentesco3" value="11">Pai</option>
+								<option data-item="dependenteParentesco3" value="12">Mãe</option>
+								<option data-item="dependenteParentesco3" value="13">Irmão (ã)</option>
+								<option data-item="dependenteParentesco3" value="14">Menor Tutelado</option>
+								<option data-item="dependenteParentesco3" value="15">Parceiro inserido</option>
+								<option data-item="dependenteParentesco3" value="16">Menor Sob Guarda</option>
+								<option data-item="dependenteParentesco3" value="17">Irmão/irmã</option>
+								<option data-item="dependenteParentesco3" value="18">Sogro (a)</option>
+								<option data-item="dependenteParentesco3" value="19">Neto (a)</option>
+								<option data-item="dependenteParentesco3" value="2">Filho (a)</option>
+								<option data-item="dependenteParentesco3" value="3">Responsável de educação</option>
+								<option data-item="dependenteParentesco3" value="40">Padrasto</option>
+								<option data-item="dependenteParentesco3" value="41">Madrasta</option>
+								<option data-item="dependenteParentesco3" value="42">Bisneto(a)</option>
+								<option data-item="dependenteParentesco3" value="43">Ex - tutelado (a)</option>
+								<option data-item="dependenteParentesco3" value="44">Ex - marido</option>
+								<option data-item="dependenteParentesco3" value="45">Ex - sogro (a)</option>
+								<option data-item="dependenteParentesco3" value="46">Sobrinho (a)</option>
+								<option data-item="dependenteParentesco3" value="47">Tio (a)</option>
+								<option data-item="dependenteParentesco3" value="48">Primo (a)</option>
+								<option data-item="dependenteParentesco3" value="49">Genro ou Nora</option>
+								<option data-item="dependenteParentesco3" value="5">Tutor</option>
+								<option data-item="dependenteParentesco3" value="50">Cunhado (a)</option>
+								<option data-item="dependenteParentesco3" value="51">Curatelado</option>
+								<option data-item="dependenteParentesco3" value="52">Determinação Judicial</option>
+								<option data-item="dependenteParentesco3" value="6">Enteado</option>
+								<option data-item="dependenteParentesco3" value="BR01">Pensionista</option>
+								<option data-item="dependenteParentesco3" value="BR02">Pensionista No. 2</option>
+								<option data-item="dependenteParentesco3" value="BR03">Pensionista No. 3</option>														
 							</select>
 							<input id="oridependenteParentesco3" type="text" name="oridependenteParentesco3" placeholder="" class="hide" >
 						</div>
@@ -1740,7 +1728,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="form-group">
+					<div id="div_dependenteAnexoCPF3" class="form-group">
 								<div class="row">
 									<section class="col-xs-8">
 										<span>Anexe uma imagem do CPF</span>
@@ -1748,13 +1736,12 @@
 								</div> 
 								<div class="row">
 									<section class="col-xs-4">
-									    <br> 
 										<!-- The fileinput-button span is used to style the file input field as button -->
 									    <span class="btn btn-success fileinput-button"> 
 									        <i class="glyphicon glyphicon-minus"></i> 
 									        <span> Anexo</span> 
-								        <input id="upload-img-dependenteAnexoCPF3" type="file" name="uploadedFile" accept=".jpg" class="imgUpload"> 
-										<input class="hide" type="text" id="dependenteAnexoCPF3" name="dependenteAnexoCPF3" placeholder="" disabled="disabled">
+								        <input id="upload-img-dependenteAnexoCPF3" type="file" name="uploadedFile" accept="image/*|.pdf" class="imgUpload"> 
+										<input class="hide anexo" type="text" id="dependenteAnexoCPF3" name="dependenteAnexoCPF3" data-origem="dependenteCpf3" data-errMsg="Anexe uma comprovação do CPF do dependente" placeholder="" disabled="disabled">
 								    </span> 
 								    <br> 
 								    <!-- The global progress bar --> 
@@ -1768,7 +1755,7 @@
 							</section>
 						</div>
 					</div>
-					<div class="form-group">
+					<div id="div_dependenteAnexoVinculo3" class="form-group">
 								<div class="row">
 									<section class="col-xs-8">
 										<span>Anexe um comprovante de vínculo</span>
@@ -1776,13 +1763,12 @@
 								</div> 
 								<div class="row">
 									<section class="col-xs-4">
-									    <br> 
 										<!-- The fileinput-button span is used to style the file input field as button -->
 									    <span class="btn btn-success fileinput-button"> 
 									        <i class="glyphicon glyphicon-minus"></i> 
 									        <span> Anexo</span> 
-								        <input id="upload-img-dependenteAnexoVinculo3" type="file" name="uploadedFile" accept=".jpg" class="imgUpload"> 
-										<input class="hide" type="text" id="dependenteAnexoVinculo3" name="dependenteAnexoVinculo3" placeholder="" disabled="disabled">
+								        <input id="upload-img-dependenteAnexoVinculo3" type="file" name="uploadedFile" accept="image/*|.pdf" class="imgUpload"> 
+										<input class="hide anexo" type="text" id="dependenteAnexoVinculo3" name="dependenteAnexoVinculo3" data-origem="dependenteParentesco3" data-errMsg="Anexe uma comprovação do vínculo de parentesco" placeholder="" disabled="disabled">
 								    </span> 
 								    <br> 
 								    <!-- The global progress bar --> 
@@ -1820,39 +1806,39 @@
 						</div>
 						<div id="div_dependenteParentesco4" class="col-md-2 selectContainer">
 							<label class="control-label">Parentesco</label>
-							<select class="form-control" id="dependenteParentesco4" name="dependenteParentesco4">
-								<option class="parentesco" value=""></option>
-								<option class="parentesco" value="1">Cônjuge</option>
-								<option class="parentesco" value="10">Cônjuge divorciado</option>
-								<option class="parentesco" value="11">Pai</option>
-								<option class="parentesco" value="12">Mãe</option>
-								<option class="parentesco" value="13">Irmão (ã)</option>
-								<option class="parentesco" value="14">Menor Tutelado</option>
-								<option class="parentesco" value="15">Parceiro inserido</option>
-								<option class="parentesco" value="16">Menor Sob Guarda</option>
-								<option class="parentesco" value="17">Irmão/irmã</option>
-								<option class="parentesco" value="18">Sogro (a)</option>
-								<option class="parentesco" value="19">Neto (a)</option>
-								<option class="parentesco" value="2">Filho (a)</option>
-								<option class="parentesco" value="3">Responsável de educação</option>
-								<option class="parentesco" value="40">Padrasto</option>
-								<option class="parentesco" value="41">Madrasta</option>
-								<option class="parentesco" value="42">Bisneto(a)</option>
-								<option class="parentesco" value="43">Ex - tutelado (a)</option>
-								<option class="parentesco" value="44">Ex - marido</option>
-								<option class="parentesco" value="45">Ex - sogro (a)</option>
-								<option class="parentesco" value="46">Sobrinho (a)</option>
-								<option class="parentesco" value="47">Tio (a)</option>
-								<option class="parentesco" value="48">Primo (a)</option>
-								<option class="parentesco" value="49">Genro ou Nora</option>
-								<option class="parentesco" value="5">Tutor</option>
-								<option class="parentesco" value="50">Cunhado (a)</option>
-								<option class="parentesco" value="51">Curatelado</option>
-								<option class="parentesco" value="52">Determinação Judicial</option>
-								<option class="parentesco" value="6">Enteado</option>
-								<option class="parentesco" value="BR01">Pensionista</option>
-								<option class="parentesco" value="BR02">Pensionista No. 2</option>
-								<option class="parentesco" value="BR03">Pensionista No. 3</option>														
+							<select class="form-control selectpicker" id="dependenteParentesco4" name="dependenteParentesco4">
+								<option data-item="dependenteParentesco4" value=""></option>
+								<option data-item="dependenteParentesco4" value="1">Cônjuge</option>
+								<option data-item="dependenteParentesco4" value="10">Cônjuge divorciado</option>
+								<option data-item="dependenteParentesco4" value="11">Pai</option>
+								<option data-item="dependenteParentesco4" value="12">Mãe</option>
+								<option data-item="dependenteParentesco4" value="13">Irmão (ã)</option>
+								<option data-item="dependenteParentesco4" value="14">Menor Tutelado</option>
+								<option data-item="dependenteParentesco4" value="15">Parceiro inserido</option>
+								<option data-item="dependenteParentesco4" value="16">Menor Sob Guarda</option>
+								<option data-item="dependenteParentesco4" value="17">Irmão/irmã</option>
+								<option data-item="dependenteParentesco4" value="18">Sogro (a)</option>
+								<option data-item="dependenteParentesco4" value="19">Neto (a)</option>
+								<option data-item="dependenteParentesco4" value="2">Filho (a)</option>
+								<option data-item="dependenteParentesco4" value="3">Responsável de educação</option>
+								<option data-item="dependenteParentesco4" value="40">Padrasto</option>
+								<option data-item="dependenteParentesco4" value="41">Madrasta</option>
+								<option data-item="dependenteParentesco4" value="42">Bisneto(a)</option>
+								<option data-item="dependenteParentesco4" value="43">Ex - tutelado (a)</option>
+								<option data-item="dependenteParentesco4" value="44">Ex - marido</option>
+								<option data-item="dependenteParentesco4" value="45">Ex - sogro (a)</option>
+								<option data-item="dependenteParentesco4" value="46">Sobrinho (a)</option>
+								<option data-item="dependenteParentesco4" value="47">Tio (a)</option>
+								<option data-item="dependenteParentesco4" value="48">Primo (a)</option>
+								<option data-item="dependenteParentesco4" value="49">Genro ou Nora</option>
+								<option data-item="dependenteParentesco4" value="5">Tutor</option>
+								<option data-item="dependenteParentesco4" value="50">Cunhado (a)</option>
+								<option data-item="dependenteParentesco4" value="51">Curatelado</option>
+								<option data-item="dependenteParentesco4" value="52">Determinação Judicial</option>
+								<option data-item="dependenteParentesco4" value="6">Enteado</option>
+								<option data-item="dependenteParentesco4" value="BR01">Pensionista</option>
+								<option data-item="dependenteParentesco4" value="BR02">Pensionista No. 2</option>
+								<option data-item="dependenteParentesco4" value="BR03">Pensionista No. 3</option>														
 							</select>
 							<input id="oridependenteParentesco4" type="text" name="oridependenteParentesco4" placeholder="" class="hide" >
 						</div>
@@ -1881,7 +1867,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="form-group">
+					<div id="div_dependenteAnexoCPF4" class="form-group">
 								<div class="row">
 									<section class="col-xs-8">
 										<span>Anexe uma imagem do CPF</span>
@@ -1889,13 +1875,12 @@
 								</div> 
 								<div class="row">
 									<section class="col-xs-4">
-									    <br> 
 										<!-- The fileinput-button span is used to style the file input field as button -->
 									    <span class="btn btn-success fileinput-button"> 
 									        <i class="glyphicon glyphicon-minus"></i> 
 									        <span> Anexo</span> 
-								        <input id="upload-img-dependenteAnexoCPF4" type="file" name="uploadedFile" accept=".jpg" class="imgUpload"> 
-										<input class="hide" type="text" id="dependenteAnexoCPF4" name="dependenteAnexoCPF4" placeholder="" disabled="disabled">
+								        <input id="upload-img-dependenteAnexoCPF4" type="file" name="uploadedFile" accept="image/*|.pdf" class="imgUpload"> 
+										<input class="hide anexo" type="text" id="dependenteAnexoCPF4" name="dependenteAnexoCPF4" data-origem="dependenteCpf4" data-errMsg="Anexe uma comprovação do CPF do dependente" placeholder="" disabled="disabled">
 								    </span> 
 								    <br> 
 								    <!-- The global progress bar --> 
@@ -1909,7 +1894,7 @@
 							</section>
 						</div>
 					</div>
-					<div class="form-group">
+					<div id="div_dependenteAnexoVinculo4" class="form-group">
 								<div class="row">
 									<section class="col-xs-8">
 										<span>Anexe um comprovante de vínculo</span>
@@ -1917,13 +1902,12 @@
 								</div> 
 								<div class="row">
 									<section class="col-xs-4">
-									    <br> 
 										<!-- The fileinput-button span is used to style the file input field as button -->
 									    <span class="btn btn-success fileinput-button"> 
 									        <i class="glyphicon glyphicon-minus"></i> 
 									        <span> Anexo</span> 
-								        <input id="upload-img-dependenteAnexoVinculo4" type="file" name="uploadedFile" accept=".jpg" class="imgUpload"> 
-										<input class="hide" type="text" id="dependenteAnexoVinculo4" name="dependenteAnexoVinculo4" placeholder="" disabled="disabled">
+								        <input id="upload-img-dependenteAnexoVinculo4" type="file" name="uploadedFile" accept="image/*|.pdf" class="imgUpload"> 
+										<input class="hide anexo" type="text" id="dependenteAnexoVinculo4" name="dependenteAnexoVinculo4" data-origem="dependenteParentesco4" data-errMsg="Anexe uma comprovação do vínculo de parentesco" placeholder="" disabled="disabled">
 								    </span> 
 								    <br> 
 								    <!-- The global progress bar --> 
@@ -1961,39 +1945,39 @@
 						</div>
 						<div id="div_dependenteParentesco5" class="col-md-2 selectContainer">
 							<label class="control-label">Parentesco</label>
-							<select class="form-control" id="dependenteParentesco5" name="dependenteParentesco5">
-								<option class="parentesco" value=""></option>
-								<option class="parentesco" value="1">Cônjuge</option>
-								<option class="parentesco" value="10">Cônjuge divorciado</option>
-								<option class="parentesco" value="11">Pai</option>
-								<option class="parentesco" value="12">Mãe</option>
-								<option class="parentesco" value="13">Irmão (ã)</option>
-								<option class="parentesco" value="14">Menor Tutelado</option>
-								<option class="parentesco" value="15">Parceiro inserido</option>
-								<option class="parentesco" value="16">Menor Sob Guarda</option>
-								<option class="parentesco" value="17">Irmão/irmã</option>
-								<option class="parentesco" value="18">Sogro (a)</option>
-								<option class="parentesco" value="19">Neto (a)</option>
-								<option class="parentesco" value="2">Filho (a)</option>
-								<option class="parentesco" value="3">Responsável de educação</option>
-								<option class="parentesco" value="40">Padrasto</option>
-								<option class="parentesco" value="41">Madrasta</option>
-								<option class="parentesco" value="42">Bisneto(a)</option>
-								<option class="parentesco" value="43">Ex - tutelado (a)</option>
-								<option class="parentesco" value="44">Ex - marido</option>
-								<option class="parentesco" value="45">Ex - sogro (a)</option>
-								<option class="parentesco" value="46">Sobrinho (a)</option>
-								<option class="parentesco" value="47">Tio (a)</option>
-								<option class="parentesco" value="48">Primo (a)</option>
-								<option class="parentesco" value="49">Genro ou Nora</option>
-								<option class="parentesco" value="5">Tutor</option>
-								<option class="parentesco" value="50">Cunhado (a)</option>
-								<option class="parentesco" value="51">Curatelado</option>
-								<option class="parentesco" value="52">Determinação Judicial</option>
-								<option class="parentesco" value="6">Enteado</option>
-								<option class="parentesco" value="BR01">Pensionista</option>
-								<option class="parentesco" value="BR02">Pensionista No. 2</option>
-								<option class="parentesco" value="BR03">Pensionista No. 3</option>														
+							<select class="form-control selectpicker" id="dependenteParentesco5" name="dependenteParentesco5">
+								<option data-item="dependenteParentesco5" value=""></option>
+								<option data-item="dependenteParentesco5" value="1">Cônjuge</option>
+								<option data-item="dependenteParentesco5" value="10">Cônjuge divorciado</option>
+								<option data-item="dependenteParentesco5" value="11">Pai</option>
+								<option data-item="dependenteParentesco5" value="12">Mãe</option>
+								<option data-item="dependenteParentesco5" value="13">Irmão (ã)</option>
+								<option data-item="dependenteParentesco5" value="14">Menor Tutelado</option>
+								<option data-item="dependenteParentesco5" value="15">Parceiro inserido</option>
+								<option data-item="dependenteParentesco5" value="16">Menor Sob Guarda</option>
+								<option data-item="dependenteParentesco5" value="17">Irmão/irmã</option>
+								<option data-item="dependenteParentesco5" value="18">Sogro (a)</option>
+								<option data-item="dependenteParentesco5" value="19">Neto (a)</option>
+								<option data-item="dependenteParentesco5" value="2">Filho (a)</option>
+								<option data-item="dependenteParentesco5" value="3">Responsável de educação</option>
+								<option data-item="dependenteParentesco5" value="40">Padrasto</option>
+								<option data-item="dependenteParentesco5" value="41">Madrasta</option>
+								<option data-item="dependenteParentesco5" value="42">Bisneto(a)</option>
+								<option data-item="dependenteParentesco5" value="43">Ex - tutelado (a)</option>
+								<option data-item="dependenteParentesco5" value="44">Ex - marido</option>
+								<option data-item="dependenteParentesco5" value="45">Ex - sogro (a)</option>
+								<option data-item="dependenteParentesco5" value="46">Sobrinho (a)</option>
+								<option data-item="dependenteParentesco5" value="47">Tio (a)</option>
+								<option data-item="dependenteParentesco5" value="48">Primo (a)</option>
+								<option data-item="dependenteParentesco5" value="49">Genro ou Nora</option>
+								<option data-item="dependenteParentesco5" value="5">Tutor</option>
+								<option data-item="dependenteParentesco5" value="50">Cunhado (a)</option>
+								<option data-item="dependenteParentesco5" value="51">Curatelado</option>
+								<option data-item="dependenteParentesco5" value="52">Determinação Judicial</option>
+								<option data-item="dependenteParentesco5" value="6">Enteado</option>
+								<option data-item="dependenteParentesco5" value="BR01">Pensionista</option>
+								<option data-item="dependenteParentesco5" value="BR02">Pensionista No. 2</option>
+								<option data-item="dependenteParentesco5" value="BR03">Pensionista No. 3</option>														
 							</select>
 							<input id="oridependenteParentesco5" type="text" name="oridependenteParentesco5" placeholder="" class="hide" >
 						</div>
@@ -2022,7 +2006,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="form-group">
+					<div id="div_dependenteAnexoCPF5" class="form-group">
 								<div class="row">
 									<section class="col-xs-8">
 										<span>Anexe uma imagem do CPF</span>
@@ -2030,13 +2014,12 @@
 								</div> 
 								<div class="row">
 									<section class="col-xs-4">
-									    <br> 
 										<!-- The fileinput-button span is used to style the file input field as button -->
 									    <span class="btn btn-success fileinput-button"> 
 									        <i class="glyphicon glyphicon-minus"></i> 
 									        <span> Anexo</span> 
-								        <input id="upload-img-dependenteAnexoCPF5" type="file" name="uploadedFile" accept=".jpg" class="imgUpload"> 
-										<input class="hide" type="text" id="dependenteAnexoCPF5" name="dependenteAnexoCPF5" placeholder="" disabled="disabled">
+								        <input id="upload-img-dependenteAnexoCPF5" type="file" name="uploadedFile" accept="image/*|.pdf" class="imgUpload"> 
+										<input class="hide anexo" type="text" id="dependenteAnexoCPF5" name="dependenteAnexoCPF5" data-origem="dependenteCpf5" data-errMsg="Anexe uma comprovação do CPF do dependente" placeholder="" disabled="disabled">
 								    </span> 
 								    <br> 
 								    <!-- The global progress bar --> 
@@ -2050,7 +2033,7 @@
 							</section>
 						</div>
 					</div>
-					<div class="form-group">
+					<div id="div_dependenteAnexoVinculo5" class="form-group">
 								<div class="row">
 									<section class="col-xs-8">
 										<span>Anexe um comprovante de vínculo</span>
@@ -2058,13 +2041,12 @@
 								</div> 
 								<div class="row">
 									<section class="col-xs-4">
-									    <br> 
 										<!-- The fileinput-button span is used to style the file input field as button -->
 									    <span class="btn btn-success fileinput-button"> 
 									        <i class="glyphicon glyphicon-minus"></i> 
 									        <span> Anexo</span> 
-								        <input id="upload-img-dependenteAnexoVinculo5" type="file" name="uploadedFile" accept=".jpg" class="imgUpload"> 
-										<input class="hide" type="text" id="dependenteAnexoVinculo5" name="dependenteAnexoVinculo5" placeholder="" disabled="disabled">
+								        <input id="upload-img-dependenteAnexoVinculo5" type="file" name="uploadedFile" accept="image/*|.pdf" class="imgUpload"> 
+										<input class="hide anexo" type="text" id="dependenteAnexoVinculo5" name="dependenteAnexoVinculo5" data-origem="dependenteParentesco5" data-errMsg="Anexe uma comprovação do vínculo de parentesco" placeholder="" disabled="disabled">
 								    </span> 
 								    <br> 
 								    <!-- The global progress bar --> 
@@ -2102,39 +2084,39 @@
 						</div>
 						<div id="div_dependenteParentesco6" class="col-md-2 selectContainer">
 							<label class="control-label">Parentesco</label>
-							<select class="form-control" id="dependenteParentesco6" name="dependenteParentesco6">
-								<option class="parentesco" value=""></option>
-								<option class="parentesco" value="1">Cônjuge</option>
-								<option class="parentesco" value="10">Cônjuge divorciado</option>
-								<option class="parentesco" value="11">Pai</option>
-								<option class="parentesco" value="12">Mãe</option>
-								<option class="parentesco" value="13">Irmão (ã)</option>
-								<option class="parentesco" value="14">Menor Tutelado</option>
-								<option class="parentesco" value="15">Parceiro inserido</option>
-								<option class="parentesco" value="16">Menor Sob Guarda</option>
-								<option class="parentesco" value="17">Irmão/irmã</option>
-								<option class="parentesco" value="18">Sogro (a)</option>
-								<option class="parentesco" value="19">Neto (a)</option>
-								<option class="parentesco" value="2">Filho (a)</option>
-								<option class="parentesco" value="3">Responsável de educação</option>
-								<option class="parentesco" value="40">Padrasto</option>
-								<option class="parentesco" value="41">Madrasta</option>
-								<option class="parentesco" value="42">Bisneto(a)</option>
-								<option class="parentesco" value="43">Ex - tutelado (a)</option>
-								<option class="parentesco" value="44">Ex - marido</option>
-								<option class="parentesco" value="45">Ex - sogro (a)</option>
-								<option class="parentesco" value="46">Sobrinho (a)</option>
-								<option class="parentesco" value="47">Tio (a)</option>
-								<option class="parentesco" value="48">Primo (a)</option>
-								<option class="parentesco" value="49">Genro ou Nora</option>
-								<option class="parentesco" value="5">Tutor</option>
-								<option class="parentesco" value="50">Cunhado (a)</option>
-								<option class="parentesco" value="51">Curatelado</option>
-								<option class="parentesco" value="52">Determinação Judicial</option>
-								<option class="parentesco" value="6">Enteado</option>
-								<option class="parentesco" value="BR01">Pensionista</option>
-								<option class="parentesco" value="BR02">Pensionista No. 2</option>
-								<option class="parentesco" value="BR03">Pensionista No. 3</option>														
+							<select class="form-control selectpicker" id="dependenteParentesco6" name="dependenteParentesco6">
+								<option data-item="dependenteParentesco6" value=""></option>
+								<option data-item="dependenteParentesco6" value="1">Cônjuge</option>
+								<option data-item="dependenteParentesco6" value="10">Cônjuge divorciado</option>
+								<option data-item="dependenteParentesco6" value="11">Pai</option>
+								<option data-item="dependenteParentesco6" value="12">Mãe</option>
+								<option data-item="dependenteParentesco6" value="13">Irmão (ã)</option>
+								<option data-item="dependenteParentesco6" value="14">Menor Tutelado</option>
+								<option data-item="dependenteParentesco6" value="15">Parceiro inserido</option>
+								<option data-item="dependenteParentesco6" value="16">Menor Sob Guarda</option>
+								<option data-item="dependenteParentesco6" value="17">Irmão/irmã</option>
+								<option data-item="dependenteParentesco6" value="18">Sogro (a)</option>
+								<option data-item="dependenteParentesco6" value="19">Neto (a)</option>
+								<option data-item="dependenteParentesco6" value="2">Filho (a)</option>
+								<option data-item="dependenteParentesco6" value="3">Responsável de educação</option>
+								<option data-item="dependenteParentesco6" value="40">Padrasto</option>
+								<option data-item="dependenteParentesco6" value="41">Madrasta</option>
+								<option data-item="dependenteParentesco6" value="42">Bisneto(a)</option>
+								<option data-item="dependenteParentesco6" value="43">Ex - tutelado (a)</option>
+								<option data-item="dependenteParentesco6" value="44">Ex - marido</option>
+								<option data-item="dependenteParentesco6" value="45">Ex - sogro (a)</option>
+								<option data-item="dependenteParentesco6" value="46">Sobrinho (a)</option>
+								<option data-item="dependenteParentesco6" value="47">Tio (a)</option>
+								<option data-item="dependenteParentesco6" value="48">Primo (a)</option>
+								<option data-item="dependenteParentesco6" value="49">Genro ou Nora</option>
+								<option data-item="dependenteParentesco6" value="5">Tutor</option>
+								<option data-item="dependenteParentesco6" value="50">Cunhado (a)</option>
+								<option data-item="dependenteParentesco6" value="51">Curatelado</option>
+								<option data-item="dependenteParentesco6" value="52">Determinação Judicial</option>
+								<option data-item="dependenteParentesco6" value="6">Enteado</option>
+								<option data-item="dependenteParentesco6" value="BR01">Pensionista</option>
+								<option data-item="dependenteParentesco6" value="BR02">Pensionista No. 2</option>
+								<option data-item="dependenteParentesco6" value="BR03">Pensionista No. 3</option>														
 							</select>
 							<input id="oridependenteParentesco6" type="text" name="oridependenteParentesco6" placeholder="" class="hide" >
 						</div>
@@ -2163,7 +2145,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="form-group">
+					<div id="div_dependenteAnexoCPF6" class="form-group">
 								<div class="row">
 									<section class="col-xs-8">
 										<span>Anexe uma imagem do CPF</span>
@@ -2171,13 +2153,12 @@
 								</div> 
 								<div class="row">
 									<section class="col-xs-4">
-									    <br> 
 										<!-- The fileinput-button span is used to style the file input field as button -->
 									    <span class="btn btn-success fileinput-button"> 
 									        <i class="glyphicon glyphicon-minus"></i> 
 									        <span> Anexo</span> 
-								        <input id="upload-img-dependenteAnexoCPF6" type="file" name="uploadedFile" accept=".jpg" class="imgUpload"> 
-										<input class="hide" type="text" id="dependenteAnexoCPF6" name="dependenteAnexoCPF6" placeholder="" disabled="disabled">
+								        <input id="upload-img-dependenteAnexoCPF6" type="file" name="uploadedFile" accept="image/*|.pdf" class="imgUpload"> 
+										<input class="hide anexo" type="text" id="dependenteAnexoCPF6" name="dependenteAnexoCPF6" data-origem="dependenteCpf6" data-errMsg="Anexe uma comprovação do CPF do dependente" placeholder="" disabled="disabled">
 								    </span> 
 								    <br> 
 								    <!-- The global progress bar --> 
@@ -2191,7 +2172,7 @@
 							</section>
 						</div>
 					</div>
-					<div class="form-group">
+					<div id="div_dependenteAnexoVinculo6" class="form-group">
 								<div class="row">
 									<section class="col-xs-8">
 										<span>Anexe um comprovante de vínculo</span>
@@ -2199,13 +2180,12 @@
 								</div> 
 								<div class="row">
 									<section class="col-xs-4">
-									    <br> 
 										<!-- The fileinput-button span is used to style the file input field as button -->
 									    <span class="btn btn-success fileinput-button"> 
 									        <i class="glyphicon glyphicon-minus"></i> 
 									        <span> Anexo</span> 
-								        <input id="upload-img-dependenteAnexoVinculo6" type="file" name="uploadedFile" accept=".jpg" class="imgUpload"> 
-										<input class="hide" type="text" id="dependenteAnexoVinculo6" name="dependenteAnexoVinculo6" placeholder="" disabled="disabled">
+								        <input id="upload-img-dependenteAnexoVinculo6" type="file" name="uploadedFile" accept="image/*|.pdf" class="imgUpload"> 
+										<input class="hide anexo" type="text" id="dependenteAnexoVinculo6" name="dependenteAnexoVinculo6" data-origem="dependenteParentesco6" data-errMsg="Anexe uma comprovação do vínculo de parentesco" placeholder="" disabled="disabled">
 								    </span> 
 								    <br> 
 								    <!-- The global progress bar --> 
@@ -2243,39 +2223,39 @@
 						</div>
 						<div id="div_dependenteParentesco7" class="col-md-2 selectContainer">
 							<label class="control-label">Parentesco</label>
-							<select class="form-control" id="dependenteParentesco7" name="dependenteParentesco7">
-								<option class="parentesco" value=""></option>
-								<option class="parentesco" value="1">Cônjuge</option>
-								<option class="parentesco" value="10">Cônjuge divorciado</option>
-								<option class="parentesco" value="11">Pai</option>
-								<option class="parentesco" value="12">Mãe</option>
-								<option class="parentesco" value="13">Irmão (ã)</option>
-								<option class="parentesco" value="14">Menor Tutelado</option>
-								<option class="parentesco" value="15">Parceiro inserido</option>
-								<option class="parentesco" value="16">Menor Sob Guarda</option>
-								<option class="parentesco" value="17">Irmão/irmã</option>
-								<option class="parentesco" value="18">Sogro (a)</option>
-								<option class="parentesco" value="19">Neto (a)</option>
-								<option class="parentesco" value="2">Filho (a)</option>
-								<option class="parentesco" value="3">Responsável de educação</option>
-								<option class="parentesco" value="40">Padrasto</option>
-								<option class="parentesco" value="41">Madrasta</option>
-								<option class="parentesco" value="42">Bisneto(a)</option>
-								<option class="parentesco" value="43">Ex - tutelado (a)</option>
-								<option class="parentesco" value="44">Ex - marido</option>
-								<option class="parentesco" value="45">Ex - sogro (a)</option>
-								<option class="parentesco" value="46">Sobrinho (a)</option>
-								<option class="parentesco" value="47">Tio (a)</option>
-								<option class="parentesco" value="48">Primo (a)</option>
-								<option class="parentesco" value="49">Genro ou Nora</option>
-								<option class="parentesco" value="5">Tutor</option>
-								<option class="parentesco" value="50">Cunhado (a)</option>
-								<option class="parentesco" value="51">Curatelado</option>
-								<option class="parentesco" value="52">Determinação Judicial</option>
-								<option class="parentesco" value="6">Enteado</option>
-								<option class="parentesco" value="BR01">Pensionista</option>
-								<option class="parentesco" value="BR02">Pensionista No. 2</option>
-								<option class="parentesco" value="BR03">Pensionista No. 3</option>														
+							<select class="form-control selectpicker" id="dependenteParentesco7" name="dependenteParentesco7">
+								<option data-item="dependenteParentesco7" value=""></option>
+								<option data-item="dependenteParentesco7" value="1">Cônjuge</option>
+								<option data-item="dependenteParentesco7" value="10">Cônjuge divorciado</option>
+								<option data-item="dependenteParentesco7" value="11">Pai</option>
+								<option data-item="dependenteParentesco7" value="12">Mãe</option>
+								<option data-item="dependenteParentesco7" value="13">Irmão (ã)</option>
+								<option data-item="dependenteParentesco7" value="14">Menor Tutelado</option>
+								<option data-item="dependenteParentesco7" value="15">Parceiro inserido</option>
+								<option data-item="dependenteParentesco7" value="16">Menor Sob Guarda</option>
+								<option data-item="dependenteParentesco7" value="17">Irmão/irmã</option>
+								<option data-item="dependenteParentesco7" value="18">Sogro (a)</option>
+								<option data-item="dependenteParentesco7" value="19">Neto (a)</option>
+								<option data-item="dependenteParentesco7" value="2">Filho (a)</option>
+								<option data-item="dependenteParentesco7" value="3">Responsável de educação</option>
+								<option data-item="dependenteParentesco7" value="40">Padrasto</option>
+								<option data-item="dependenteParentesco7" value="41">Madrasta</option>
+								<option data-item="dependenteParentesco7" value="42">Bisneto(a)</option>
+								<option data-item="dependenteParentesco7" value="43">Ex - tutelado (a)</option>
+								<option data-item="dependenteParentesco7" value="44">Ex - marido</option>
+								<option data-item="dependenteParentesco7" value="45">Ex - sogro (a)</option>
+								<option data-item="dependenteParentesco7" value="46">Sobrinho (a)</option>
+								<option data-item="dependenteParentesco7" value="47">Tio (a)</option>
+								<option data-item="dependenteParentesco7" value="48">Primo (a)</option>
+								<option data-item="dependenteParentesco7" value="49">Genro ou Nora</option>
+								<option data-item="dependenteParentesco7" value="5">Tutor</option>
+								<option data-item="dependenteParentesco7" value="50">Cunhado (a)</option>
+								<option data-item="dependenteParentesco7" value="51">Curatelado</option>
+								<option data-item="dependenteParentesco7" value="52">Determinação Judicial</option>
+								<option data-item="dependenteParentesco7" value="6">Enteado</option>
+								<option data-item="dependenteParentesco7" value="BR01">Pensionista</option>
+								<option data-item="dependenteParentesco7" value="BR02">Pensionista No. 2</option>
+								<option data-item="dependenteParentesco7" value="BR03">Pensionista No. 3</option>														
 							</select>
 							<input id="oridependenteParentesco7" type="text" name="oridependenteParentesco7" placeholder="" class="hide" >
 						</div>
@@ -2304,7 +2284,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="form-group">
+					<div id="div_dependenteAnexoCPF7" class="form-group">
 								<div class="row">
 									<section class="col-xs-8">
 										<span>Anexe uma imagem do CPF</span>
@@ -2312,13 +2292,12 @@
 								</div> 
 								<div class="row">
 									<section class="col-xs-4">
-									    <br> 
 										<!-- The fileinput-button span is used to style the file input field as button -->
 									    <span class="btn btn-success fileinput-button"> 
 									        <i class="glyphicon glyphicon-minus"></i> 
 									        <span> Anexo</span> 
-								        <input id="upload-img-dependenteAnexoCPF7" type="file" name="uploadedFile" accept=".jpg" class="imgUpload"> 
-										<input class="hide" type="text" id="dependenteAnexoCPF7" name="dependenteAnexoCPF7" placeholder="" disabled="disabled">
+								        <input id="upload-img-dependenteAnexoCPF7" type="file" name="uploadedFile" accept="image/*|.pdf" class="imgUpload"> 
+										<input class="hide anexo" type="text" id="dependenteAnexoCPF7" name="dependenteAnexoCPF7" data-origem="dependenteCpf7" data-errMsg="Anexe uma comprovação do CPF do dependente" placeholder="" disabled="disabled">
 								    </span> 
 								    <br> 
 								    <!-- The global progress bar --> 
@@ -2332,7 +2311,7 @@
 							</section>
 						</div>
 					</div>
-					<div class="form-group">
+					<div id="div_dependenteAnexoVinculo7" class="form-group">
 								<div class="row">
 									<section class="col-xs-8">
 										<span>Anexe um comprovante de vínculo</span>
@@ -2340,13 +2319,12 @@
 								</div> 
 								<div class="row">
 									<section class="col-xs-4">
-									    <br> 
 										<!-- The fileinput-button span is used to style the file input field as button -->
 									    <span class="btn btn-success fileinput-button"> 
 									        <i class="glyphicon glyphicon-minus"></i> 
 									        <span> Anexo</span> 
-								        <input id="upload-img-dependenteAnexoVinculo7" type="file" name="uploadedFile" accept=".jpg" class="imgUpload"> 
-										<input class="hide" type="text" id="dependenteAnexoVinculo7" name="dependenteAnexoVinculo7" placeholder="" disabled="disabled">
+								        <input id="upload-img-dependenteAnexoVinculo7" type="file" name="uploadedFile" accept="image/*|.pdf" class="imgUpload"> 
+										<input class="hide anexo" type="text" id="dependenteAnexoVinculo7" name="dependenteAnexoVinculo7" data-origem="dependenteParentesco7" data-errMsg="Anexe uma comprovação do vínculo de parentesco" placeholder="" disabled="disabled">
 								    </span> 
 								    <br> 
 								    <!-- The global progress bar --> 

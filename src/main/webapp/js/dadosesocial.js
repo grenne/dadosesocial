@@ -10,6 +10,8 @@ $.root_.removeClass("minified");
 
 sessionStorage.sair = "";
 
+//** inicializa flag para controlar validação recursiva
+sessionStorage.revalidaContato = "true";
 if (sessionStorage.user){
 }else{
 	sessionStorage.user = "";
@@ -390,10 +392,666 @@ $('#dadosesocial')
                                 message: 'Informar ao menos um contato'
                             }
                         }else{
+                        	if (sessionStorage.revalidaContato == "true"){
+                        		sessionStorage.revalidaContato = "false";
+								$('#dadosesocial').bootstrapValidator('revalidateField', $('#contatoEmergencial'));
+	                        	$('#dadosesocial').bootstrapValidator('revalidateField', $('#contatoCelular'));
+	                        	sessionStorage.revalidaContato = "true"
+                        	};
                             return {
                                 valid: true,
                             }                        	
                         }
+                    }
+                }   
+			}
+	    },
+	    contatoCelular : {
+			validators : {
+                callback: {
+                    message: 'The password is not valid',
+                    callback: function(value, validator, $field) {
+                        if ($("#contatoPrincipal").val() == "" && $("#contatoCelular").val() == "" &&  $("#contatoEmergencial").val() == "") {
+                            return {
+                                valid: false,
+                                message: 'Informar ao menos um contato'
+                            }
+                        }else{
+                        	if (sessionStorage.revalidaContato == "true"){
+                        		sessionStorage.revalidaContato = "false"
+								$('#dadosesocial').bootstrapValidator('revalidateField', $('#contatoPrincipal'));
+	                        	$('#dadosesocial').bootstrapValidator('revalidateField', $('#contatoEmergencial'));
+	                        	sessionStorage.revalidaContato = "true"
+                        	};
+                            return {
+                                valid: true,
+                            }                        	
+                        }
+                    }
+                }   
+			}
+	    },
+	    contatoEmergencial : {
+			validators : {
+                callback: {
+                    message: 'The password is not valid',
+                    callback: function(value, validator, $field) {
+                        if ($("#contatoPrincipal").val() == "" && $("#contatoCelular").val() == "" &&  $("#contatoEmergencial").val() == "") {
+                            return {
+                                valid: false,
+                                message: 'Informar ao menos um contato'
+                            }
+                        }else{
+                        	if (sessionStorage.revalidaContato == "true"){
+                        		sessionStorage.revalidaContato = "false"
+								$('#dadosesocial').bootstrapValidator('revalidateField', $('#contatoPrincipal'));
+	                        	$('#dadosesocial').bootstrapValidator('revalidateField', $('#contatoCelular'));
+	                        	sessionStorage.revalidaContato = "true"
+                        	};
+                            return {
+                                valid: true,
+                            }                        	
+                        }
+                    }
+                }   
+			}
+	    },
+	    anexo01 : {
+			validators : {
+                callback: {
+                    message: 'The password is not valid',
+                    callback: function(value, validator, $field) {
+                		if ($("#anexo01").val() == ""){
+        	        		if (testaAnexo($("#anexo01").attr("data-origem"))){
+                                return {
+                                    valid: false,
+                                    message: 'Anexar um comprovante de seu grau de instrução'
+                                }
+        	        		}else{
+                                return {
+                                    valid: true,
+                                }                        	        	        			
+        	        		}
+                		}else{
+                            return {
+                                valid: true,
+                            }                        	                			
+                		}
+                    }
+                }   
+			}
+	    },
+	    anexo02 : {
+			validators : {
+                callback: {
+                    message: 'The password is not valid',
+                    callback: function(value, validator, $field) {
+                		if ($("#anexo02").val() == ""){
+        	        		if (testaAnexo($("#anexo02").attr("data-origem"))){
+                                return {
+                                    valid: false,
+                                    message: 'Anexar um comprovante de seu estado civil'
+                                }
+        	        		}else{
+                                return {
+                                    valid: true,
+                                }                        	        	        			
+        	        		}
+                		}else{
+                            return {
+                                valid: true,
+                            }                        	                			
+                		}
+                    }
+                }   
+			}
+	    },
+	    anexo03 : {
+			validators : {
+                callback: {
+                    message: 'The password is not valid',
+                    callback: function(value, validator, $field) {
+                		if ($("#anexo03").val() == ""){
+        	        		if (testaAnexo($("#anexo03").attr("data-origem"))){
+                                return {
+                                    valid: false,
+                                    message: 'Anexar um comprovante de seu novo endereço'
+                                }
+        	        		}else{
+                                return {
+                                    valid: true,
+                                }                        	        	        			
+        	        		}
+                		}else{
+                            return {
+                                valid: true,
+                            }                        	                			
+                		}
+                    }
+                }   
+			}
+	    },
+	    anexo04 : {
+			validators : {
+                callback: {
+                    message: 'The password is not valid',
+                    callback: function(value, validator, $field) {
+                		if ($("#anexo04").val() == ""){
+        	        		if (testaAnexo($("#anexo04").attr("data-origem"))){
+                                return {
+                                    valid: false,
+                                    message: 'Anexar a pagina, onde está sua foto, da carteira profissional indicada'
+                                }
+        	        		}else{
+                                return {
+                                    valid: true,
+                                }                        	        	        			
+        	        		}
+                		}else{
+                            return {
+                                valid: true,
+                            }                        	                			
+                		}
+                    }
+                }   
+			}
+	    },
+	    anexo05 : {
+			validators : {
+                callback: {
+                    message: 'The password is not valid',
+                    callback: function(value, validator, $field) {
+                		if ($("#anexo05").val() == ""){
+        	        		if (testaAnexo($("#anexo05").attr("data-origem"))){
+                                return {
+                                    valid: false,
+                                    message: 'Anexar uma imagem de sua CNH aberta'
+                                }
+        	        		}else{
+                                return {
+                                    valid: true,
+                                }                        	        	        			
+        	        		}
+                		}else{
+                            return {
+                                valid: true,
+                            }                        	                			
+                		}
+                    }
+                }   
+			}
+	    },
+	    anexo06 : {
+			validators : {
+                callback: {
+                    message: 'The password is not valid',
+                    callback: function(value, validator, $field) {
+                		if ($("#anexo06").val() == ""){
+        	        		if (testaAnexo($("#anexo06").attr("data-origem"))){
+                                return {
+                                    valid: false,
+                                    message: 'Anexar uma ima gem de seu RG,com frente e verso'
+                                }
+        	        		}else{
+                                return {
+                                    valid: true,
+                                }                        	        	        			
+        	        		}
+                		}else{
+                            return {
+                                valid: true,
+                            }                        	                			
+                		}
+                    }
+                }   
+			}
+	    },
+	    anexo07 : {
+			validators : {
+                callback: {
+                    message: 'The password is not valid',
+                    callback: function(value, validator, $field) {
+                		if ($("#anexo07").val() == ""){
+        	        		if (testaAnexo($("#anexo07").attr("data-origem"))){
+                                return {
+                                    valid: false,
+                                    message: 'Anexar uma imagem da frente de seu título de eleitor'
+                                }
+        	        		}else{
+                                return {
+                                    valid: true,
+                                }                        	        	        			
+        	        		}
+                		}else{
+                            return {
+                                valid: true,
+                            }                        	                			
+                		}
+                    }
+                }   
+			}
+	    },
+	    anexo08 : {
+			validators : {
+                callback: {
+                    message: 'The password is not valid',
+                    callback: function(value, validator, $field) {
+                		if ($("#anexo08").val() == ""){
+        	        		if (testaAnexo($("#anexo08").attr("data-origem"))){
+                                return {
+                                    valid: false,
+                                    message: 'Anexar uma imagem da frente da carteira de seu conselho regional'
+                                }
+        	        		}else{
+                                return {
+                                    valid: true,
+                                }                        	        	        			
+        	        		}
+                		}else{
+                            return {
+                                valid: true,
+                            }                        	                			
+                		}
+                    }
+                }   
+			}
+	    },
+	    dependenteAnexoCPF0 : {
+			validators : {
+                callback: {
+                    message: 'The password is not valid',
+                    callback: function(value, validator, $field) {
+                		if ($("#dependenteAnexoCPF0").val() == ""){
+        	        		if (testaAnexo($("#dependenteAnexoCPF0").attr("data-origem"))){
+                                return {
+                                    valid: false,
+                                    message: 'Anexar o CPF do dependnete'
+                                }
+        	        		}else{
+                                return {
+                                    valid: true,
+                                }                        	        	        			
+        	        		}
+                		}else{
+                            return {
+                                valid: true,
+                            }                        	                			
+                		}
+                    }
+                }   
+			}
+	    },
+	    dependenteAnexoCPF1 : {
+			validators : {
+                callback: {
+                    message: 'The password is not valid',
+                    callback: function(value, validator, $field) {
+                		if ($("#dependenteAnexoCPF1").val() == ""){
+        	        		if (testaAnexo($("#dependenteAnexoCPF1").attr("data-origem"))){
+                                return {
+                                    valid: false,
+                                    message: 'Anexar o CPF do dependnete'
+                                }
+        	        		}else{
+                                return {
+                                    valid: true,
+                                }                        	        	        			
+        	        		}
+                		}else{
+                            return {
+                                valid: true,
+                            }                        	                			
+                		}
+                    }
+                }   
+			}
+	    },
+	    dependenteAnexoCPF2 : {
+			validators : {
+                callback: {
+                    message: 'The password is not valid',
+                    callback: function(value, validator, $field) {
+                		if ($("#dependenteAnexoCPF2").val() == ""){
+        	        		if (testaAnexo($("#dependenteAnexoCPF2").attr("data-origem"))){
+                                return {
+                                    valid: false,
+                                    message: 'Anexar o CPF do dependnete'
+                                }
+        	        		}else{
+                                return {
+                                    valid: true,
+                                }                        	        	        			
+        	        		}
+                		}else{
+                            return {
+                                valid: true,
+                            }                        	                			
+                		}
+                    }
+                }   
+			}
+	    },
+	    dependenteAnexoCPF3 : {
+			validators : {
+                callback: {
+                    message: 'The password is not valid',
+                    callback: function(value, validator, $field) {
+                		if ($("#dependenteAnexoCPF3").val() == ""){
+        	        		if (testaAnexo($("#dependenteAnexoCPF3").attr("data-origem"))){
+                                return {
+                                    valid: false,
+                                    message: 'Anexar o CPF do dependnete'
+                                }
+        	        		}else{
+                                return {
+                                    valid: true,
+                                }                        	        	        			
+        	        		}
+                		}else{
+                            return {
+                                valid: true,
+                            }                        	                			
+                		}
+                    }
+                }   
+			}
+	    },
+	    dependenteAnexoCPF4 : {
+			validators : {
+                callback: {
+                    message: 'The password is not valid',
+                    callback: function(value, validator, $field) {
+                		if ($("#dependenteAnexoCPF4").val() == ""){
+        	        		if (testaAnexo($("#dependenteAnexoCPF4").attr("data-origem"))){
+                                return {
+                                    valid: false,
+                                    message: 'Anexar o CPF do dependnete'
+                                }
+        	        		}else{
+                                return {
+                                    valid: true,
+                                }                        	        	        			
+        	        		}
+                		}else{
+                            return {
+                                valid: true,
+                            }                        	                			
+                		}
+                    }
+                }   
+			}
+	    },
+	    dependenteAnexoCPF5 : {
+			validators : {
+                callback: {
+                    message: 'The password is not valid',
+                    callback: function(value, validator, $field) {
+                		if ($("#dependenteAnexoCPF5").val() == ""){
+        	        		if (testaAnexo($("#dependenteAnexoCPF5").attr("data-origem"))){
+                                return {
+                                    valid: false,
+                                    message: 'Anexar o CPF do dependnete'
+                                }
+        	        		}else{
+                                return {
+                                    valid: true,
+                                }                        	        	        			
+        	        		}
+                		}else{
+                            return {
+                                valid: true,
+                            }                        	                			
+                		}
+                    }
+                }   
+			}
+	    },
+	    dependenteAnexoCPF6 : {
+			validators : {
+                callback: {
+                    message: 'The password is not valid',
+                    callback: function(value, validator, $field) {
+                		if ($("#dependenteAnexoCPF6").val() == ""){
+        	        		if (testaAnexo($("#dependenteAnexoCPF6").attr("data-origem"))){
+                                return {
+                                    valid: false,
+                                    message: 'Anexar o CPF do dependnete'
+                                }
+        	        		}else{
+                                return {
+                                    valid: true,
+                                }                        	        	        			
+        	        		}
+                		}else{
+                            return {
+                                valid: true,
+                            }                        	                			
+                		}
+                    }
+                }   
+			}
+	    },
+	    dependenteAnexoCPF7 : {
+			validators : {
+                callback: {
+                    message: 'The password is not valid',
+                    callback: function(value, validator, $field) {
+                		if ($("#dependenteAnexoCPF7").val() == ""){
+        	        		if (testaAnexo($("#dependenteAnexoCPF7").attr("data-origem"))){
+                                return {
+                                    valid: false,
+                                    message: 'Anexar o CPF do dependnete'
+                                }
+        	        		}else{
+                                return {
+                                    valid: true,
+                                }                        	        	        			
+        	        		}
+                		}else{
+                            return {
+                                valid: true,
+                            }                        	                			
+                		}
+                    }
+                }   
+			}
+	    },
+	    dependenteAnexoVinculo0 : {
+			validators : {
+                callback: {
+                    message: 'The password is not valid',
+                    callback: function(value, validator, $field) {
+                		if ($("#dependenteAnexoVinculo0").val() == ""){
+        	        		if (testaAnexo($("#dependenteAnexoVinculo0").attr("data-origem"))){
+                                return {
+                                    valid: false,
+                                    message: 'Anexar um comprovante do parentesco informado'
+                                }
+        	        		}else{
+                                return {
+                                    valid: true,
+                                }                        	        	        			
+        	        		}
+                		}else{
+                            return {
+                                valid: true,
+                            }                        	                			
+                		}
+                    }
+                }   
+			}
+	    },
+	    dependenteAnexoVinculo1 : {
+			validators : {
+                callback: {
+                    message: 'The password is not valid',
+                    callback: function(value, validator, $field) {
+                		if ($("#dependenteAnexoVinculo1").val() == ""){
+        	        		if (testaAnexo($("#dependenteAnexoVinculo1").attr("data-origem"))){
+                                return {
+                                    valid: false,
+                                    message: 'Anexar um comprovante do parentesco informado'
+                                }
+        	        		}else{
+                                return {
+                                    valid: true,
+                                }                        	        	        			
+        	        		}
+                		}else{
+                            return {
+                                valid: true,
+                            }                        	                			
+                		}
+                    }
+                }   
+			}
+	    },
+	    dependenteAnexoVinculo2 : {
+			validators : {
+                callback: {
+                    message: 'The password is not valid',
+                    callback: function(value, validator, $field) {
+                		if ($("#dependenteAnexoVinculo2").val() == ""){
+        	        		if (testaAnexo($("#dependenteAnexoVinculo2").attr("data-origem"))){
+                                return {
+                                    valid: false,
+                                    message: 'Anexar um comprovante do parentesco informado'
+                                }
+        	        		}else{
+                                return {
+                                    valid: true,
+                                }                        	        	        			
+        	        		}
+                		}else{
+                            return {
+                                valid: true,
+                            }                        	                			
+                		}
+                    }
+                }   
+			}
+	    },
+	    dependenteAnexoVinculo3 : {
+			validators : {
+                callback: {
+                    message: 'The password is not valid',
+                    callback: function(value, validator, $field) {
+                		if ($("#dependenteAnexoVinculo3").val() == ""){
+        	        		if (testaAnexo($("#dependenteAnexoVinculo3").attr("data-origem"))){
+                                return {
+                                    valid: false,
+                                    message: 'Anexar um comprovante do parentesco informado'
+                                }
+        	        		}else{
+                                return {
+                                    valid: true,
+                                }                        	        	        			
+        	        		}
+                		}else{
+                            return {
+                                valid: true,
+                            }                        	                			
+                		}
+                    }
+                }   
+			}
+	    },
+	    dependenteAnexoVinculo4 : {
+			validators : {
+                callback: {
+                    message: 'The password is not valid',
+                    callback: function(value, validator, $field) {
+                		if ($("#dependenteAnexoVinculo4").val() == ""){
+        	        		if (testaAnexo($("#dependenteAnexoVinculo4").attr("data-origem"))){
+                                return {
+                                    valid: false,
+                                    message: 'Anexar um comprovante do parentesco informado'
+                                }
+        	        		}else{
+                                return {
+                                    valid: true,
+                                }                        	        	        			
+        	        		}
+                		}else{
+                            return {
+                                valid: true,
+                            }                        	                			
+                		}
+                    }
+                }   
+			}
+	    },
+	    dependenteAnexoVinculo5 : {
+			validators : {
+                callback: {
+                    message: 'The password is not valid',
+                    callback: function(value, validator, $field) {
+                		if ($("#dependenteAnexoVinculo5").val() == ""){
+        	        		if (testaAnexo($("#dependenteAnexoVinculo5").attr("data-origem"))){
+                                return {
+                                    valid: false,
+                                    message: 'Anexar um comprovante do parentesco informado'
+                                }
+        	        		}else{
+                                return {
+                                    valid: true,
+                                }                        	        	        			
+        	        		}
+                		}else{
+                            return {
+                                valid: true,
+                            }                        	                			
+                		}
+                    }
+                }   
+			}
+	    },
+	    dependenteAnexoVinculo6 : {
+			validators : {
+                callback: {
+                    message: 'The password is not valid',
+                    callback: function(value, validator, $field) {
+                		if ($("#anexo01").val() == ""){
+        	        		if (testaAnexo($("#dependenteAnexoVinculo6").attr("data-origem"))){
+                                return {
+                                    valid: false,
+                                    message: 'Anexar um comprovante do parentesco informado'
+                                }
+        	        		}else{
+                                return {
+                                    valid: true,
+                                }                        	        	        			
+        	        		}
+                		}else{
+                            return {
+                                valid: true,
+                            }                        	                			
+                		}
+                    }
+                }   
+			}
+	    },
+	    dependenteAnexoVinculo7 : {
+			validators : {
+                callback: {
+                    message: 'The password is not valid',
+                    callback: function(value, validator, $field) {
+                		if ($("#anexo01").val() == ""){
+        	        		if (testaAnexo($("#dependenteAnexoVinculo7").attr("data-origem"))){
+                                return {
+                                    valid: false,
+                                    message: 'Anexar um comprovante do parentesco informado'
+                                }
+        	        		}else{
+                                return {
+                                    valid: true,
+                                }                        	        	        			
+        	        		}
+                		}else{
+                            return {
+                                valid: true,
+                            }                        	                			
+                		}
                     }
                 }   
 			}
@@ -405,17 +1063,6 @@ $('#dadosesocial')
     		var fv = $('#dadosesocial').bootstrapValidator();
         	sessionStorage.logout = "true";
         	var erro = false;
-        	$(".errAnexo").remove();        	
-        	$(".anexo").each(function( index ) {
-        		if ($(this).val() == ""){
-	        		if (testaAnexo($(this).attr("data-origem"))){
-	        			$("#div_" + $(this).attr("name")).append('<label id="errAnexo' + $(this).attr("name") + '" class="control-label has-error errAnexo">' + $(this).attr("data-errMsg") + '</label>');
-	        			$("#div_bottonErros").append('<label id="errAnexo' + $(this).attr("name") + '" class="control-label has-error errAnexo">' + $(this).attr("data-errMsg") + '</label>');
-				        $(this).focus();
-				        erro = true;
-	        		};
-        		};
-        	});
 	    	if (erro){
 	    		
 	    	}else{

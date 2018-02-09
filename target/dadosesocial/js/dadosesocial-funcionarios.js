@@ -86,7 +86,11 @@ function atualizaCollection(collection, matricula){
 	})        	
 	.done(function( data ) {
 		$( ".dependentereg" ).each(function( index ) {
-			atualizaDependente($(this).attr('data-index'), matricula);
+			if ($(this).hasClass("hide")){
+				
+			}else{
+				atualizaDependente($(this).attr('data-index'), matricula);
+			};
 		});
 		if (sessionStorage.user == "rh") {
 			$(window.document.location).attr('href','lista-funcionarios.html');

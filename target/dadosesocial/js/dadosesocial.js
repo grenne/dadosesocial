@@ -322,6 +322,62 @@ $('#dadosesocial')
 					message : 'Informar CPF dependente'
 				}
 			}
+        },
+        dependenteNome0 : {
+			validators : {
+				notEmpty : {
+					message : 'Informar o nome do dependente'
+				}
+			}
+        },
+        dependenteNome1 : {
+			validators : {
+				notEmpty : {
+					message : 'Informar o nome do dependente'
+				}
+			}
+        },
+        dependenteNome2 : {
+			validators : {
+				notEmpty : {
+					message : 'Informar o nome do dependente'
+				}
+			}
+        },
+        dependenteNome3 : {
+			validators : {
+				notEmpty : {
+					message : 'Informar o nome do dependente'
+				}
+			}
+        },
+        dependenteNome4 : {
+			validators : {
+				notEmpty : {
+					message : 'Informar o nome do dependente'
+				}
+			}
+        },
+        dependenteNome5 : {
+			validators : {
+				notEmpty : {
+					message : 'Informar o nome do dependente'
+				}
+			}
+        },
+        dependenteNome6 : {
+			validators : {
+				notEmpty : {
+					message : 'Informar o nome do dependente'
+				}
+			}
+        },
+        dependenteNome7 : {
+			validators : {
+				notEmpty : {
+					message : 'Informar o nome do dependente'
+				}
+			}
 	    },
 		contatoPrincipal : {
 			validators : {
@@ -354,6 +410,7 @@ $('#dadosesocial')
         		if ($(this).val() == ""){
 	        		if (testaAnexo($(this).attr("data-origem"))){
 	        			$("#div_" + $(this).attr("name")).append('<label id="errAnexo' + $(this).attr("name") + '" class="control-label has-error errAnexo">' + $(this).attr("data-errMsg") + '</label>');
+	        			$("#div_bottonErros").append('<label id="errAnexo' + $(this).attr("name") + '" class="control-label has-error errAnexo">' + $(this).attr("data-errMsg") + '</label>');
 				        $(this).focus();
 				        erro = true;
 	        		};
@@ -424,6 +481,18 @@ $("#btn_rejeitar").off('click');
 $("#btn_rejeitar").on('click',function(){
 	atualizaStatus(matricula, "rejeitado", "false", $("#motivoRejeicao").val(), mandaEmail);
 	sessionStorage.sair = "true";
+});
+$("#incluirDependente").off('click');
+$("#incluirDependente").on('click',function(){
+	var indexNew = 0;
+	$(".dependentereg").each(function( index ) {
+		if ($(this).hasClass("hide")){
+			
+		}else{
+			indexNew = index;	
+		}
+	});
+	incluirDependente(indexNew + 1, matricula);
 });
 
 $("#enderecoCep").off('change');
@@ -601,14 +670,6 @@ function setupFuntions(matricula){
 			$('#div_' + id + "Tex").addClass("hide");
 			$('#' + id + "Tex").val("");
 		};
-	});
-	$("#incluirDependente").off('click');
-	$("#incluirDependente").on('click',function(){
-		var indexNew = 0;
-		$(".dependentereg").each(function( index ) {
-			indexNew = index;
-		});
-		incluirDependente(indexNew + 1, matricula);
 	});
 
 	$(".fieldInput").off('change');

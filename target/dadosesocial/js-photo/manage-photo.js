@@ -21,6 +21,7 @@ function carregaPhoto (label, labelId){
     	$(".exclui" + labelId).remove();
         $("#files-" + labelId).removeClass("temBotao");
     	$("#" + labelId).val("");
+		$('#dadosesocial').bootstrapValidator('revalidateField', $('#files-' + labelId));
     	sessionStorage.logout = "true";
     });
 
@@ -83,6 +84,7 @@ function montaPhoto (app, assunto, fotosDiv, id, id2, label){
 	    	$("#" + labelId).val("");
 	    	sessionStorage.logout = "true";
     		$("#files-" + labelId).removeClass("temBotao");
+    		$('#dadosesocial').bootstrapValidator('revalidateField', $('#files-' + labelId));
 	    });
         $.each(data.files, function (index, file) {
             var node = $('<p/>')
@@ -91,6 +93,7 @@ function montaPhoto (app, assunto, fotosDiv, id, id2, label){
            	$("#" + labelId).val(id + "_" + id2 + "_" + labelId + "_" + file.name);
 	        $('#img-' + labelId).remove();
         });
+		$('#dadosesocial').bootstrapValidator('revalidateField', $('#files-' + labelId));
     }).on('fileuploadprocessalways', function (e, data) {
         var index = data.index,
             file = data.files[index],

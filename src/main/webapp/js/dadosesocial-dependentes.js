@@ -374,6 +374,7 @@ function incluirDependente(index, matricula){
 */
 	$("#dependente" + index).removeClass("hide");
 	$("#div_dependenteNome" + index).removeClass("hide");
+	$("#cancelarInclusao" + index).removeClass("hide");
 	
 	setupFuntions(matricula);
 }

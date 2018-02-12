@@ -14,9 +14,9 @@ public class SendEmailHtml {
 		try {
 			email.setHostName("smtp.gmail.com");
 			email.setSmtpPort(587);
-			email.setAuthenticator(new DefaultAuthenticator("noreplay@populisrh.com", "gafe#4169"));
+			email.setAuthenticator(new DefaultAuthenticator("esocial.emae@gmail.com", "Emae5312"));
 			email.setStartTLSEnabled(true);
-			email.setFrom("grenne@populisrh.com");
+			email.setFrom("esocial.emae@gmail.com");
 			email.setSubject(subject);
 			email.setHtmlMsg(html);
 			email.addTo(to);

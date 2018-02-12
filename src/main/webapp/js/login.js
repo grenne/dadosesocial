@@ -72,6 +72,13 @@ sessionStorage.logout = "false";
 //										var token = criaToken(usuario);
 //										$(window.document.location).attr('href','muda-senha.html?' + token);
 //									}else{
+									if (data.documento.statusFun == "atualizado"){
+										var validator = $("#login-form").validate();
+										 /* Build up errors object, name of input and error message: */
+								        errors = { usuario: "Seus dados estão em análise pelo RH." };
+								        /* Show errors on the form */
+								        validator.showErrors(errors); 
+									}else{
 										if (data.documento.statusFun == "finalizado"){
 											var validator = $("#login-form").validate();
 											 /* Build up errors object, name of input and error message: */
@@ -93,7 +100,7 @@ sessionStorage.logout = "false";
 										        /* Show errors on the form */
 										        validator.showErrors(errors); 
 											}
-//										}
+										}
 									}
 								}
 							}else{

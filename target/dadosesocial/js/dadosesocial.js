@@ -1104,6 +1104,7 @@ $('#dadosesocial')
 $("#btn_enviar").off('click');
 $("#btn_enviar").on('click',function(){
 	sessionStorage.logout = "false"
+	revalidadeAnexos();
 	$('#dadosesocial').bootstrapValidator('validate');
 });
 
@@ -1176,6 +1177,7 @@ $("#enderecoCep").on('change',function(){
 			mostraOri("enderecoUf");
 			mostraOri("enderecoLogradouro");
 			mostraOri("tipoLogradouro");
+			revalidadeAnexos();
 		}
 	})
 	.fail(function(data) {
@@ -1268,10 +1270,11 @@ function setupFuntions(matricula){
 		maxDate: $.now(),
 		onSelect : function(selectedDate) {
 	    	var name =  $(this).attr("name"); 
+			mostraOri($(this).attr('name'));
 			if (name.slice(0, 10) != "dependente" ){
 				$(this).closest('form').bootstrapValidator('revalidateField', $(this).prop('name'));
 			};
-			mostraOri($(this).attr('name'));
+			revalidateAnexos();
 		}
 	});
 	
@@ -1288,6 +1291,7 @@ function setupFuntions(matricula){
 				$(this).closest('form').bootstrapValidator('revalidateField', $(this).prop('name'));
 			};
 			mostraOri($(this).attr('name'));
+			revalidateAnexos();
 		}
 	});	
 	
@@ -1327,6 +1331,7 @@ function setupFuntions(matricula){
 		}else{
 			mostraOri($(this).attr('name'));
 		};
+		revalidadeAnexos();
 	});
 
 	$("select").off('hidden.bs.select');
@@ -1334,11 +1339,13 @@ function setupFuntions(matricula){
 		var id = $(this).attr('name');
 		$($("#" + id)).selectpicker('render');
 		mostraOri($(this).attr('name'));
+		revalidadeAnexos();
 	});
 	
 	$("textarea").off('change');
 	$("textarea").on('change',function(){
 		mostraOri($(this).attr('name'));
+		revalidadeAnexos();
 	});
 	if (sessionStorage.user == "rh"){
 		if (alteraDados){
@@ -1383,4 +1390,32 @@ function setupFuntions(matricula){
 		}
 		return result;
 	};
+	
+	function revalidadeAnexos(){
+		$('#dadosesocial').bootstrapValidator('revalidateField', $('#files-anexo01'));
+		$('#dadosesocial').bootstrapValidator('revalidateField', $('#files-anexo02'));
+		$('#dadosesocial').bootstrapValidator('revalidateField', $('#files-anexo03'));
+		$('#dadosesocial').bootstrapValidator('revalidateField', $('#files-anexo04'));
+		$('#dadosesocial').bootstrapValidator('revalidateField', $('#files-anexo05'));
+		$('#dadosesocial').bootstrapValidator('revalidateField', $('#files-anexo06'));
+		$('#dadosesocial').bootstrapValidator('revalidateField', $('#files-anexo07'));
+		$('#dadosesocial').bootstrapValidator('revalidateField', $('#files-anexo08'));
+		$('#dadosesocial').bootstrapValidator('revalidateField', $('#files-dependenteAnexoCPF0'));
+		$('#dadosesocial').bootstrapValidator('revalidateField', $('#files-dependenteAnexoCPF1'));
+		$('#dadosesocial').bootstrapValidator('revalidateField', $('#files-dependenteAnexoCPF2'));
+		$('#dadosesocial').bootstrapValidator('revalidateField', $('#files-dependenteAnexoCPF3'));
+		$('#dadosesocial').bootstrapValidator('revalidateField', $('#files-dependenteAnexoCPF4'));
+		$('#dadosesocial').bootstrapValidator('revalidateField', $('#files-dependenteAnexoCPF5'));
+		$('#dadosesocial').bootstrapValidator('revalidateField', $('#files-dependenteAnexoCPF6'));
+		$('#dadosesocial').bootstrapValidator('revalidateField', $('#files-dependenteAnexoCPF7'));
+		$('#dadosesocial').bootstrapValidator('revalidateField', $('#files-dependenteAnexoVinculo0'));
+		$('#dadosesocial').bootstrapValidator('revalidateField', $('#files-dependenteAnexoVinculo1'));
+		$('#dadosesocial').bootstrapValidator('revalidateField', $('#files-dependenteAnexoVinculo2'));
+		$('#dadosesocial').bootstrapValidator('revalidateField', $('#files-dependenteAnexoVinculo3'));
+		$('#dadosesocial').bootstrapValidator('revalidateField', $('#files-dependenteAnexoVinculo4'));
+		$('#dadosesocial').bootstrapValidator('revalidateField', $('#files-dependenteAnexoVinculo5'));
+		$('#dadosesocial').bootstrapValidator('revalidateField', $('#files-dependenteAnexoVinculo6'));
+		$('#dadosesocial').bootstrapValidator('revalidateField', $('#files-dependenteAnexoVinculo7'));
+				
+	}
 	

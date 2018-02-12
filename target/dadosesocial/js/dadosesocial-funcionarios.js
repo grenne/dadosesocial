@@ -266,6 +266,8 @@ function montaTela (data, dataOri){
 	    	};
 		};
 	});
+	revalidadeAnexos();
+	$('#dadosesocial').bootstrapValidator('validate');
 	
 };
 	

@@ -266,7 +266,8 @@ function montaTela (data, dataOri){
 	    	};
 		};
 	});
-	revalidadeAnexos();
+	sessionStorage.logout = "true";
+	revalidateAnexos();
 	$('#dadosesocial').bootstrapValidator('validate');
 	
 };

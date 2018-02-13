@@ -112,6 +112,41 @@ function limpaData(campo){
 	};
 	return campoNovo;
 }
+function atualizaStatusFinalizado(matricula, status) {
+	
+	var objJson = {
+			collection : "funcionarios",
+			keys : 
+				[
+				{
+					key : "documento.matricula",
+					value : matricula
+				} 
+				],
+			update : 
+				[
+					{
+						field : "statusFun",
+						value : status
+					} 
+					]
+		};
+	$.ajax({
+		type : "POST",
+		url : window.location.origin + "/dadosesocial/rest/crud/atualizar",
+		contentType : "application/json; charset=utf-8",
+		dataType : 'json',
+		data : JSON.stringify(objJson),
+		async : false
+
+	}).done(function(data) {
+		console.log("done : " + data);
+	}).fail(function(data) {
+		console.log("fail: " + data);
+	}).always(function(data) {
+		console.log("always: " + data);
+	});
+};
 
 function atualizaStatus(matricula, status, naoApaga, motivo, mandaEmail) {
 	var objJson = {
@@ -347,4 +382,26 @@ function crudAtualizaDoc(data, collection, keyNmame, keyValue){
         data : JSON.stringify(objJsonAtu),
 		async : "false"
     });
+}
+function TestaCPF(strCPF) {
+	
+	strCPF = strCPF.replace(".","").replace(".","").replace(".","").replace(".","").replace(".","").replace("-","");
+    var Soma;
+    var Resto;
+    Soma = 0;
+	if (strCPF == "00000000000") return false;
+    
+	for (i=1; i<=9; i++) Soma = Soma + parseInt(strCPF.substring(i-1, i)) * (11 - i);
+	Resto = (Soma * 10) % 11;
+	
+    if ((Resto == 10) || (Resto == 11))  Resto = 0;
+    if (Resto != parseInt(strCPF.substring(9, 10)) ) return false;
+	
+	Soma = 0;
+    for (i = 1; i <= 10; i++) Soma = Soma + parseInt(strCPF.substring(i-1, i)) * (12 - i);
+    Resto = (Soma * 10) % 11;
+	
+    if ((Resto == 10) || (Resto == 11))  Resto = 0;
+    if (Resto != parseInt(strCPF.substring(10, 11) ) ) return false;
+    return true;
 }

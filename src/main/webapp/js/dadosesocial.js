@@ -1241,7 +1241,7 @@ $("#btn_cancelar").on('click',function(){
 });
 $("#btn_finalizar").off('click');
 $("#btn_finalizar").on('click',function(){
-	atualizaStatus(matricula, "finalizado", "false", $("#motivoRejeicao").val());
+	atualizaStatusFinalizado(matricula, "finalizado");
 	sessionStorage.sair = "true";
 	$(window.document.location).attr('href','lista-funcionarios.html');
 });

@@ -273,56 +273,176 @@ $('#dadosesocial')
 			validators : {
 				notEmpty : {
 					message : 'Informar CPF dependente'
-				}
+				},
+	            callback: {
+	                message: 'The password is not valid',
+	                callback: function(value, validator, $field) {
+	                    if (TestaCPF($('#dependenteCpf0').val())){
+	                        return {
+	                            valid: true,
+	                        }                        	
+	                    }else{
+	                        return {
+	                            valid: false,
+	                            message: 'CPF inválido'
+	                        }
+	                    }
+	                }
+	            }   
 			}
         },
         dependenteCpf1 : {
 			validators : {
 				notEmpty : {
 					message : 'Informar CPF dependente'
-				}
+				},
+	            callback: {
+	                message: 'The password is not valid',
+	                callback: function(value, validator, $field) {
+	                    if (TestaCPF($('#dependenteCpf1').val())){
+	                        return {
+	                            valid: true,
+	                        }                        	
+	                    }else{
+	                        return {
+	                            valid: false,
+	                            message: 'CPF inválido'
+	                        }
+	                    }
+	                }
+	            }   
 			}
         },
         dependenteCpf2 : {
 			validators : {
 				notEmpty : {
 					message : 'Informar CPF dependente'
-				}
+				},
+	            callback: {
+	                message: 'The password is not valid',
+	                callback: function(value, validator, $field) {
+	                    if (TestaCPF($('#dependenteCpf2').val())){
+	                        return {
+	                            valid: true,
+	                        }                        	
+	                    }else{
+	                        return {
+	                            valid: false,
+	                            message: 'CPF inválido'
+	                        }
+	                    }
+	                }
+	            }   
 			}
         },
         dependenteCpf3 : {
 			validators : {
 				notEmpty : {
 					message : 'Informar CPF dependente'
-				}
+				},
+	            callback: {
+	                message: 'The password is not valid',
+	                callback: function(value, validator, $field) {
+	                    if (TestaCPF($('#dependenteCpf3').val())){
+	                        return {
+	                            valid: true,
+	                        }                        	
+	                    }else{
+	                        return {
+	                            valid: false,
+	                            message: 'CPF inválido'
+	                        }
+	                    }
+	                }
+	            }   
 			}
         },
         dependenteCpf4 : {
 			validators : {
 				notEmpty : {
 					message : 'Informar CPF dependente'
-				}
+				},
+	            callback: {
+	                message: 'The password is not valid',
+	                callback: function(value, validator, $field) {
+	                    if (TestaCPF($('#dependenteCpf4').val())){
+	                        return {
+	                            valid: true,
+	                        }                        	
+	                    }else{
+	                        return {
+	                            valid: false,
+	                            message: 'CPF inválido'
+	                        }
+	                    }
+	                }
+	            }   
 			}
         },
         dependenteCpf5 : {
 			validators : {
 				notEmpty : {
 					message : 'Informar CPF dependente'
-				}
+				},
+	            callback: {
+	                message: 'The password is not valid',
+	                callback: function(value, validator, $field) {
+	                    if (TestaCPF($('#dependenteCpf5').val())){
+	                        return {
+	                            valid: true,
+	                        }                        	
+	                    }else{
+	                        return {
+	                            valid: false,
+	                            message: 'CPF inválido'
+	                        }
+	                    }
+	                }
+	            }   
 			}
         },
         dependenteCpf6 : {
 			validators : {
 				notEmpty : {
 					message : 'Informar CPF dependente'
-				}
+				},
+	            callback: {
+	                message: 'The password is not valid',
+	                callback: function(value, validator, $field) {
+	                    if (TestaCPF($('#dependenteCpf6').val())){
+	                        return {
+	                            valid: true,
+	                        }                        	
+	                    }else{
+	                        return {
+	                            valid: false,
+	                            message: 'CPF inválido'
+	                        }
+	                    }
+	                }
+	            }   
 			}
         },
         dependenteCpf7 : {
 			validators : {
 				notEmpty : {
 					message : 'Informar CPF dependente'
-				}
+				},
+	            callback: {
+	                message: 'The password is not valid',
+	                callback: function(value, validator, $field) {
+	                    if (TestaCPF($('#dependenteCpf7').val())){
+	                        return {
+	                            valid: true,
+	                        }                        	
+	                    }else{
+	                        return {
+	                            valid: false,
+	                            message: 'CPF inválido'
+	                        }
+	                    }
+	                }
+	            }   
 			}
         },
         dependenteNome0 : {
@@ -1104,7 +1224,7 @@ $('#dadosesocial')
 $("#btn_enviar").off('click');
 $("#btn_enviar").on('click',function(){
 	sessionStorage.logout = "false"
-	revalidadeAnexos();
+	revalidateAnexos();
 	$('#dadosesocial').bootstrapValidator('validate');
 });
 
@@ -1121,7 +1241,7 @@ $("#btn_cancelar").on('click',function(){
 });
 $("#btn_finalizar").off('click');
 $("#btn_finalizar").on('click',function(){
-	atualizaStatus(matricula, "finalizado", "false", $("#motivoRejeicao").val());
+	atualizaStatusFinalizado(matricula, "finalizado");
 	sessionStorage.sair = "true";
 	$(window.document.location).attr('href','lista-funcionarios.html');
 });
@@ -1141,6 +1261,10 @@ $("#incluirDependente").on('click',function(){
 		}
 	});
 	incluirDependente(indexNew + 1, matricula);
+});
+$(".cancelarInclusao").off('click');
+$(".cancelarInclusao").on('click',function(){
+	$("#dependente" + $(this).attr('data-index')).addClass("hide");
 });
 
 $("#enderecoCep").off('change');
@@ -1177,7 +1301,7 @@ $("#enderecoCep").on('change',function(){
 			mostraOri("enderecoUf");
 			mostraOri("enderecoLogradouro");
 			mostraOri("tipoLogradouro");
-			revalidadeAnexos();
+			revalidateAnexos();
 		}
 	})
 	.fail(function(data) {
@@ -1198,7 +1322,6 @@ function testaAnexo(origem){
 	if (origem){
 		var origens = origem.split(",");
 		for (var i = 0; i < origens.length; i++) {
-			console.log ("data-change-" + $("#" + origens[i]).attr("data-change"));
 			if ($("#" + origens[i]).attr("data-change") == "true"){
 				
 				result = true;
@@ -1331,7 +1454,7 @@ function setupFuntions(matricula){
 		}else{
 			mostraOri($(this).attr('name'));
 		};
-		revalidadeAnexos();
+		revalidateAnexos();
 	});
 
 	$("select").off('hidden.bs.select');
@@ -1339,13 +1462,13 @@ function setupFuntions(matricula){
 		var id = $(this).attr('name');
 		$($("#" + id)).selectpicker('render');
 		mostraOri($(this).attr('name'));
-		revalidadeAnexos();
+		revalidateAnexos();
 	});
 	
 	$("textarea").off('change');
 	$("textarea").on('change',function(){
 		mostraOri($(this).attr('name'));
-		revalidadeAnexos();
+		revalidateAnexos();
 	});
 	if (sessionStorage.user == "rh"){
 		if (alteraDados){
@@ -1391,7 +1514,7 @@ function setupFuntions(matricula){
 		return result;
 	};
 	
-	function revalidadeAnexos(){
+	function revalidateAnexos(){
 		$('#dadosesocial').bootstrapValidator('revalidateField', $('#files-anexo01'));
 		$('#dadosesocial').bootstrapValidator('revalidateField', $('#files-anexo02'));
 		$('#dadosesocial').bootstrapValidator('revalidateField', $('#files-anexo03'));

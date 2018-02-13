@@ -112,6 +112,41 @@ function limpaData(campo){
 	};
 	return campoNovo;
 }
+function atualizaStatusFinalizado(matricula, status) {
+	
+	var objJson = {
+			collection : "funcionarios",
+			keys : 
+				[
+				{
+					key : "documento.matricula",
+					value : matricula
+				} 
+				],
+			update : 
+				[
+					{
+						field : "statusFun",
+						value : status
+					} 
+					]
+		};
+	$.ajax({
+		type : "POST",
+		url : window.location.origin + "/dadosesocial/rest/crud/atualizar",
+		contentType : "application/json; charset=utf-8",
+		dataType : 'json',
+		data : JSON.stringify(objJson),
+		async : false
+
+	}).done(function(data) {
+		console.log("done : " + data);
+	}).fail(function(data) {
+		console.log("fail: " + data);
+	}).always(function(data) {
+		console.log("always: " + data);
+	});
+};
 
 function atualizaStatus(matricula, status, naoApaga, motivo, mandaEmail) {
 	var objJson = {

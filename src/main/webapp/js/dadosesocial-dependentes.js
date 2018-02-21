@@ -403,9 +403,11 @@ function atualizaDependente(index, matricula){
 	})        	
 	.done(function( data ) {
 		if (data){
+			console.log("atualizou dependente:" + $("#dependenteNomeHtml" + index).html());
 			atualizaDependenteDB(data, matricula, index);
 		}else{
 			if ($("#dependenteNome" + index).val()){
+				console.log("atualizou dependente:" + $("#dependenteNome" + index).val());
 				incluiDependenteDB(matricula, index);
 			};
 		}

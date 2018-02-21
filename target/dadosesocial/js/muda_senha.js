@@ -22,14 +22,36 @@ if (parametrosDaUrl){
 		token = parametrosDaUrl;
 	};
 };
+var objJson = {
+		collection : "token",
+		keys : [
+			{
+				key : "documento.token",
+				value : token
+			} 
+			]
+	};
 
-var data = acessaToken(token);
-if (data){
-	
-}else{
-//	alert ("Problemas no seu login, se logue novamente");
-//	$(window.document.location).attr('href','login.html');
-}
+sessionStorage.matricula = "";
+$.ajax({
+	type: "POST",
+    url: window.location.origin + "/dadosesocial/rest/crud/obter",
+    contentType: "application/json; charset=utf-8",
+    dataType: 'json',
+    data : JSON.stringify(objJson),
+	async : "false"
+})        	
+.done(function( data) {
+	if (data){
+		sessionStorage.matricula = data.documento.matricula;				
+		sessionStorage.user = data.documento.perfil;
+		sessionStorage.login = data.documento.matricula;
+	}
+})
+.fail(function(data) {
+})
+.always(function(data) {
+});		
 
 // Validation
 $(function() {
@@ -71,10 +93,12 @@ $(function() {
 					senha = field.value; 
 				}
 			});
-			data.documnto.senha = senha;
-			crudAtualizaDoc(data, "funcionarios", "documento.matricula", data.documento.matricula);
-			sessionStorage.user = data.documento.perfil;
-			sessionStorage.login = data.documento.matricula;
+			if (sessionStorage.matricual = ""){
+				alert ("token inválido, faça o login novamente");
+				$(window.document.location).attr('href','login.html');	
+			};
+			crudAtualizaDoc("senha", senha, "funcionarios", "documento.matricula", sessionStorage.matricula);
+			crudAtualizaDoc("mudarSenha", "", "funcionarios", "documento.matricula", sessionStorage.matricula);
 			$(window.document.location).attr('href','index.html');
 		},
 

@@ -2,7 +2,6 @@
  * 
  */
 
-
 function atualizaCollection(collection, matricula){
 	
 	$("select").each(function( index ) {
@@ -97,7 +96,8 @@ function atualizaCollection(collection, matricula){
 		}else{
 			alert("Alteração enviada ao RH para validação");
 			sessionStorage.logout = "true"
-			$(window.document.location).attr('href','login.html');
+			setTimeout(function(){$(window.document.location).attr('href','login.html');}, 1000);
+			
 		};	
 	})
 	.fail(function(data) {

@@ -270,6 +270,12 @@ function mostraOri(id, type){
 	};
 }
 
+function removeOri(id, type){
+	$("#" + id).attr("data-change", "false");
+	$("#oriLabel_" + id).remove();
+	$("#div_" + id).removeClass( "original" )
+}
+
 function criaToken (matricula){
 	var date = new Date();
 	var time = date.getTime() +  matricula;
@@ -360,7 +366,7 @@ function crudIncluir(data){
     });
 };
 
-function crudAtualizaDoc(data, collection, keyNmame, keyValue){
+function crudAtualizaDoc(updateField, updateValue, collection, keyName, keyValue){
 	var objJsonAtu = {
 			collection : collection,
 			keys : [ 
@@ -370,8 +376,8 @@ function crudAtualizaDoc(data, collection, keyNmame, keyValue){
 				} 
 				],
 			update : [ {
-				field : "documento",
-				value : data.documento
+				field : updateField,
+				value : updateValue
 			} ]
 		};
 	return $.ajax({

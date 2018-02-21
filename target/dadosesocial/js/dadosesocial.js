@@ -156,6 +156,13 @@ $('#dadosesocial')
 				}
 			}
         },
+        dataEstadoCivil : {
+			validators : {
+				notEmpty : {
+					message : 'Informar data de inicio do estado civl'
+				}
+			}
+        },
 		nascimentoUf : {
 			validators : {
 				notEmpty : {
@@ -1131,7 +1138,7 @@ $('#dadosesocial')
                 callback: {
                     message: 'The password is not valid',
                     callback: function(value, validator, $field) {
-                		if ($("#anexo01").val() == ""){
+                		if ($("#dependenteAnexoVinculo6").val() == ""){
         	        		if (testaAnexo($("#dependenteAnexoVinculo6").attr("data-origem"))){
                                 return {
                                     valid: false,
@@ -1156,7 +1163,7 @@ $('#dadosesocial')
                 callback: {
                     message: 'The password is not valid',
                     callback: function(value, validator, $field) {
-                		if ($("#anexo01").val() == ""){
+                		if ($("#dependenteAnexoVinculo7").val() == ""){
         	        		if (testaAnexo($("#dependenteAnexoVinculo7").attr("data-origem"))){
                                 return {
                                     valid: false,
@@ -1220,7 +1227,9 @@ $('#dadosesocial')
 	    	};
     	};
     });
-
+$("#dadosesocial").submit(function(ev){
+	ev.preventDefault();
+	});
 $("#btn_enviar").off('click');
 $("#btn_enviar").on('click',function(){
 	sessionStorage.logout = "false"
@@ -1265,6 +1274,28 @@ $("#incluirDependente").on('click',function(){
 $(".cancelarInclusao").off('click');
 $(".cancelarInclusao").on('click',function(){
 	$("#dependente" + $(this).attr('data-index')).addClass("hide");
+	$("#dependenteNome" + $(this).attr('data-index')).val("");
+	removeOri("dependenteNome"  + $(this).attr('data-index'));
+	$("#dependenteCpf" + $(this).attr('data-index')).val("");
+	removeOri("dependenteCpf"  + $(this).attr('data-index'));
+	$("#dependenteNascimento" + $(this).attr('data-index')).val("");
+	removeOri("dependenteNascimento"  + $(this).attr('data-index'));
+	$("#dependenteParentesco" + $(this).attr('data-index')).selectpicker('val', "");
+	removeOri("dependenteParentesco"  + $(this).attr('data-index'));
+	$("#dependenteIr" + $(this).attr('data-index')).prop('checked', false);
+	removeOri("dependenteIr"  + $(this).attr('data-index'));
+	$("#dependenteSf" + $(this).attr('data-index')).prop('checked', false);
+	removeOri("dependenteSf"  + $(this).attr('data-index'));
+	$("#dependenteEst" + $(this).attr('data-index')).prop('checked', false);
+	removeOri("dependenteEst"  + $(this).attr('data-index'));
+	$("#dependenteDef" + $(this).attr('data-index')).prop('checked', false);
+	removeOri("dependenteDef"  + $(this).attr('data-index'));
+	$("#upload-img-dependenteAnexoCPF" + $(this).attr('data-index')).val("");
+	$("#dependenteAnexoCPF" + $(this).attr('data-index')).val("");
+	$("#files-dependenteAnexoCPF" + $(this).attr('data-index')).html("");
+	$("#upload-img-dependenteAnexoVinculo" + $(this).attr('data-index')).val("");
+	$("#dependenteAnexoVinculo" + $(this).attr('data-index')).val("");
+	$("#files-dependenteAnexoVinculo" + $(this).attr('data-index')).html("");
 });
 
 $("#enderecoCep").off('change');

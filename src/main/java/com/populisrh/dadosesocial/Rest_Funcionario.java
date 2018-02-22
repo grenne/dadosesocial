@@ -24,7 +24,6 @@ public class Rest_Funcionario {
 	Commons commons = new Commons();
 	Funcionario funcionario = new Funcionario();
  	
-
 	@Path("/enviar-email")	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
@@ -49,6 +48,35 @@ public class Rest_Funcionario {
 		};
 		
 		String result = funcionario.emailRejeicao("Reveja suas  informações", matricula, email, funcionarioGet, motivo, mongo);
+		mongo.close();
+		return "Email enviado para - " + result;
+
+	};
+ 	
+	@Path("/enviar-email-inicial")	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public String EnviarEmailInicial(@QueryParam("matricula") String matricula) {
+		
+		if (matricula == null) {
+			System.out.println("Matricula do envio do email nula ");
+			mongo.close();
+			return  null;
+		};
+		BasicDBObject email = commons_db.getCollectionDoc(matricula, "emails", "documento.matricula", mongo, false);
+		if (email == null) {
+			System.out.println("Email da matricula do enviada é inválido");
+			mongo.close();
+			return  null;
+		};
+		BasicDBObject funcionarioGet = commons_db.getCollectionDoc(matricula, "funcionarios", "documento.matricula", mongo, false);
+		if (funcionarioGet == null) {
+			System.out.println("Matricula inexistente");
+			mongo.close();
+			return  null;
+		};
+		
+		String result = funcionario.emailInicial("Reveja suas  informações", matricula, email, funcionarioGet, mongo);
 		mongo.close();
 		return "Email enviado para - " + result;
 

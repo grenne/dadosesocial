@@ -151,6 +151,7 @@ $('#dadosesocial')
         },
 		nascimentoData : {
 			validators : {
+	
 				notEmpty : {
 					message : 'Informar data de nascimento'
 				}

@@ -92,12 +92,11 @@ function atualizaCollection(collection, matricula){
 			};
 		});
 		if (sessionStorage.user == "rh") {
-			$(window.document.location).attr('href','lista-funcionarios.html');
+			setTimeout(function(){$(window.document.location).attr('href','lista-funcionarios.html');}, 1000);
 		}else{
 			alert("Alteração enviada ao RH para validação");
 			sessionStorage.logout = "true"
 			setTimeout(function(){$(window.document.location).attr('href','login.html');}, 1000);
-			
 		};	
 	})
 	.fail(function(data) {

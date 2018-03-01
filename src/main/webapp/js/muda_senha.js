@@ -99,7 +99,7 @@ $(function() {
 			};
 			crudAtualizaDoc("senha", senha, "funcionarios", "documento.matricula", sessionStorage.matricula);
 			crudAtualizaDoc("mudarSenha", "", "funcionarios", "documento.matricula", sessionStorage.matricula);
-			$(window.document.location).attr('href','index.html');
+			setTimeout(function(){$(window.document.location).attr('href','index.html');}, 1000);
 		},
 
 		// Do not change code below

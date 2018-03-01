@@ -85,6 +85,10 @@ function montaPhoto (app, assunto, fotosDiv, id, id2, label){
 	    	sessionStorage.logout = "true";
     		$("#files-" + labelId).removeClass("temBotao");
     		$('#dadosesocial').bootstrapValidator('revalidateField', $('#files-' + labelId));
+            $('#progress-' + labelId + ' .progress-bar').css(
+                    'width',
+                    0 + '%'
+                );
 	    });
         $.each(data.files, function (index, file) {
             var node = $('<p/>')

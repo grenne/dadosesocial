@@ -72,33 +72,39 @@ sessionStorage.logout = "false";
 										var token = criaToken(usuario);
 										$(window.document.location).attr('href','muda-senha.html?' + token);
 									}else{
-										if (data.documento.statusFun == "atualizado"){
-											var validator = $("#login-form").validate();
-											 /* Build up errors object, name of input and error message: */
-									        errors = { usuario: "Seus dados estão em análise pelo RH." };
-									        /* Show errors on the form */
-									        validator.showErrors(errors); 
+										if (data.documento.perfil == "rh"){
+											sessionStorage.user = data.documento.perfil;
+											sessionStorage.login = usuario;
+											$(window.document.location).attr('href','lista-funcionarios.html');
 										}else{
-											if (data.documento.statusFun == "finalizado"){
+											if (data.documento.statusFun == "atualizado"){
 												var validator = $("#login-form").validate();
 												 /* Build up errors object, name of input and error message: */
-										        errors = { usuario: "Seus dados já foram aceitos pelo RH, obrigado." };
+										        errors = { usuario: "Seus dados estão em análise pelo RH." };
 										        /* Show errors on the form */
 										        validator.showErrors(errors); 
 											}else{
-												if (data.documento.perfil){
-													sessionStorage.user = data.documento.perfil;
-													sessionStorage.login = usuario;
-													$(window.document.location).attr('href','index.html');
-												}else{
+												if (data.documento.statusFun == "finalizado"){
 													var validator = $("#login-form").validate();
 													 /* Build up errors object, name of input and error message: */
-											        errors = { password: "Usuario ou senha inválidos" };
+											        errors = { usuario: "Seus dados já foram aceitos pelo RH, obrigado." };
 											        /* Show errors on the form */
 											        validator.showErrors(errors); 
-											        errors = { usuario: "Usuario ou senha inválidos" };
-											        /* Show errors on the form */
-											        validator.showErrors(errors); 
+												}else{
+													if (data.documento.perfil){
+														sessionStorage.user = data.documento.perfil;
+														sessionStorage.login = usuario;
+														$(window.document.location).attr('href','index.html');
+													}else{
+														var validator = $("#login-form").validate();
+														 /* Build up errors object, name of input and error message: */
+												        errors = { password: "Usuario ou senha inválidos" };
+												        /* Show errors on the form */
+												        validator.showErrors(errors); 
+												        errors = { usuario: "Usuario ou senha inválidos" };
+												        /* Show errors on the form */
+												        validator.showErrors(errors); 
+													}
 												}
 											}
 										}

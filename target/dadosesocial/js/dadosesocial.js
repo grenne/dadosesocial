@@ -151,6 +151,7 @@ $('#dadosesocial')
         },
 		nascimentoData : {
 			validators : {
+	
 				notEmpty : {
 					message : 'Informar data de nascimento'
 				}
@@ -985,31 +986,18 @@ $('#dadosesocial')
 	    },
 	    dependenteAnexoVinculo0 : {
 			validators : {
-                callback: {
-                    message: 'The password is not valid',
-                    callback: function(value, validator, $field) {
-                		if ($("#dependenteAnexoVinculo0").val() == ""){
-        	        		if (testaAnexo($("#dependenteAnexoVinculo0").attr("data-origem"))){
-                                return {
-                                    valid: false,
-                                    message: 'Anexar um comprovante do parentesco informado'
-                                }
-        	        		}else{
-                                return {
-                                    valid: true,
-                                }                        	        	        			
-        	        		}
-                		}else{
-                            return {
-                                valid: true,
-                            }                        	                			
-                		}
-                    }
-                }   
+				notEmpty : {
+					message : 'Anexar comprovante de vínculo'
+				}
 			}
 	    },
 	    dependenteAnexoVinculo1 : {
 			validators : {
+				notEmpty : {
+					message : 'Anexar comprovante de vínculo'
+				}
+			}
+/*			validators : {
                 callback: {
                     message: 'The password is not valid',
                     callback: function(value, validator, $field) {
@@ -1032,155 +1020,47 @@ $('#dadosesocial')
                     }
                 }   
 			}
-	    },
+*/	    },
 	    dependenteAnexoVinculo2 : {
 			validators : {
-                callback: {
-                    message: 'The password is not valid',
-                    callback: function(value, validator, $field) {
-                		if ($("#dependenteAnexoVinculo2").val() == ""){
-        	        		if (testaAnexo($("#dependenteAnexoVinculo2").attr("data-origem"))){
-                                return {
-                                    valid: false,
-                                    message: 'Anexar um comprovante do parentesco informado'
-                                }
-        	        		}else{
-                                return {
-                                    valid: true,
-                                }                        	        	        			
-        	        		}
-                		}else{
-                            return {
-                                valid: true,
-                            }                        	                			
-                		}
-                    }
-                }   
+				notEmpty : {
+					message : 'Anexar comprovante de vínculo'
+				}
 			}
 	    },
 	    dependenteAnexoVinculo3 : {
 			validators : {
-                callback: {
-                    message: 'The password is not valid',
-                    callback: function(value, validator, $field) {
-                		if ($("#dependenteAnexoVinculo3").val() == ""){
-        	        		if (testaAnexo($("#dependenteAnexoVinculo3").attr("data-origem"))){
-                                return {
-                                    valid: false,
-                                    message: 'Anexar um comprovante do parentesco informado'
-                                }
-        	        		}else{
-                                return {
-                                    valid: true,
-                                }                        	        	        			
-        	        		}
-                		}else{
-                            return {
-                                valid: true,
-                            }                        	                			
-                		}
-                    }
-                }   
+				notEmpty : {
+					message : 'Anexar comprovante de vínculo'
+				}
 			}
 	    },
 	    dependenteAnexoVinculo4 : {
 			validators : {
-                callback: {
-                    message: 'The password is not valid',
-                    callback: function(value, validator, $field) {
-                		if ($("#dependenteAnexoVinculo4").val() == ""){
-        	        		if (testaAnexo($("#dependenteAnexoVinculo4").attr("data-origem"))){
-                                return {
-                                    valid: false,
-                                    message: 'Anexar um comprovante do parentesco informado'
-                                }
-        	        		}else{
-                                return {
-                                    valid: true,
-                                }                        	        	        			
-        	        		}
-                		}else{
-                            return {
-                                valid: true,
-                            }                        	                			
-                		}
-                    }
-                }   
+				notEmpty : {
+					message : 'Anexar comprovante de vínculo'
+				}
 			}
 	    },
 	    dependenteAnexoVinculo5 : {
 			validators : {
-                callback: {
-                    message: 'The password is not valid',
-                    callback: function(value, validator, $field) {
-                		if ($("#dependenteAnexoVinculo5").val() == ""){
-        	        		if (testaAnexo($("#dependenteAnexoVinculo5").attr("data-origem"))){
-                                return {
-                                    valid: false,
-                                    message: 'Anexar um comprovante do parentesco informado'
-                                }
-        	        		}else{
-                                return {
-                                    valid: true,
-                                }                        	        	        			
-        	        		}
-                		}else{
-                            return {
-                                valid: true,
-                            }                        	                			
-                		}
-                    }
-                }   
+				notEmpty : {
+					message : 'Anexar comprovante de vínculo'
+				}
 			}
 	    },
 	    dependenteAnexoVinculo6 : {
 			validators : {
-                callback: {
-                    message: 'The password is not valid',
-                    callback: function(value, validator, $field) {
-                		if ($("#dependenteAnexoVinculo6").val() == ""){
-        	        		if (testaAnexo($("#dependenteAnexoVinculo6").attr("data-origem"))){
-                                return {
-                                    valid: false,
-                                    message: 'Anexar um comprovante do parentesco informado'
-                                }
-        	        		}else{
-                                return {
-                                    valid: true,
-                                }                        	        	        			
-        	        		}
-                		}else{
-                            return {
-                                valid: true,
-                            }                        	                			
-                		}
-                    }
-                }   
+				notEmpty : {
+					message : 'Anexar comprovante de vínculo'
+				}
 			}
 	    },
 	    dependenteAnexoVinculo7 : {
 			validators : {
-                callback: {
-                    message: 'The password is not valid',
-                    callback: function(value, validator, $field) {
-                		if ($("#dependenteAnexoVinculo7").val() == ""){
-        	        		if (testaAnexo($("#dependenteAnexoVinculo7").attr("data-origem"))){
-                                return {
-                                    valid: false,
-                                    message: 'Anexar um comprovante do parentesco informado'
-                                }
-        	        		}else{
-                                return {
-                                    valid: true,
-                                }                        	        	        			
-        	        		}
-                		}else{
-                            return {
-                                valid: true,
-                            }                        	                			
-                		}
-                    }
-                }   
+				notEmpty : {
+					message : 'Anexar comprovante de vínculo'
+				}
 			}
 	    }
     }
@@ -1296,6 +1176,14 @@ $(".cancelarInclusao").on('click',function(){
 	$("#upload-img-dependenteAnexoVinculo" + $(this).attr('data-index')).val("");
 	$("#dependenteAnexoVinculo" + $(this).attr('data-index')).val("");
 	$("#files-dependenteAnexoVinculo" + $(this).attr('data-index')).html("");
+    $('#progress-dependenteAnexoVinculo' + $(this).attr('data-index') + ' .progress-bar').css(
+            'width',
+            0 + '%'
+        );
+    $('#progress-dependenteAnexoCPF' + $(this).attr('data-index') + ' .progress-bar').css(
+            'width',
+            0 + '%'
+        );
 });
 
 $("#enderecoCep").off('change');
@@ -1398,9 +1286,11 @@ function setaDadosHide(collection){
 //			$("#incluirDependente").hide();
 //			$("#btn_enviar").hide();
 			$("#btn_enviar").html("Salvar");
-			$("#btn_finalizar").removeClass("hide");
 			$("#btn_rejeitar").removeClass("hide");
 			$("#div_motivoRejeicao").removeClass("hide");		
+			if (collection.documento.statusFun != "rejeitado"){
+				$("#btn_finalizar").removeClass("hide");				
+			};
 		}
 	}else{
 		$("#icone-lista").hide();

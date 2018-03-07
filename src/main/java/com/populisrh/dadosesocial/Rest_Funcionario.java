@@ -8,6 +8,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
+import org.json.simple.JSONObject;
+
 import com.mongodb.BasicDBObject;
 import com.mongodb.MongoClient;
 
@@ -79,6 +81,22 @@ public class Rest_Funcionario {
 		String result = funcionario.emailInicial("Reveja suas  informações", matricula, email, funcionarioGet, mongo);
 		mongo.close();
 		return "Email enviado para - " + result;
+
+	};
+ 	
+	@SuppressWarnings("unchecked")
+	@Path("/teste")	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public JSONObject Teste() {
+		
+		JSONObject result = new JSONObject();
+		
+		result.put("nome", "grenne");
+		result.put("nomeII", "grenneII");
+		result.put("nomeIII", "grenneIII");
+		result.put("nomeIV", "grenneIV");
+		return result;
 
 	};
 

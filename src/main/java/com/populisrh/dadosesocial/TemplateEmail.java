@@ -76,8 +76,7 @@ public class TemplateEmail {
 		email = email + "<table width=\"500\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" align=\"center\" class=\"content-wrap\">";
 		email = email + "<tr>";
 		email = email + "<td width=\"100%\" height=\"40\">";
-		email = email + "<p align=\"right\">Atenciosamente,<br /></p>";
-		email = email + "<p align=\"right\">Recursos Humanos<br /></p>";
+		email = email + "<p style=\"color:#666666;font-size:11px; align:left\">Atenciosamente,<br>Departamento de Desenvolvimento Organizacional e de Recursos Humanos<br>Diretoria Administrativa</p>";
 		email = email + "</td>";
 		email = email + "</tr>";
 		email = email + "</table>";

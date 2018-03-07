@@ -159,9 +159,21 @@ $('#dadosesocial')
         },
         dataEstadoCivil : {
 			validators : {
-				notEmpty : {
-					message : 'Informar data de inicio do estado civl'
-				}
+                callback: {
+                    message: 'The password is not valid',
+                    callback: function(value, validator, $field) {
+                		if ($("#dataEstadoCivil").val() == "" && $("#estadoCivil").val() != "0" ) {
+	                        return {
+		                            valid: false,
+		                            message: 'Informar data de início do estado civil'
+		                        }
+                		}else{
+                            return {
+                                valid: true,
+                            }                        	                			
+                		}
+                    }
+                }   
 			}
         },
 		nascimentoUf : {
@@ -986,32 +998,14 @@ $('#dadosesocial')
 	    },
 	    dependenteAnexoVinculo0 : {
 			validators : {
-				notEmpty : {
-					message : 'Anexar comprovante de vínculo'
-				}
-			}
-	    },
-	    dependenteAnexoVinculo1 : {
-			validators : {
-				notEmpty : {
-					message : 'Anexar comprovante de vínculo'
-				}
-			}
-/*			validators : {
                 callback: {
                     message: 'The password is not valid',
                     callback: function(value, validator, $field) {
-                		if ($("#dependenteAnexoVinculo1").val() == ""){
-        	        		if (testaAnexo($("#dependenteAnexoVinculo1").attr("data-origem"))){
-                                return {
-                                    valid: false,
-                                    message: 'Anexar um comprovante do parentesco informado'
-                                }
-        	        		}else{
-                                return {
-                                    valid: true,
-                                }                        	        	        			
-        	        		}
+                		if ($("#dependenteAnexoVinculo0").val() == ""){
+	                        return {
+	                            valid: false,
+	                            message: 'Anexar um comprovante do parentesco informado'
+	                        }
                 		}else{
                             return {
                                 valid: true,
@@ -1020,47 +1014,138 @@ $('#dadosesocial')
                     }
                 }   
 			}
-*/	    },
+	    },
+	    dependenteAnexoVinculo1 : {
+			validators : {
+                callback: {
+                    message: 'The password is not valid',
+                    callback: function(value, validator, $field) {
+                		if ($("#dependenteAnexoVinculo1").val() == ""){
+	                        return {
+	                            valid: false,
+	                            message: 'Anexar um comprovante do parentesco informado'
+	                        }
+                		}else{
+                            return {
+                                valid: true,
+                            }                        	                			
+                		}
+                    }
+                }   
+			}
+	    },
 	    dependenteAnexoVinculo2 : {
 			validators : {
-				notEmpty : {
-					message : 'Anexar comprovante de vínculo'
-				}
+                callback: {
+                    message: 'The password is not valid',
+                    callback: function(value, validator, $field) {
+                		if ($("#dependenteAnexoVinculo2").val() == ""){
+	                        return {
+	                            valid: false,
+	                            message: 'Anexar um comprovante do parentesco informado'
+	                        }
+                		}else{
+                            return {
+                                valid: true,
+                            }                        	                			
+                		}
+                    }
+                }   
 			}
 	    },
 	    dependenteAnexoVinculo3 : {
 			validators : {
-				notEmpty : {
-					message : 'Anexar comprovante de vínculo'
-				}
+                callback: {
+                    message: 'The password is not valid',
+                    callback: function(value, validator, $field) {
+                		if ($("#dependenteAnexoVinculo3").val() == ""){
+	                        return {
+	                            valid: false,
+	                            message: 'Anexar um comprovante do parentesco informado'
+	                        }
+                		}else{
+                            return {
+                                valid: true,
+                            }                        	                			
+                		}
+                    }
+                }   
 			}
 	    },
 	    dependenteAnexoVinculo4 : {
 			validators : {
-				notEmpty : {
-					message : 'Anexar comprovante de vínculo'
-				}
+                callback: {
+                    message: 'The password is not valid',
+                    callback: function(value, validator, $field) {
+                		if ($("#dependenteAnexoVinculo4").val() == ""){
+	                        return {
+	                            valid: false,
+	                            message: 'Anexar um comprovante do parentesco informado'
+	                        }
+                		}else{
+                            return {
+                                valid: true,
+                            }                        	                			
+                		}
+                    }
+                }   
 			}
 	    },
 	    dependenteAnexoVinculo5 : {
 			validators : {
-				notEmpty : {
-					message : 'Anexar comprovante de vínculo'
-				}
+                callback: {
+                    message: 'The password is not valid',
+                    callback: function(value, validator, $field) {
+                		if ($("#dependenteAnexoVinculo5").val() == ""){
+	                        return {
+	                            valid: false,
+	                            message: 'Anexar um comprovante do parentesco informado'
+	                        }
+                		}else{
+                            return {
+                                valid: true,
+                            }                        	                			
+                		}
+                    }
+                }   
 			}
 	    },
 	    dependenteAnexoVinculo6 : {
 			validators : {
-				notEmpty : {
-					message : 'Anexar comprovante de vínculo'
-				}
+                callback: {
+                    message: 'The password is not valid',
+                    callback: function(value, validator, $field) {
+                		if ($("#dependenteAnexoVinculo6").val() == ""){
+	                        return {
+	                            valid: false,
+	                            message: 'Anexar um comprovante do parentesco informado'
+	                        }
+                		}else{
+                            return {
+                                valid: true,
+                            }                        	                			
+                		}
+                    }
+                }   
 			}
 	    },
 	    dependenteAnexoVinculo7 : {
 			validators : {
-				notEmpty : {
-					message : 'Anexar comprovante de vínculo'
-				}
+                callback: {
+                    message: 'The password is not valid',
+                    callback: function(value, validator, $field) {
+                		if ($("#dependenteAnexoVinculo7").val() == ""){
+	                        return {
+	                            valid: false,
+	                            message: 'Anexar um comprovante do parentesco informado'
+	                        }
+                		}else{
+                            return {
+                                valid: true,
+                            }                        	                			
+                		}
+                    }
+                }   
 			}
 	    }
     }
@@ -1380,6 +1465,7 @@ function setupFuntions(matricula){
 
 	$("select").off('hidden.bs.select');
 	$("select").on('hidden.bs.select',function(){
+		$('#dadosesocial').bootstrapValidator('revalidateField', $('#dataEstadoCivil'));
 		var id = $(this).attr('name');
 		$($("#" + id)).selectpicker('render');
 		mostraOri($(this).attr('name'));

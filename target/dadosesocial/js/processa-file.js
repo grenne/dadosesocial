@@ -57,7 +57,8 @@
 		var iInt = parseInt(i);
 		var lenghtInt = parseInt(sessionStorage.lenght);
 		if (iInt > lenghtInt){
-			alert ("estourou");
+			++i;
+			sessionStorage.index = i;
 		}else{
 			var values = data[i].split(";");
 			var virgula = "";
@@ -99,5 +100,5 @@
 				window.clearInterval(i);
 			};
 		};
-	}	, 50);
+	}	, 90);
   };

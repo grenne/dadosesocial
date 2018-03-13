@@ -29,11 +29,11 @@ public class Funcionario {
 	public String emailInicial(String subject, String matricula, BasicDBObject email, BasicDBObject funcionario, MongoClient mongo) {
 
 		String conteudo = "<h1 style=\"color:darkgrey;font-size:18px\">Prezado(a) " + email.get("nome").toString() + "</h1><br>";
-				conteudo = conteudo + "<p style=\"color:darkgrey;font-size:13px\">Conforme divulgado na rede interna da EMAE, você está recebendo o endereço eletrônico, usuário e senha para acessar seus dados cadastrais, que deverão ser validados e, se necessário, corrigidos.</p><br>";
-				conteudo = conteudo + "<p style=\"color:darkgrey;font-size:13px\">Endereço eletrônico: <a href=\"http://52.41.8.255:8080/dadosesocial/\" target=\"_blank\" style=\"color:#416b96;\" title=\"http://52.41.8.255:8080/dadosesocial/login.html\">http://52.41.8.255:8080/dadosesocial/login.html</a></p>";				
-				conteudo = conteudo + "<p style=\"color:darkgrey;font-size:8px\">Obs.: caso tenha dificuldade de conexão através do endereço acima, este deverá ser copiado em seu navegador de preferência para iniciar o acesso aos seus dados.</p><br>";
-				conteudo = conteudo + "<p style=\"color:darkgrey;font-size:13px\">Usuário: " + matricula + "</p>";
-				conteudo = conteudo + "<p style=\"color:darkgrey;font-size:13px\">Senha: " + funcionario.get("senha") + "</p><br>";
+				conteudo = conteudo + "<p style=\"color:black;font-size:13px\">Conforme divulgado na rede interna da EMAE, você está recebendo o endereço eletrônico, usuário e senha para acessar seus dados cadastrais, que deverão ser validados e, se necessário, corrigidos.</p><br>";
+				conteudo = conteudo + "<p style=\"color:black;font-size:13px\">Endereço eletrônico: <a href=\"http://52.41.8.255:8080/dadosesocial/\" target=\"_blank\" style=\"color:#416b96;\" title=\"http://52.41.8.255:8080/dadosesocial/login.html\">http://52.41.8.255:8080/dadosesocial/login.html</a></p>";				
+				conteudo = conteudo + "<p style=\"color:black;font-size:8px\">Obs.: caso tenha dificuldade de conexão através do endereço acima, este deverá ser copiado em seu navegador de preferência para iniciar o acesso aos seus dados.</p><br>";
+				conteudo = conteudo + "<p style=\"color:black;font-size:13px\">Usuário: " + matricula + "</p>";
+				conteudo = conteudo + "<p style=\"color:black;font-size:13px\">Senha: " + funcionario.get("senha") + "</p><br>";
 				
 				
 		sendEmailHtml.sendEmailHtml(email.get("email").toString(), subject, templateEmail.emailEnviar(conteudo));

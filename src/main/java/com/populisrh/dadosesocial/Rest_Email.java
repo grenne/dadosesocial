@@ -10,12 +10,16 @@ import javax.ws.rs.core.MediaType;
 
 import org.apache.commons.mail.EmailException;
 
+import com.mongodb.MongoClient;
+
 	
 @Singleton
 // @Lock(LockType.READ)
 @Path("/email")
 
 public class Rest_Email {
+
+	Email email = new Email();
 
 	@Path("/sendSimpleEmail")	
 	@GET
@@ -34,7 +38,6 @@ public class Rest_Email {
 		return "success";
 	};
 
-
 	@Path("/sendEmailHtml")	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
@@ -47,6 +50,19 @@ public class Rest_Email {
 		SendEmailHtml sendEmailHtml = new SendEmailHtml();
 		TemplateEmail templateEmail = new TemplateEmail(); 
 		sendEmailHtml.sendEmailHtml(to, subject, templateEmail.emailEnviar(conteudo));
+		return "success";
+	};
+
+	@Path("/mandaemails")	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public String mandaemails(
+			) throws EmailException {
+
+		MongoClient mongo = new MongoClient();
+
+		email.mandaEmailGeral(mongo);
+		mongo.close();
 		return "success";
 	};
 };

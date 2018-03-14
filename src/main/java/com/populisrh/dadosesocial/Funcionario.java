@@ -37,6 +37,8 @@ public class Funcionario {
 				
 				
 		sendEmailHtml.sendEmailHtml(email.get("email").toString(), subject, templateEmail.emailEnviar(conteudo));
+
+		System.out.println("email enviado para : " + matricula +  " - " + email.get("nome").toString());
 		
 		return email.get("email").toString();
 			
